@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "MS 2024"
+  navbar:
+    left:
+    - href: index.qmd
+      text: Manuscript
+    - href: script.qmd
+      text: Script
+    - href: about.qmd
+      text: About this MS
+#    - icon: file-pdf
+#      text: PDF
+#      href: index.pdf
+#    - icon: file-word
+#      text: MS Word
+#      href: index.docx
+      
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-overflow: wrap
+    embed-resources: true
+    comments:
+      hypothesis: true
+
+editor: visual
+
+execute: 
+  warning: false
+  error: false
+  message: false
+  echo: true
+  freeze: auto
+
+code-copy: true
+
+lang: "en-US"

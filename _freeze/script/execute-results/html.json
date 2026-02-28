@@ -1,0 +1,17 @@
+{
+  "hash": "549b863cf6305fc4dae46d2d4978617b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"MS R Script\"\neditor_options: \n  chunk_output_type: console\neditor: source\n---\n\n## Full R code {.unnumbered}\n\nHere is presented the full R code used to produce the analyses of this manuscript.\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"false\" code-line-numbers=\"true\"}\n#MS TITLE - ORGANIZANDO DADOS----\n#####....----\n\ndev.off() #apaga os graficos, se houver algum\nrm(list=ls(all=TRUE)) #limpa a memória\ncat(\"\\014\") #limpa o console\n#shell.exec(getwd())\ngetwd()\nsetwd(\"D:/Working/Directory\")\nlibrary(openxlsx)\n```\n:::\n\n",
+    "supporting": [
+      "script_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

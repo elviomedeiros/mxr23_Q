@@ -1,0 +1,33 @@
+#cadastro de e-mail
+install.packages("usethis")
+usethis::use_git_config(
+  user.name = "elviomedeiros", 
+  user.email = "elviomedeiros@servidor.uepb.edu.br"
+)
+usethis::git_sitrep()
+
+1. Instalação Básica
+Eles precisam ter o Git e o RStudio instalados.
+Git: Baixe aqui.
+Identidade: Eles devem rodar no Terminal do RStudio:
+  bash
+git config --global user.name "Nome Deles"
+git config --global user.email "email@exemplo.com"
+Use o código com cuidado.
+
+2. Primeiro Acesso (Clone)
+Como eles ainda não têm o projeto no computador, o primeiro passo não é o pull, mas sim o Clone:
+  No RStudio: File > New Project > Version Control > Git.
+No campo Repository URL, eles colam o link do seu repositório (o mesmo que você usou).
+Escolhem a pasta local e clicam em Create Project.
+
+3. Autenticação (O "Pulo do Gato")
+Para que o GitHub permita que eles baixem/enviem arquivos, eles precisam se autenticar. O método mais fácil é via PAT (Personal Access Token) conforme as orientações do GitHub Docs:
+  No Console do R, peça para rodarem: install.packages("gitcreds")
+Depois: gitcreds::gitcreds_set() e colar o token gerado no GitHub.
+
+4. Sincronização Diária (Pull)
+Uma vez que o projeto está configurado, basta usar a aba Git do RStudio (quadrante superior direito):
+  Clicar na Seta Azul (Pull) para baixar as atualizações que você fez.
+Clicar na Seta Verde (Push) após fazerem Commit para enviar as alterações deles para você.
+Dica para o grupo: Recomende que eles sempre deem um Pull assim que abrirem o RStudio para evitar conflitos de código.

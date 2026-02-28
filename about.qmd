@@ -1,0 +1,24 @@
+---
+title: "About this MS"
+editor: source
+---
+
+Collaborative manuscript
+
+Title: Title
+
+Author 1^1,2^, Author 2^1^, Author 3^1^
+
+^1^ Grupo Ecologia de Rios do Semiárido, Laboratório de Ecologia,  
+Centro de Ciências Biológicas e Sociais Aplicadas,  
+Universidade Estadual da Paraíba – UEPB,  
+Rua Horácio Trajano, s/n, CEP 58070-450,  
+João Pessoa, PB, Brasil
+
+^2^ Corresponding author: Author Name, authoremail@hotmail.com
+
+Author e-mails:  
+Author 2: authoremail@hotmail.com  
+Author 3: authoremail@hotmail.com  
+
+

@@ -1,0 +1,41 @@
+---
+title: "MS R Script"
+editor_options: 
+  chunk_output_type: console
+editor: source
+---
+
+## Full R code {.unnumbered}
+
+Here is presented the full R code used to produce the analyses of this manuscript.
+
+```{r}
+#| eval: false
+#| echo: false
+#| purl: false
+knitr::purl(input = "index.qmd", output = "script.txt", documentation = 0)
+Script <- readLines("script.txt")
+Script <- Script[Script != ""]
+writeLines(Script, "script.txt")
+cat(Script, sep = "\n")
+```
+
+```{r}
+#| eval: false
+#| code-fold: false
+#| purl: false
+#| echo: true
+#| code-line-numbers: true
+
+#MS TITLE - ORGANIZANDO DADOS----
+#####....----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+#shell.exec(getwd())
+getwd()
+setwd("D:/Working/Directory")
+library(openxlsx)
+
+```

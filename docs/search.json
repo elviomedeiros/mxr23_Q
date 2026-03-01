@@ -46,7 +46,7 @@
     "href": "index.html#statistical-analyses",
     "title": "Title",
     "section": "2.3 Statistical Analyses",
-    "text": "2.3 Statistical Analyses\nHere you can add your statistical analyses and follow the text with the RStudio code.\n\n\nCode: Summary\nplot(1:10)"
+    "text": "2.3 Statistical Analyses\nHere you can add your statistical analyses and follow the text with the RStudio code. Following the model in https://elviomedeiros.github.io/Bentos2006_Q/.\n\n\nCode: Summary\nplot(1:10)"
   },
   {
     "objectID": "index.html#environmental-variables",

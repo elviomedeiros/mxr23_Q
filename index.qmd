@@ -62,13 +62,19 @@ editor_options:
 
 # Introduction
 
+The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
+
 # Material and Methods
 
-Data and methods are discussed in @sec-data-col. This citation will appear in the bibliography section [@gonçalves-silva2022]. The scientific research follows the model shown in the figured cross-refferenced here (@fig-pesquisa) and shown below.
+Data and methods are discussed in @sec-data-col. This citation will appear in the bibliography section (@gouveia2017; @medeiros2008).
 
 ## Study Area and Sampling Design
 
+See publications by @gouveia2017.
+
 ## Data Collection {#sec-data-col}
+
+See publications by @macêdo2019.
 
 ## Statistical Analyses
 

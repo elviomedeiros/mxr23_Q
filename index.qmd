@@ -25,8 +25,7 @@ keywords:
   - La Palma
   - Earthquakes
 date: "`r Sys.Date()`"
-abstract: "Abstact"
-resumo: "Abstact"
+abstract: "Abstract"
 lang: "en-US"
 editor: source
 toc: true

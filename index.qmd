@@ -62,7 +62,7 @@ editor_options:
 
 # Introduction
 
-The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
+The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa). Authorship of this paper is based on @credit-contributorroletaxonomya.
 
 # Material and Methods
 

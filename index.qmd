@@ -31,7 +31,7 @@ editor: source
 toc: true
 number-sections: true
 bibliography: refs/references.bib
-csl: refs/ecology.csl
+csl: refs/apa.csl
 highlight-style: pygments
 format:
   html:

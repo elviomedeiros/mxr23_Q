@@ -61,7 +61,7 @@ editor_options:
 
 # Introduction
 
-The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa). Authorship of this paper is based on @credit2026.
+The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
 
 # Material and Methods
 
@@ -106,6 +106,16 @@ The results section should follow the model in <https://elviomedeiros.github.io/
 # Conclusions {.unnumbered}
 
 # Acknowledgements {.unnumbered}
+
+# Authorship contribution statement {.unnumbered}
+
+Authorship of this paper is based on @credit2026.
+
+Author1: Writing – review & editing, Writing – original draft, Formal analysis, Data curation, Conceptualization. Author2: Writing – review & editing, Data curation, Conceptualization. Author3: Writing – review & editing, Formal analysis, Data curation, Conceptualization.
+
+# Ethical approval {.unnumbered}
+
+This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (IEF-10327-6 and SISBIO-10.635-7).
 
 # References {.unnumbered}
 

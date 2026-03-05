@@ -136,7 +136,7 @@ The results section should follow the model in <https://elviomedeiros.github.io/
 
 Authorship of this paper is based on @credit2026.
 
-Author1: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing – review & editing, Writing – original draft. Author2: Data curation, Formal analysis, Software, Writing – review & editing. Author3: Data curation, Formal analysis, Software, Writing – review & editing. Author4:Data curation, Formal analysis, Software, Writing – review & editing. Author5: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing – review & editing. Author6: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing – review & editing
+Author1: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing – review & editing, Writing – original draft. Author2: Data curation, Formal analysis, Software, Writing – review & editing. Author3: Data curation, Formal analysis, Software, Writing – review & editing. Author4:Data curation, Formal analysis, Software, Writing – review & editing. Author5: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing – review & editing. Author6: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing – review & editing.
 
 # Ethical approval {.unnumbered}
 

@@ -46,8 +46,7 @@ author:
     affiliations:
       - Curvenote
 keywords:
-  - Ecological Health
-  - Physiological Stress
+  - Ecological Health,Physiological Stress
 date: "`r Sys.Date()`"
 abstract: "Abstract"
 lang: "en-US"

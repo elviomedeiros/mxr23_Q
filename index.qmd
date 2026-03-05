@@ -21,7 +21,7 @@ author:
     affiliations:
       - Curvenote
   - name: Mayara Mirelly da Silva Monteiro
-    orcid: 0000-0002-7859-8394
+    orcid: 0009-0001-3332-1340
     corresponding: false
     roles: []
     affiliations:
@@ -46,8 +46,8 @@ author:
     affiliations:
       - Curvenote
 keywords:
-  - La Palma
-  - Earthquakes
+  - Ecological Health
+  - Physiological Stress
 date: "`r Sys.Date()`"
 abstract: "Abstract"
 lang: "en-US"
@@ -137,7 +137,7 @@ The results section should follow the model in <https://elviomedeiros.github.io/
 
 Authorship of this paper is based on @credit2026.
 
-Author1: Writing – review & editing, Writing – original draft, Formal analysis, Data curation, Conceptualization. Author2: Writing – review & editing, Data curation, Conceptualization. Author3: Writing – review & editing, Formal analysis, Data curation, Conceptualization.
+Author1: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing – review & editing, Writing – original draft. Author2: Data curation, Formal analysis, Software, Writing – review & editing. Author3: Data curation, Formal analysis, Software, Writing – review & editing. Author4:Data curation, Formal analysis, Software, Writing – review & editing. Author5: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing – review & editing. Author6: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing – review & editing
 
 # Ethical approval {.unnumbered}
 

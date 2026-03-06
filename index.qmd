@@ -7,11 +7,7 @@ author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
     corresponding: false
-    roles:
-      - Investigation
-      - Project administration
-      - Software
-      - Visualization
+    roles: []
     affiliations:
       - Curvenote
   - name: Alice da Silva Barros

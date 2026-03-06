@@ -135,7 +135,7 @@ Author1: Conceptualization, Data curation, Formal analysis, Investigation, Softw
 
 # Ethical approval {.unnumbered}
 
-This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (CEUA-048/2023 and SISBIO-89415-2).
+This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (CEUA- 048/2023 and SISBIO-89415-2).
 
 # References {.unnumbered}
 

@@ -74,21 +74,7 @@
     "href": "index.html#abiotic-data.",
     "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
     "section": "3.4 Abiotic data.",
-    "text": "3.4 Abiotic data.\nThe abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by Piedras et al. (2006), this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).\nThe results section should follow the model in https://elviomedeiros.github.io/Bentos2006_Q/."
-  },
-  {
-    "objectID": "index.html#environmental-variables",
-    "href": "index.html#environmental-variables",
-    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
-    "section": "3.5 Environmental variables",
-    "text": "3.5 Environmental variables"
-  },
-  {
-    "objectID": "index.html#community-structure",
-    "href": "index.html#community-structure",
-    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
-    "section": "3.6 Community structure",
-    "text": "3.6 Community structure"
+    "text": "3.4 Abiotic data.\nThe abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by Piedras et al. (2006), this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative)."
   },
   {
     "objectID": "index.html#figures",

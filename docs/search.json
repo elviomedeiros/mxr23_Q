@@ -49,18 +49,46 @@
     "text": "2.4 MXR phenotype activity.\nThe multixenobiotic resistance (MXR) gene activity was analysed through the rhodamine B accumulation assay adapted from Smital & Kurelec (1998). Rhodamine B is a substrate of P-glycoprotein, the molecular basis of the MXR phenotype. Thus, after exposing the fish to this substrate, the analysis of the amount of rhodamine accumulated in the animal’s tissues (mainly the gills) reflects the activity of the MXR phenotype: the greater the accumulation, the lower the activity, and the lower the accumulation, the greater the activity. Therefore, specimens of fish from each sampling site (three inside the Conservative Unity and three outside, total of six sampling sites) were transferred to plastic aquariums containing dechlorinated water and rhodamine B at 2,5 µM concentration, staying in this condition for one hour. The aquarium remained under constant aeration and protected from direct light. After exposition, the fish were anesthetized with eugenol and sacrificed for gill sampling. The tissue samples were allocated in Eppendorfs tubes and weighted in an analytical scale. The weight of moist tissue was obtained by subtracting the weight of the previously weighted empty eppendorf tubes.The tissues were then homogenized with 500 µL of distilled water and the supernatant was transferred in triplicate of 100 µL to a 96-well microplate. The fluorescence intensity of the supernatant (corresponding to the intracellular rhodamine B fluorescence in the tissue) was measured in the microplate reader (SectraMax i3) at 544 nm excitation and 590 nm emission. The fluorescence value was then normalized by the moist tissue weight in milligrammes, and a Kruskal-Wallis test was calculated in R Studio (R Studio Team, 2022) to determine if there were differences between the averages inside and outside the Conservative Unity, followed by an ANOVA to visualize the differences between each sampling site.\nHere you can add your statistical analyses and follow the text with the RStudio code. Following the model in https://elviomedeiros.github.io/Bentos2006_Q/.\n\n\nCode: Summary\nplot(1:10)"
   },
   {
+    "objectID": "index.html#plasmatic-protein-dosage.-1",
+    "href": "index.html#plasmatic-protein-dosage.-1",
+    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
+    "section": "3.1 Plasmatic protein dosage.",
+    "text": "3.1 Plasmatic protein dosage.\nThe average plasmatic protein concentration, parameter that ispositively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value&lt;0,005) between the data collected from fish inside and outside the Conservative Unity (Fig. 3). The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as “a”), differently from the outside sites (Fig. 4). The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the Sabae and Mohamed (2015) study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver."
+  },
+  {
+    "objectID": "index.html#moisture-content.-1",
+    "href": "index.html#moisture-content.-1",
+    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
+    "section": "3.2 Moisture content.",
+    "text": "3.2 Moisture content.\nThe average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the ReBio Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by Haredi (2020). However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (Fig. 5). The ANOVA test demonstrated similarity between data from sites inside ReBio Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10 (Fig. 6). The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity)."
+  },
+  {
+    "objectID": "index.html#mxr-phenotype-activity.-1",
+    "href": "index.html#mxr-phenotype-activity.-1",
+    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
+    "section": "3.3 MXR phenotype activity.",
+    "text": "3.3 MXR phenotype activity.\nThe average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by Kurelec et al. (2000). Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B (Smital, 2004) Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the ReBio Guaribas (confirmed by the Kruskal-Wallis test and illustrated in Fig. 7) was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve (Fig. 8)."
+  },
+  {
+    "objectID": "index.html#abiotic-data.",
+    "href": "index.html#abiotic-data.",
+    "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
+    "section": "3.4 Abiotic data.",
+    "text": "3.4 Abiotic data.\nThe abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by Piedras et al. (2006), this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).\nThe results section should follow the model in https://elviomedeiros.github.io/Bentos2006_Q/."
+  },
+  {
     "objectID": "index.html#environmental-variables",
     "href": "index.html#environmental-variables",
     "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
-    "section": "3.1 Environmental variables",
-    "text": "3.1 Environmental variables"
+    "section": "3.5 Environmental variables",
+    "text": "3.5 Environmental variables"
   },
   {
     "objectID": "index.html#community-structure",
     "href": "index.html#community-structure",
     "title": "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings",
-    "section": "3.2 Community structure",
-    "text": "3.2 Community structure"
+    "section": "3.6 Community structure",
+    "text": "3.6 Community structure"
   },
   {
     "objectID": "index.html#figures",

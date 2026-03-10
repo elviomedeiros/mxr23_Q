@@ -45,7 +45,7 @@ keywords:
   - Ecological Health
   - Physiological Stress
 date: "`r Sys.Date()`"
-abstract: "Abstract"
+abstract: "The Atlantic Forest is one of the most degraded biogeographical provinces of Brazil, and the creation of Conservative Unities is one of the main methods to reduce biodiversity loss in its extension. The project described here aims to compare the environmental conditions of streams, utilizing ecophysiological parameters that can indicate the presence of pollutants. For that, abiotic data and fish of a single genera (Hemigrammus) were collected inside the Guaribas Biological Reserve (Paraíba, Brazil) and outside it, subjected to different human interference. From the collected specimens, physiological markers were used as uniformity parameters for the distinct relationships between the fish from the study, being the quantification of total plasmatic proteins, moisture content of tissues, and the activity of MXR phenotype. Although the last one had inconclusive results, all of the parameters statistically demonstrated the existence of differences between the two groups and a more pronounced uniformity between the sites within the reserve. Combining this with the fact that fish from outside the reserve had a higher concentration of plasmatic proteins and also higher amounts of ammonia in the water of these sites, it was possible to argue that the conclusions regarding the effectiveness of the Conservative Unity were highly positive."
 lang: "en-US"
 editor: source
 toc: true

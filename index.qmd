@@ -205,11 +205,85 @@ The increase of total plasmatic protein concentration in the animals exposed to 
 
 The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the ReBio Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by Haredi (2020). However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (Fig. 5).
 
+```{r, CHUNK-boxplot_moisture_content}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Moisture content (gills and muscle)"
 
+#TH_B = GMC
+hist(tcc$GMC, probability = T)
+lines(x=density(x=tcc$GMC, na.rm=T, adjust=2)) #quase
+shapiro.test(tcc$GMC) #0,06 = normal
+bartlett.test(tcc$GMC~tcc$Local) #0,7455 = homo ###teste t
+t.test(tcc$GMC~tcc$Local) #0,002728 = diferem
+
+par(mfrow=c(2,1),mar=c(2,5,1,1),lwd=1)
+boxplot(tcc$GMC~tcc$Local)
+boxplot(tcc$GMC~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(70,103), outline = T, main="", horizontal = F)
+box(bty="o", lwd=2)
+axis(side=2,las=1,font=2)
+nomes=c("INSIDE","OUTSIDE")
+pos=c(1,2)
+axis(side = 1,at = pos, labels = nomes, las=1,font=9)
+mtext(text="Gill Moisture", side=2,line=3.5,cex=0.9,font=7)
+mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
+legend("top", legend=c("p-value=0,002728"), text.font = 2, bty="n", cex=0.55, text.col="gray25")
+
+#MMC
+hist(tcc$MMC, probability = T)
+lines(x=density(x=tcc$MMC, na.rm=T, adjust=2)) #parece
+shapiro.test(tcc$MMC) #0,002 = não normal
+bartlett.test(tcc$MMC~tcc$Local) #0,047 = não homo ###kruskal
+kruskal.test(tcc$MMC~tcc$Local) #0,000004813 = diferem
+
+par(mfrow=c(1,1),mar=c(1,5,5,1),lwd=1)
+boxplot(tcc$MMC~tcc$Local)
+boxplot(tcc$MMC~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(70,100), outline = T, main="", horizontal = F)
+box(bty="o", lwd=2)
+axis(side=2,las=1,font=2)
+nomes=c("INSIDE","OUTSIDE")
+pos=c(1,2)
+axis(side = 1,at = pos, labels= nomes, las=1,font=9)
+mtext(text="Muscle Moisture", side=2,line=3.5,cex=0.9,font=7)
+mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
+legend("top", legend=c("p-value=0,000004813"), text.font = 2, bty="n", cex=0.55, text.col="gray25")
+```
 
 The ANOVA test demonstrated similarity between data from sites inside ReBio Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10 (Fig. 6).
 
+```{r, CHUNK-boxplot_ANOVA_moisture_content}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Moisture content by site"
 
+anova(lm(formula=tcc$GMC~tcc$Site)) #0,0000004971 = diferença
+(tkTHB=HSD.test(y=lm(formula=tcc$GMC~tcc$Site),trt="tcc$Site",group=T)) 
+boxplot(tcc$GMC~tcc$Site) #a,a,ab,a,bc,c ##P8 próximo aos de dentro, p9 e p10 mais isolados
+
+par(mfrow=c(1,1),mar=c(2,5,1,1),lwd=0.75)
+boxplot(tcc$GMC~tcc$Site,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkgreen","darkgreen","darkred","darkred","darkred"), ylim=c(70,103), outline = T, main="", horizontal = F)
+box(bty="o", lwd=2)
+axis(side=2,las=1,font=2)
+nomesP=c("P5","P6","P7","P8","P9","P10")
+posP=c(1,2,3,4,5,6)
+axis(side = 1,at = posP, labels = nomesP, las=1,font=9)
+mtext(text="Gill Moisture", side=2,line=3.5,cex=0.9,font=7)
+mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
+tapply(tcc$GMC,tcc$Site,max, na.rm=T)
+text(x=c(1,2,3,4,5,6),y=c(91.3,94.3,98.1,89.1,97.1,97.9)+3,labels=c("a","a","ab","a","bc","c"),cex=1)
+```
 
 The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity).
 

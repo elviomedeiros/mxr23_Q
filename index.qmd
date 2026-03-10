@@ -291,11 +291,67 @@ The overall statistical analysis performed for moisture content reinforces this 
 
 The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by Kurelec et al. (2000). Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B (Smital, 2004) Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the ReBio Guaribas (confirmed by the Kruskal-Wallis test and illustrated in Fig. 7)
 
+```{r, CHUNK-boxplot_MXR}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: MXR phenotype activity (inside x outside)"
 
+#MXR
+hist(tcc$MXR, probability = T)
+lines(x=density(x=tcc$MXR, na.rm=T, adjust=2)) #não parece
+shapiro.test(tcc$MXR) #0,0000038 = não normal
+bartlett.test(tcc$MXR~tcc$Local) #0,000264 = não homo ##kruskal
+kruskal.test(tcc$MXR~tcc$Local) #0,0000000000005607 = diferem
+
+par(mfrow=c(1,1),mar=c(3,6,1,1),lwd=1)
+boxplot(tcc$MXR~tcc$Local)
+boxplot(tcc$MXR~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(6400,151000), outline = T, main="", horizontal = F)
+box(bty="o", lwd=2)
+axis(side=2,las=1,font=2)
+nomes=c("INSIDE","OUTSIDE")
+pos=c(1,2)
+axis(side = 1,at = pos, labels = nomes, las=1,font=9)
+mtext(text="Fluorescence/Mass of Tissue (rfu/mg)", side=2,line=4.5,cex=1,font=7)
+legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical difference", "(p-value=0,0000000000005607)"), text.font = 2, bty="n", cex=0.6, text.col="gray25")
+```
 
 was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve (Fig. 8).
 
+```{r, CHUNK-boxplot_MXR_site}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: MXR activity by sampling site"
 
+anova(lm(formula=tcc$MXR~tcc$Site)) #0,0000000000005 = diferença
+(tkMXR=HSD.test(y=lm(formula=tcc$MXR~tcc$Site),trt="tcc$Site",group=T)) 
+boxplot(tcc$MXR~tcc$Site) #a,a,a,b,b,b #dentro e fora 100% isolados
+
+dunnMXR=kwAllPairsDunnTest(formula=tcc$MXR~tcc$Site)
+summary(dunnMXR) #ad,b,ab,c,c,cd
+
+par(mfrow=c(1,1),mar=c(3,6,1,1),lwd=0.75)
+boxplot(tcc$MXR~tcc$Site,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkgreen","darkgreen","darkred","darkred","darkred"), ylim=c(4000,165000), outline = T, main="", horizontal = F)
+box(bty="o", lwd=2)
+axis(side=2,las=1,font=2)
+nomesP=c("P5","P6","P7","P8","P9","P10")
+posP=c(1,2,3,4,5,6)
+axis(side = 1,at = posP, labels = nomesP, las=1,font=9)
+mtext(text="Fluorescence/Mass of Tissue (rfu/mg)", side=2,line=4.5,cex=1,font=7)
+tapply(tcc$MXR,tcc$Site,max, na.rm=T)
+text(x=c(1,2,3,4,5,6),y=c(68400,31371,44811,88000,150658,121050)+10000,labels=c("a","a","a","b","b","b"),cex=1)
+```
 
 ## Abiotic data
 

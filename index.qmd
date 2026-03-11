@@ -355,7 +355,26 @@ The abiotic data from every sampling site water was measured and reunited in Tab
 
 # Discussion
 
-All parameters were effective to point out statistical differences between data from inside the ReBio Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the Fig. 9, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
+All parameters were effective to point out statistical differences between data from inside the ReBio Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the [Fig. 8](#fig-fig.8), highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
+
+```{r, CHUNK-mean_physiological_markers}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Proportion of mean physiological markers"
+
+md=colMeans(tcc[grep("inside",x=tcc$Local),c(3:6)],na.rm = T)
+mf=colMeans(tcc[grep("outside",x=tcc$Local),c(3:6)],na.rm = T)
+(médias=matrix(c(md,mf),byrow=T,nrow = 2,ncol=4,dimnames=list(c("inside","outside"),c("GMC","MMC","TP","MXR"))))
+(prop=proportions(médias,2))
+par(mfrow=c(1,1),mar=c(3,4,1,1),lwd=1)
+barplot(height = prop, horiz = T, las=1, col = c("darkgreen", "darkred"), legend.text = T)
+```
 
 These preliminary obtained data were precise to indicate significant differences among the conditions in which the fish inhabited. But as much MXR phenotype activity data were as disparate as the ones of total protein and even more precise to point out the uniformity among sampling sites inside and outside the ReBio Guaribas, it showed values opposite to what was expected, with higher fluorescence in the tissue of fish outside the reserve, normally indicating lower MXR phenotype activity. This inconsistency can be explained by the possible presence of chemosensitizers in the water, since the fish did not went through a decontamination period, and thus, pollutants could still be bound to the active Pgp site and preventing rhodamine B to attach to it. The presence of such chemosensitizers can be quantified through the creation of a calibration curve, as described by [@kurelec2000], but, until done, the relevance of the MXR phenotype analysis must be restricted to the statistical context.
 
@@ -389,17 +408,19 @@ This study did not require ethical approval as it did not involve human particip
 
 ![](imagens/mapa.png "Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it."){#fig-fig.1}
 
-![](imagens/Figura 3.png "Total protein (mg) variance of data inside and outside ReBio Guaribas."){#fig-fig.2}
+![](imagens/Figura%203.png "Total protein (mg) variance of data inside and outside ReBio Guaribas."){#fig-fig.2}
 
-![](imagens/Figura 4.png "Boxplot with total protein data of collected fish from the sampling sites inside (green) and outside ReBio Guaribas (red), including its respective grouping by similarity above each box."){#fig-fig.3}
+![](imagens/Figura%204.png "Boxplot with total protein data of collected fish from the sampling sites inside (green) and outside ReBio Guaribas (red), including its respective grouping by similarity above each box."){#fig-fig.3}
 
-![](imagens/Figura 5.png "Moisture content (%) of tissues from sampling sites inside and outside the ReBio Guaribas, with the respective p-value between each locality."){#fig-fig.4}
+![](imagens/Figura%205.png "Moisture content (%) of tissues from sampling sites inside and outside the ReBio Guaribas, with the respective p-value between each locality."){#fig-fig.4}
 
-![](imagens/Figura 6.png "Boxplot with gill and muscle moisture content data of fish collected from sites inside (green) and outside ReBio Guaribas (red), with its respective grouping by similarity above each box."){#fig-fig.5}
+![](imagens/Figura%206.png "Boxplot with gill and muscle moisture content data of fish collected from sites inside (green) and outside ReBio Guaribas (red), with its respective grouping by similarity above each box."){#fig-fig.5}
 
-![](imagens/Figura 7.png "Average fluorescence data from sampling sites inside and outside the ReBio Guaribas, expressed by relative fluorescence units/milligrammes of tissue (gill)."){#fig-fig.6}
+![](imagens/Figura%207.png "Average fluorescence data from sampling sites inside and outside the ReBio Guaribas, expressed by relative fluorescence units/milligrammes of tissue (gill)."){#fig-fig.6}
 
-![](imagens/Figura 8.png "Boxplot with the MXR phenotype activity data of fish collected from sites inside (green) and outside the ReBio Guaribas (red), with its respective grouping by similarity above each box."){#fig-fig.7}
+![](imagens/Figura%208.png "Boxplot with the MXR phenotype activity data of fish collected from sites inside (green) and outside the ReBio Guaribas (red), with its respective grouping by similarity above each box."){#fig-fig.7}
+
+![](imagens/Figure 9.png "Proportion between average values for each physiological marker analysed, comparing themselves in order to its relationship with the ReBio Guaribas, highlighting the disparity among data of total protein (“TP”) and the MXR phenotype activity (“MXR”), and higher proximity among data of muscle (“MMC”) and gill moisture content (“GMC”)."){#fig-fig.8}
 
 ## Tables {.unnumbered}
 

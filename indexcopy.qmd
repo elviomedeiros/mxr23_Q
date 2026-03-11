@@ -1,0 +1,158 @@
+---
+title: "Title"
+subtitle: |
+  Subtitle 1  
+  Subtitle 2   
+author:
+  - name: Steve Purves
+    orcid: 0000-0002-0760-5497
+    corresponding: true
+    email: steve@curvenote.com
+    roles:
+      - Investigation
+      - Project administration
+      - Software
+      - Visualization
+    affiliations:
+      - Curvenote
+  - name: Rowan Cockett
+    orcid: 0000-0002-7859-8394
+    corresponding: false
+    roles: []
+    affiliations:
+      - Curvenote
+keywords:
+  - La Palma
+  - Earthquakes
+date: "`r Sys.Date()`"
+abstract: "Abstract"
+lang: "en-US"
+editor: source
+toc: true
+number-sections: true
+bibliography: refs/references.bib
+csl: refs/apa.csl
+highlight-style: pygments
+format:
+  html:
+    code-fold: true
+    code-overflow: scroll
+    embed-resources: true
+  pdf:
+    lof: true
+    lot: true
+    toc: true
+    code-line-numbers: true
+    colorlinks: true
+    execute:
+      echo: false
+  docx:
+    execute:
+      echo: false
+    reference-doc: custom-reference.docx
+execute:
+  echo: true
+  result: hold
+  warning: false
+always_allow_html: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduction
+
+The scientific research follows the model shown in the figured cross-referenced here (@fig-pesquisa).
+
+# Material and Methods
+
+Data and methods are discussed in @sec-data-col. This citation will appear in the bibliography section (@gouveia2017; @medeiros2008).
+
+## Study Area and Sampling Design
+
+See publications by @gouveia2017.
+
+## Data Collection {#sec-data-col}
+
+See publications by @macêdo2019.
+
+## Statistical Analyses
+
+Here you can add your statistical analyses and follow the text with the RStudio code. Following the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
+
+```{r, CHUNK-TITLE}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Summary"
+
+plot(1:10)
+```
+
+# Results
+
+The results section should follow the model in <https://elviomedeiros.github.io/Bentos2006_Q/>.
+
+## Environmental variables
+
+## Community structure
+
+# Discussion
+
+# Conclusions {.unnumbered}
+
+# Acknowledgements {.unnumbered}
+
+# Authorship contribution statement {.unnumbered}
+
+Authorship of this paper is based on @credit2026.
+
+Author1: Writing – review & editing, Writing – original draft, Formal analysis, Data curation, Conceptualization. Author2: Writing – review & editing, Data curation, Conceptualization. Author3: Writing – review & editing, Formal analysis, Data curation, Conceptualization.
+
+# Ethical approval {.unnumbered}
+
+This study did not require ethical approval as it did not involve human participants or sensitive data. Field surveys were conducted based on collection permit number (IEF-10327-6 and SISBIO-10.635-7).
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\pagebreak
+\newpage
+
+# Figures and Tables {.unnumbered}
+
+## Figures {.unnumbered}
+
+![Etapas do desenvolvimento da pesquisa científica.](imagens/pesquisa_cientifica.jpg){#fig-pesquisa}
+
+## Tables {.unnumbered}
+
+\pagebreak
+\newpage
+
+# Apendices {.unnumbered}
+
+# Non-used figures and tables {.unnumbered}
+
+::: callout-warning
+# Non-used codes
+
+```{r}
+#| label: non-used code
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "non-used code" 
+
+table(1:10)
+```
+:::

@@ -6,7 +6,7 @@ cat("\014") #limpa o console
 getwd()
 setwd("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_R")
 library(openxlsx)
-mxr23 <- read.xlsx("D:/Elvio/OneDrive/_2022-Ecofisiologia/PIBIC-23/Resultados/rebio23-peixes_5-10.xlsx",
+mxr23 <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
                    rowNames = T,
                    colNames = T,
                    sheet = "peixes-fisio")

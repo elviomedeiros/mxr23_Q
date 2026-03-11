@@ -9,38 +9,38 @@ author:
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
   - name: Alice da Silva Barros
     orcid: 0009-0008-6524-458X
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
   - name: Ellen Gomes da Silva
     orcid: 0009-0008-6580-8162
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
   - name: Enelise Marcelle Amado
     orcid: 0000-0002-3632-5427
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
   - name: Elvio Sergio Figueredo Medeiros
     orcid: 0000-0002-7472-8147
     corresponding: true
     email: elviomedeiros@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Curvenote
+      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
 keywords:
   - Ecological Health
   - Physiological Stress

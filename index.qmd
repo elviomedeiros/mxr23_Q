@@ -1,45 +1,49 @@
 ---
 title: "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings"
 subtitle: |
-  Physiological biomarkers of fish from an Atlantic Forest stream
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
     corresponding: false
+    email: adamastor.pinto@aluno.uepb.edu.br
     roles: []
     affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
-  - name: Alice da Silva Barros
-    orcid: 0009-0008-6524-458X
-    corresponding: false
-    roles: []
-    affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
+      - Programa de Pós-Graduação em Ecologia e Conservação (PPGEC), Universidade Estadual da Paraíba - Campus I, Rua Baraúnas, 351, Bairro Bodocongó, CEP 58109-753, Campina Grande, PB, Brazil.
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
     corresponding: false
+    email: mayaramirelly68@gmail.com
     roles: []
     affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
-  - name: Ellen Gomes da Silva
-    orcid: 0009-0008-6580-8162
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+  - name: Alice da Silva Barros
+    orcid: 0009-0008-6524-458X
     corresponding: false
+    email: licesoft595@gmail.com
     roles: []
     affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
+      - Programa de Pós-Graduação em Ecologia e Conservação (PPGEC), Universidade Estadual da Paraíba - Campus I, Rua Baraúnas, 351, Bairro Bodocongó, CEP 58109-753, Campina Grande, PB, Brazil.
+  - name: Larissa Rafaela Caetano da Silva
+    orcid: 0000-0003-4433-4785
+    corresponding: false
+    email: larissa.caetano@aluno.uepb.edu.br
+    roles: []
+    affiliations:
+      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Enelise Marcelle Amado
     orcid: 0000-0002-3632-5427
-    corresponding: false
+    corresponding: true
+    email: eneliseamado@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
+      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Elvio Sergio Figueredo Medeiros
     orcid: 0000-0002-7472-8147
     corresponding: true
     email: elviomedeiros@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Universidade Estadual da Paraíba - Campus V, rua Horácio Trajano, s/n, Cristo Redentor, 58071160, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
 keywords:
   - Ecological Health
   - Physiological Stress
@@ -90,7 +94,7 @@ The action of toxic compounds in the gills leads to a series of histopathologies
 
 Another relevant biomarker is the abnormal activity of the multixenobiotic resistance (MXR) phenotype, an innate gene of many aquatic species that is expressed in organs such as gills, kidneys, blood-brain barrier, liver and pancreas. It is activated by exposure to pollutants and results in the production of P-glycoproteins (Pgp) in the membrane, which act to remove endogenous or exogenous toxic compounds out of the cell, protecting DNA and inducing its excretion. Although the MXR activity explains how some species are more resistant to the presence of pollutants, some substances can reverse its effectiveness, being called chemosensitizers (or simply MXR-inhibitors). Those compounds can cancel the Pgp activity, alter the mechanism regulation, saturate or even reverse MXR activity, acting, in this case, by saturating the Pgp pump and allowing other xenobiotics to enter the cell and increase its toxicity, even if the chemosensitizers themselves are not toxic. Precisely because they are mostly organic, natural, primarily harmless and very present in the materials emitted anthropogenic in nature, its detection should also be a priority in environmental risk studies [@smital1998].
 
-The hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (ReBio Guaribas), one of the 22 CU’s inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state (@fig-mapa). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province – 33,45% of the CU’s), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence ReBio Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU [@arruda2013; @ministériodomeioambiente].
+The hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (ReBio Guaribas), one of the 22 CU’s inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state ([Fig. 1](#fig-fig.1)). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province – 33,45% of the CU’s), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence ReBio Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU [@arruda2013; @ministériodomeioambiente].
 
 The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of ReBio Guaribas made by @gouveia2017, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments [@miranda2012] - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations [@gouveia2017]. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco [@serra2010].
 
@@ -389,7 +393,12 @@ From the final results, an important positive evaluation can be made regarding t
 
 Authorship of this paper is based on @credit2026.
 
-Author1: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing – review & editing, Writing – original draft. Author2: Data curation, Formal analysis, Software, Writing – review & editing. Author3: Data curation, Formal analysis, Software, Writing – review & editing. Author4:Data curation, Formal analysis, Software, Writing – review & editing. Author5: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing – review & editing. Author6: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing – review & editing.
+Adamastor Coutinho Pinto: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing – review & editing, Writing – original draft.
+Mayara Mirelly da Silva Monteiro: Data curation, Formal analysis, Software, Writing – review & editing.
+Alice da Silva Barros: Data curation, Formal analysis, Software, Writing – review & editing.
+Larissa Rafaela Caetano da Silva:Data curation, Formal analysis, Software, Writing – review & editing.
+Enelise Marcelle Amado: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing – review & editing.
+Elvio Sergio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing – review & editing.
 
 # Ethical approval {.unnumbered}
 
@@ -407,7 +416,7 @@ This study did not require ethical approval as it did not involve human particip
 
 ## Figures {.unnumbered}
 
-![Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/mapa.png){#fig-mapa}
+![](imagens/mapa.png "Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it."){#fig-fig.1}
 
 ![](imagens/Figura%203.png "Total protein (mg) variance of data inside and outside ReBio Guaribas."){#fig-fig.2}
 

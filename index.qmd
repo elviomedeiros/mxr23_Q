@@ -1,8 +1,6 @@
 ---
 title: "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings"
 subtitle: |
-  Subtitle 1  
-  Subtitle 2   
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
@@ -105,7 +103,7 @@ The sampling sites ([Fig. 1](#fig-fig.1)) were cataloged and numbered by the co-
 
 In order to uniform the data, only fish from Hemigrammus Gill 1858 [@eschmeyer2016] genera were analyzed, being found in every sampling site and in abundance, captured in the shallow waters of streams using a hand net in sweeping motion. To facilitate handling, the specimens were transported in plastic bags with air and local water to the Animal Ecophysiology Laboratory (LEFA) from UEPB - campus V (João Pessoa, Brazil). To analyze the osmoregulatory function of the fish, blood samples were collected from some specimens (38 fish from inside the reserve and 40 from outside, a total of 78). For that, those specimens were anesthetized with eugenol, and a blood aliquot was obtained by puncturing the heart using a pipette with a heparinized tip. The samples were kept on ice, and plasma was subsequently separated from cells by centrifugation. Due to low volume of obtained plasma, because of the small size of fish, the chlorine ions assay could not be performed. From those same specimens, gill and muscle were collected in order to calculate the moisture content of tissues. Plasma and tissues samples were stored in a freezer at -20°C until the analyses were performed. The other part of collected specimens (54 fish from inside the reserve and 57 from outside, a total of 111) was used in the multixenobiotic resistance (MXR) phenotype assay.
 
-Abiotic data, such as water temperature, dissolved oxygen, pH and multiple nutrients were simultaneously collected with the fish, allowing additional statistical analysis that may point out possible correlations between physiological biotic data and these environment components (analysis performed in the integrated programming environment R and R Studio - [@rstudioteam; @rcoreteam2017]).
+Abiotic data, such as water temperature, dissolved oxygen, pH and multiple nutrients were simultaneously collected with the fish, allowing additional statistical analysis that may point out possible correlations between physiological biotic data and these environment components (analysis performed in the integrated programming environment R and R Studio - @rstudioteam; @rcoreteam2017).
 
 ## Plasmatic protein dosage
 

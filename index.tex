@@ -252,7 +252,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings},
-  pdfauthor={Adamastor Coutinho Pinto; Mayara Mirelly da Silva Monteiro; Alice da Silva Barros; Larissa Rafaela Caetano da Silva; Enelise Marcelle Amado; Elvio Sergio Figueredo Medeiros},
+  pdfauthor={Adamastor Coutinho Pinto; Alice da Silva Barros; Mayara Mirelly da Silva Monteiro; Ellen Gomes da Silva; Enelise Marcelle Amado; Elvio Sergio Figueredo Medeiros},
   pdflang={en-US},
   pdfkeywords={Ecological Health, Physiological Stress},
   colorlinks=true,
@@ -265,10 +265,18 @@
 
 \title{Physiological biomarkers of stream fish from the Atlantic Forest
 within a Conservation Unit and its surroundings}
-\author{Adamastor Coutinho Pinto \and Mayara Mirelly da Silva
-Monteiro \and Alice da Silva Barros \and Larissa Rafaela Caetano da
-Silva \and Enelise Marcelle Amado \and Elvio Sergio Figueredo Medeiros}
-\date{2026-03-11}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Physiological biomarkers of fish from an Atlantic Forest
+stream}
+\author{Adamastor Coutinho Pinto \and Alice da Silva Barros \and Mayara
+Mirelly da Silva Monteiro \and Ellen Gomes da Silva \and Enelise
+Marcelle Amado \and Elvio Sergio Figueredo Medeiros}
+\date{2026-03-12}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -396,8 +404,8 @@ and outside of a Conservation Unity was tested in the Guaribas
 Environmental Reserve (ReBio Guaribas), one of the 22 CU's inside the
 Atlantic forest area of Paraíba state, located in the Zona da Mata,
 wettest and most economically relevant mesoregion from the state
-(\hyperref[fig-fig.1]{Fig. 1}). Grouped, according to SNUC, as one of
-the integral protection areas (aimed to conserve biodiversity, being
+(Figure~\ref{fig-mapa}). Grouped, according to SNUC, as one of the
+integral protection areas (aimed to conserve biodiversity, being
 minority within the biogeographical province -- 33,45\% of the CU's),
 the definition of environmental reserves prohibits human interference
 inside their limits, except for management actions that aim its
@@ -883,19 +891,17 @@ statement}\label{authorship-contribution-statement}
 
 Authorship of this paper is based on CRediT (2026).
 
-Adamastor Coutinho Pinto: Conceptualization, Data curation, Formal
-analysis, Investigation, Software, Visualization, Writing -- review \&
-editing, Writing -- original draft. Mayara Mirelly da Silva Monteiro:
-Data curation, Formal analysis, Software, Writing -- review \& editing.
-Alice da Silva Barros: Data curation, Formal analysis, Software, Writing
--- review \& editing. Larissa Rafaela Caetano da Silva:Data curation,
-Formal analysis, Software, Writing -- review \& editing. Enelise
-Marcelle Amado: Conceptualization, Data curation, Methodology, Project
-administration, Resources, Supervision, Validation, Writing -- review \&
-editing. Elvio Sergio Figueredo Medeiros: Conceptualization, Data
-curation, Formal analysis, Funding acquisition, Methodology, Project
-administration, Resources, Software, Supervision, Validation, Writing --
-review \& editing.
+Author1: Conceptualization, Data curation, Formal analysis,
+Investigation, Software, Visualization, Writing -- review \& editing,
+Writing -- original draft. Author2: Data curation, Formal analysis,
+Software, Writing -- review \& editing. Author3: Data curation, Formal
+analysis, Software, Writing -- review \& editing. Author4:Data curation,
+Formal analysis, Software, Writing -- review \& editing. Author5:
+Conceptualization, Data curation, Methodology, Project administration,
+Resources, Supervision, Validation, Writing -- review \& editing.
+Author6: Conceptualization, Data curation, Formal analysis, Funding
+acquisition, Methodology, Project administration, Resources, Software,
+Supervision, Validation, Writing -- review \& editing.
 
 \section*{Ethical approval}\label{ethical-approval}
 \addcontentsline{toc}{section}{Ethical approval}
@@ -1061,57 +1067,30 @@ provinces of the world} {[}Unpublished manuscript{]}.
 
 }
 
-\caption{\label{fig-fig.1}}
+\caption{\label{fig-mapa}Location of sampling sites within (P5 -
+06°43'06,58555'\,' S, 35°10'54,70041'\,`W -, P6 - 06°42'38,71927'`S,
+35°10'38,68013'`W - and P7 - 06°43'06,58555'`S, 35°10'54,70041'`W) and
+surrounding ReBio Guaribas (P8 - 06°41'46,29119'`S, 35°10'36,09933'`W -,
+P9 - 06°40'56,47593'`S, 35°10'27,84963'`W - and P10 - 06°40'18,97010'`S,
+35°10'34,68148'\,'W). In total, 92 fish were collected inside the
+Conservation Unity and 97 outside it.}
 
 \end{figure}%
 
-\begin{figure}
+\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 3.png}}\{\#fig-Boxplot
+PT In and Out\}
 
-\centering{
+\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 4.png}}\{\#fig-Boxplot
+PT sites\}
 
-\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 3.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 5.png}}\{\#fig-
+MMC sites in and out\}
 
-}
+\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 6.png}}\{\#fig-Boxplot
+GMC sites\}
 
-\caption{\label{fig-fig.2}}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 4.png}}
-
-}
-
-\caption{\label{fig-fig.3}}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 5.png}}
-
-}
-
-\caption{\label{fig-fig.4}}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 6.png}}
-
-}
-
-\caption{\label{fig-fig.5}}
-
-\end{figure}%
+\pandocbounded{\includegraphics[keepaspectratio]{imagens/Figura 7.png}}\{\#fig-
+Boxplot fluorescence\}
 
 \begin{figure}
 
@@ -1162,7 +1141,7 @@ provinces of the world} {[}Unpublished manuscript{]}.
 tables}\label{non-used-figures-and-tables}
 \addcontentsline{toc}{section}{Non-used figures and tables}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Non-used codes}, colframe=quarto-callout-warning-color-frame, colback=white, toprule=.15mm, titlerule=0mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, bottomrule=.15mm, left=2mm, opacityback=0, leftrule=.75mm, opacitybacktitle=0.6, breakable]
+\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, opacitybacktitle=0.6, opacityback=0, leftrule=.75mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Non-used codes}, colframe=quarto-callout-warning-color-frame, left=2mm, titlerule=0mm, bottomtitle=1mm, coltitle=black, breakable, toprule=.15mm, toptitle=1mm, arc=.35mm, rightrule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
 \end{tcolorbox}
 

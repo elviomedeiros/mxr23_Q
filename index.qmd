@@ -291,7 +291,44 @@ The specimens were transported in plastic bags with air and local water to the A
 
 # Results
 
-**Environmental variables.**
+**Environmental variables.** Water flow was present only in smaller streams in lower altitudes (sites 4-6) and during the rainy season (0.10-0.17 m/s). Stream sites tended to be narrower with widths ranging from 5.4 to 29.6 m, compared with 72.2 to 330 m for reservoirs. Littoral depths varied widely from 4.7 to 81.3 cm across all sites. Dissolved oxygen (DO) ranged from 1.8 to 9.4 mg/L and temperatures from 24.0 and 35.2 °C. Turbidity was low with Secchi depths reaching 90 cm, even though some sites had depths as low as 16 cm of the Secchi disk. Mud and sand were the main substrates across all sampled sites (with average covers of 54.4 and 37.9%, respectively). The habitat elements that gave greater overall contributions were attached and filamentous algae (12% on average), littoral grass (9.0%) and aquatic macrophytes (8.4%), but these contributions varied widely across sites and season.
+
+```{r}
+#| label: tbl_hab
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Environment data table" 
+
+
+```
+
+```{r}
+#| label: hab_var_summ
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Environment data variable summary"
+
+```
+
+```{r}
+#| label: hab_gttable
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Environment data GT table"
+
+```
 
 ## Plasmatic protein dosage
 

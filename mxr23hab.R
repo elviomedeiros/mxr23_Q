@@ -76,8 +76,8 @@ m_hab <- read.csv("m_hab.csv",
 library(psych)
 colnames(m_hab)
 
-png("fig-hab_pairs.png")
-pairs.panels(m_hab[,1:5],
+png("fig-m.hab_pairs.png")
+pairs.panels(m_hab[,13:19],
              method = "pearson", # correlation method
              scale = FALSE, lm = FALSE,
              hist.col = "#00AFBB", pch = 19,

@@ -1,0 +1,3 @@
+       Min. X1st.Qu. Median Mean X3rd.Qu. Max.
+s.Sand    0      2.5     20   25     37.5   70
+s.Mud    30     62.5     80   75     97.5  100

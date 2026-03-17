@@ -265,16 +265,16 @@ dev.off()
 #m_hab_part
 #sink()
 
-#write.table(m_hab_part, "m_hab_part.csv",
-#            sep = ";", dec = ".", #"\t",
-#            row.names = TRUE,
-#            quote = TRUE,
-#            append = FALSE)
-#m_hab_part <- read.csv("m_hab_part.csv",
-#                       sep = ";", dec = ".",
-#                       row.names = 1,
-#                       header = TRUE,
-#                       na.strings = NA)
+write.table(m_hab, "m_hab_part.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_hab_part <- read.csv("m_hab_part.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
 ```
 
 **Fish collection and maintenance.** Fish were collected .... @gouveia2017 between October and November 2023.
@@ -303,6 +303,66 @@ The specimens were transported in plastic bags with air and local water to the A
 #| code-overflow: wrap
 #| code-summary: "Code: Environment data table" 
 
+#TABELA DE HABITAT----
+
+m_hab_part <- read.csv("m_hab_part.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+library(dplyr)
+library(tidyr)
+m_trab <- m_hab_part %>%
+  rename_with(~ gsub("_", ".", .))
+m <- m_trab %>%
+  group_by(PontoN = t_grps$PontoN) %>%
+  summarise(across(where(is.numeric),
+                   list(mean = mean, min = min, max = max)),
+            .groups = 'drop') %>%
+  pivot_longer(
+    cols = -c(PontoN),
+    names_to = c("Variable", ".value"),
+    names_sep = "_"
+  )
+
+m <- as.data.frame(m)
+m_wide <- m %>%
+  mutate(stat_string = ifelse(Variable == c("m.Vel.m.s"),
+                              paste0(round(mean, 3), " (", round(min, 3), "-", round(max, 3), ")"),
+                              paste0(round(mean, 1), " (", round(min, 1), "-", round(max, 1), ")"))) %>%
+  unite("Location", PontoN, sep = "_") %>%
+  select(Variable, Location, stat_string) %>%
+  pivot_wider(names_from = Location, values_from = stat_string)
+
+m_wide
+m_wide <- as.data.frame(m_wide)
+m_wide <- m_wide[, c("Variable", "Ponto5", "Ponto6", "Ponto7", "Ponto8", "Ponto9", "Ponto10")]
+m_wide
+
+# Salvado m_wide
+write.table(m_wide, "m_wide_hab.txt",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_wide_hab <- read.table("m_wide_hab.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+# Exportando dados para Excel
+library(openxlsx)
+#write.xlsx(m_wide, file = "tabela de habitat.xlsx", rowNames = FALSE)
+wb <- loadWorkbook("tabela de habitat.xlsx")
+writeData(wb, sheet = "Sheet 1", x = m_wide)
+saveWorkbook(wb, "tabela de habitat.xlsx", overwrite = TRUE)
 
 ```
 
@@ -316,6 +376,34 @@ The specimens were transported in plastic bags with air and local water to the A
 #| code-overflow: wrap
 #| code-summary: "Code: Environment data variable summary"
 
+# Escolher sumário de uma variavel
+m
+var <- "w.Temp.C"
+m[m$Variable == var, "mean"] #cada valor de var
+summary(m[m$Variable == var, "mean"]) #sumário dos valores de var
+
+# Escolher sumário de um grupo de variáveis do df m
+vars <- unique(grep("^h\\.", m$Variable, value = TRUE))
+summaries <- list() #criam uma lista vazia para guardar os sumários
+# Loop para cada variável do grupo e guarda em summaries
+for (var in vars) {
+  summaries[[var]] <- summary(m[m$Variable == var, "mean"])
+}
+#var is a temporary variable used in the for loop to iterate through
+#each variable name that starts with "h."
+
+summaries
+summary_table <- do.call(rbind, lapply(summaries, as.data.frame.list))
+round(summary_table, 2)
+#sink(file = "summary_h.txt", split = TRUE)
+round(summary_table[order(summary_table$Mean, decreasing = FALSE), ], 2)
+#sink()
+
+# Tabela limpa
+#summary_table <- cbind(Variable = rownames(summary_table), summary_table)
+#rownames(summary_table) <- NULL
+#colnames(summary_table) <- c("Variable", "Min", "Q1", "Median", "Mean", "Q3", "Max")
+#summary_table
 ```
 
 ```{r}
@@ -328,11 +416,592 @@ The specimens were transported in plastic bags with air and local water to the A
 #| code-overflow: wrap
 #| code-summary: "Code: Environment data GT table"
 
+library(readr)
+library(dplyr)
+library(gt)
+
+m_wide_hab <- read.table("m_wide_hab.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+#m_mapa <- read_tsv("column_labels.txt", show_col_types = FALSE)
+dados <- m_wide_hab
+dados
+nomes <- names(dados)[-1]
+nomes
+
+df_nomes <- data.frame(
+  original = nomes,
+  final    = nomes,
+  stringsAsFactors = FALSE)
+
+df_nomes
+df_nomes$final <- gsub("_", "<br>", df_nomes$final)
+dados <- mutate(dados,across(-Variable, ~ gsub(" \\(", "<br>(", .)))
+#fix(df_nomes)
+#write.table(df_nomes, "df_nomes.txt")
+df_nomes <- read.table("df_nomes.txt")
+
+labels_finais <- setNames(
+  lapply(df_nomes$final, md),
+  nomes)
+
+tabela_gt <- dados %>%
+  gt(rowname_col = "Variable") %>%
+#  tab_header(
+#    title = "Características Ambientais",
+#    subtitle = "Valores apresentados como média (mín–máx)"
+#  ) %>%
+  fmt_markdown(
+    columns = -Variable) %>%
+  cols_align(
+    align = "right",
+    columns = -Variable) %>%
+  cols_label(.list = labels_finais)
+
+tabela_gt
+gtsave(tabela_gt, "gt-hab_gttable.html")
+gtsave(tabela_gt, "fig-hab_gttable.png")
+saveRDS(tabela_gt, "gt-hab_gttable.rds")
+
+# Tabela final ajustada no Excel
+library(readxl)
+hab_gttable <- read_excel(
+  path  = "tabela de habitat.xlsx",
+  sheet = "tabela_final",
+  range = "A1:G25")
+hab_gttable
+library(gt)
+hab_gttable <- gt(hab_gttable)
+hab_gttable <- sub_missing(hab_gttable,
+                      columns = everything(), missing_text = "")
+#hab_gttable <- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)
+hab_gttable
+gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
+saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-## Plasmatic protein dosage
+Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure. PCA explained 41.9% of the variance in the environmental variables, with the first axis (27.6%) showing a gradient from large reservoirs to smaller streams sites. Large scale morphology variables such as altitude, river length and site width were important to describe most reservoirs, whereas river sites were better described by local physical, chemical and habitat variables, such as margins depth and water temperature. Among the habitat structure variations, overhanging vegetation and roots, were also important to describe stream sites. Larger reservoirs were mostly associated with a muddy substrate whereas river sites included a more diverse array of substrates, the most important being sand and gravel. Other variables such as slope (morphology), submerged vegetation and leaf litter (habitat structure) and water velocity (water quality) were important in explaining specific sites at given sampling occasions.
 
-The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
+```{r, HAB-PCA_fviz}
+#| label: hab_PCA_fviz
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Environment data PCA - fviz"
+
+#PCA fviz package----
+#browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
+
+#ORGANIZANDO DADOS----
+
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_hab_part <- read.csv("m_hab_part.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+colnames(m_hab_part)
+#fix(m_hab_part)
+
+###RELATIVIZAÇÕES E TRANSFORMAÇÕES----
+#m_hab_trns <- sqrt(m_hab_part)
+#m_hab_trns[m_hab_trns == -Inf] <- 0
+#m_hab_trns$g.altitude <- NULL #DELETA COLUNA
+
+# Salvado m_hab_trns
+write.table(m_hab_trns, "m_hab_trns.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_hab_trns <- read.table("m_hab_trns.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+#PCA----
+
+library("FactoMineR")
+library("factoextra")
+
+pca <- PCA(m_hab_trns, scale.unit = TRUE, ncp = 5, graph = TRUE)
+print(pca)
+
+eig.val <- get_eigenvalue(pca)
+eig.val
+
+sink(file = "cor_matrix.txt", append = FALSE)
+pca$var$cor
+sink()
+
+fviz_eig(pca, addlabels = TRUE, ylim = c(0,30))
+
+var <- get_pca_var(pca)
+var
+
+fviz_pca_var(pca, col.var = "black")
+
+library("corrplot")
+corrplot(var$cos2, is.corr=FALSE)
+
+fviz_cos2(pca, choice = "var", axes = 1:2)
+
+fviz_pca_var(pca, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping
+)
+
+fviz_pca_var(pca, alpha.var = "cos2")
+
+corrplot(var$contrib, is.corr=FALSE)
+
+fviz_contrib(pca, choice = "var", axes = 1, top = 10)
+fviz_contrib(pca, choice = "var", axes = 2, top = 10)
+fviz_contrib(pca, choice = "var", axes = 1:2, top = 10)
+
+fviz_pca_var(pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+)
+fviz_pca_var(pca, alpha.var = "contrib")
+
+##GROUPING BY KMEANS----
+
+set.seed(123)
+res.km <- kmeans(var$coord, centers = 3, nstart = 25)
+grp <- as.factor(res.km$cluster)
+# Color variables by groups
+fviz_pca_var(pca, col.var = grp,
+             palette = c("#0073C2FF", "#EFC000FF", "#868686FF"),
+             legend.title = "Cluster")
+
+ind <- get_pca_ind(pca)
+ind
+ind$contrib
+
+##BIPLOTS----
+
+fviz_pca_ind(pca)
+
+fviz_pca_ind(pca, col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_pca_ind(pca, pointsize = "cos2",
+             pointshape = 21, fill = "#E7B800",
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_pca_ind(pca, col.ind = "cos2", pointsize = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE #avoid text overlapping (slow if many points)
+)
+
+fviz_cos2(pca, choice = "ind")
+
+fviz_contrib(pca, choice = "ind", axes = 1:2)
+
+# Create a random continuous variable of length 23,
+# Same length as the number of active individuals in the PCA
+nrow(m_hab_part)
+set.seed(123)
+my.cont.var <- t_grps$ponto.n
+my.cont.var
+# Color individuals by the continuous variable
+fviz_pca_ind(pca, col.ind = my.cont.var,
+             gradient.cols = c("blue", "yellow", "red"),
+             legend.title = "Cont.Var",
+             repel = FALSE)
+
+fviz_pca_ind(pca,
+             geom.ind = "point", #show points only (nbut not "text")
+             col.ind = as.factor(my.cont.var), #color by groups
+             palette = "grey",
+             addEllipses = TRUE, #concentration ellipses
+             legend.title = "Groups"
+)
+
+length(unique(my.cont.var))
+fviz_pca_ind(pca,
+             geom.ind = "point",
+             col.ind = t_grps$UA,
+             palette = "grey",
+             addEllipses = TRUE, ellipse.type = "confidence",
+             mean.point = TRUE,
+             legend.title = "Groups")
+
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "#2E9FDF", #variables color
+                col.ind = "#696969"  #individuals color
+)
+
+fviz_pca_biplot(pca,
+                col.ind = t_grps$UA, palette = "jco",
+                addEllipses = TRUE, elipse.type = "euclid",
+                label = "var",
+                col.var = "black", repel = TRUE,
+                legend.title = "Species")
+
+#GRAFICO FINAL----
+
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "red", #variables color
+                col.ind = "black"  #individuals color
+)
+
+library(factoextra)
+library(ggplot2)
+
+# Convert t_grps$UA to a factor to ensure distinct shapes
+t_grps$UA <- as.factor(t_grps$UA)
+
+# Generate the PCA biplot with individuals in black
+fviz_pca_biplot(pca, repel = TRUE,
+                            col.var = "red",  #cariables color
+                            col.ind = "black", #all individuals in black
+                            geom = c("point", "text"))
+
+# Convert t_grps$UA to a factor to ensure distinct shapes
+t_grps$UA <- as.factor(t_grps$UA)
+
+# Generate the PCA biplot with individuals in black
+library(ggrepel) #geom_text_repel
+fviz_pca_biplot(pca, repel = TRUE, repel.var = TRUE,
+                            col.var = "red",  #variables color
+                            col.ind = "black", #all individuals in black
+                            geom = c("")) +  #c("point", "text", "")remove default individuals
+  geom_point(aes(shape = t_grps$UA), size = 3) + #map shapes to t_grps$UA
+  geom_text_repel(aes(label = t_grps$UA), direction = "both") + # direction = "x" or "y", label UAs from t_grps$UA, library(ggrepel)
+  scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +  #adjust shape values
+  theme_minimal()  #clean theme
+
+###FILTRANDO VETORES PRINCIPAIS
+var_coord <- pca$var$coord[, 1:2]
+keep_vars <- apply(abs(var_coord) > 0.5, 1, any)
+keep_vars
+vars_to_keep <- rownames(var_coord)[keep_vars]
+vars_to_keep
+# Create a filtered PCA object
+pca_filt <- pca
+pca_filt$var$coord <- pca$var$coord[vars_to_keep, , drop = FALSE]
+pca_filt$var$contrib <- pca$var$contrib[vars_to_keep, , drop = FALSE]
+pca_filt$var$cos2 <- pca$var$cos2[vars_to_keep, , drop = FALSE]
+
+###FIX VARIABLES COORDINATES----
+var_coords <- as.data.frame(pca$var$coord)
+# Manually adjust positions (modify values as needed)
+#var_coords$Dim.1 <- var_coords$Dim.1 * 4.7  #shift right
+#var_coords$Dim.2 <- var_coords$Dim.2 * 4.7  #shift up
+#Fine tunning
+#fix(var_coords)
+#write.table(var_coords, "coords_var.txt")
+var_coords <- read.table("coords_var.txt")
+#rownames(var_coords) <-
+#  substr(rownames(var_coords), 3, nchar(rownames(var_coords))) #remove os 2 primeiros caracteres
+
+###FIX INDIVIDUALS COORDINATES----
+ind_coords <- as.data.frame(pca$ind$coord)
+# Manually adjust positions (modify values as needed)
+#ind_coords$Dim.1 <- ind_coords$Dim.1 + 0  #shift right
+#ind_coords$Dim.2 <- ind_coords$Dim.2 + 0.2  #shift up
+#Fine tunning
+#fix(ind_coords)
+#write.table(ind_coords, "coords_ind.txt")
+ind_coords <- read.table("coords_ind.txt")
+#rownames(ind_coords) <-
+#  substr(rownames(ind_coords), 5, nchar(rownames(ind_coords))) #remove os 4 primeiros caracteres
+
+#PLOT----
+
+png("fig-hab_PCA_fviz.png", width = 11, height = 9, units = "in", res = 400)
+fviz_pca_biplot(pca, repel = FALSE,
+                col.var = "red", col.ind = "black",
+                geom = "none", #remove default labels
+                label = "none") +  #remove both variable & individual labels
+# Add manually adjusted variable labels
+  geom_text(data = var_coords, aes(x = Dim.1, y = Dim.2, label = rownames(var_coords)),
+            color = "red", size = 4) +
+# Add manually adjusted individual labels
+  geom_text(data = ind_coords, aes(x = Dim.1, y = Dim.2, label = rownames(ind_coords)),
+            color = "black", size = 4, nudge_x = 0, nudge_y = 0) +  #corrected column names
+  geom_point(aes(shape = t_grps$UA), size = 3) + #map shapes to t_grps$UA
+  scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +
+  theme_minimal() + ggtitle(NULL) + labs(shape = "Sites") +
+  theme(legend.text = element_text(size = 14),  #increase legend text size
+        legend.title = element_text(size = 16)) +  #increase legend title size
+  guides(shape = guide_legend(override.aes = list(size = 4))) #increase legend symbols
+dev.off()
+```
+
+```{r, HAB-PCA_rbase}
+#| label: hab_PCA_rbase
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| echo: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Environment data PCA - R Base"
+
+#PCA R base----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+m_hab <- read.csv("m_hab.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+m_dens <- read.csv("m_dens.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+m_hab_part <- read.csv("m_hab_part.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
+
+colnames(m_hab_part)
+m_hab_trns <- sqrt(m_hab_part)
+
+data <- m_hab_part
+library("tidyverse")
+
+# Inserindo coluna para agrupamentos
+nrow(data); ncol(data) #no. de N colunas x M linhas
+data_g <- cbind(Grupos = rownames(data), data)
+
+grps <- substr(data_g[, 1], 5,6)
+grps
+
+data_g <- data_g %>% mutate(Grupos=c(grps))
+data_g
+
+###FAZENDO A MÉDIA POR PONTO----
+#data_avg <- aggregate(data_g[, 9:9], list(data_g$Grupos), mean)
+#data_avg
+
+data_avg <- data_g %>%
+  group_by(Grupos) %>%
+  summarise(across(.cols = everything(), ~ mean(.x, na.rm = TRUE)))
+data_avg
+
+# Primeira coluna para nomes das linhas
+data_avg <- as.data.frame(data_avg)
+class(data_avg)
+rownames(data_avg) <- data_avg[,1]
+data_avg[,1] <- NULL
+#data_avg <- round(data_avg, 1)
+data_avg
+
+# Salvando a matriz
+write.table(data_avg,
+            "data_avg.csv",
+            append = F,
+            quote = TRUE,
+            sep = ";", dec = ",",
+            row.names = T)
+data_avg <- read.csv("data_avg.csv",
+                        sep = ";", dec = ",",
+                        header = T,
+                        row.names = 1,
+                        na.strings = NA)
+
+#m_hab_trns <- sqrt(data_avg)
+
+#browseURL("https://cran.r-project.org/web/packages/LearnPCA/vignettes/Vig_03_Step_By_Step_PCA.pdf")
+###PCA - para todos os pontos----
+p <- prcomp(m_hab_trns, scale = T, center = T)
+p
+biplot(p)
+s <- summary(p)
+s
+
+###ORGANIZANDO GRUPOS DE INFORMAÇÕES PARA O GRÁFICO----
+nrow(m_hab_trns)
+pch.group <- c(rep(21, times=4), rep(22, times=4), rep(23, times=3),
+               rep(24, times=3), rep(25, times=4), rep(25, times=4))
+col.group <- c(rep("yellow", times=4), rep("blue", times=4), rep("green", times=3),
+               rep("red", times=3), rep("grey", times=4), rep("black", times=4))
+pos.group <- c(rep("1", times=nrow(t_grps)))
+pos <- as.data.frame(cbind(tag=t_grps$tag, pos.pca=pos.group))
+#fix(pos) #edita
+#write.table(pos, "posit.txt")
+pos <- read.table("posit.txt")
+pos$col <- col.group #adiciona uma coluna nova
+pos$pch <- pch.group #adiciona uma coluna nova
+pos
+
+png("fig-hab_PCA_rbase.png", width = 7, height = 7, units = "in", res = 400)
+par(mar=c(4.5, 4.5, 1, 1))
+plot(p$x[,1], p$x[,2],
+     xlab=paste("PCA 1 (", round(s$importance[2]*100, 1), "%)", sep = ""),
+     ylab=paste("PCA 2 (", round(s$importance[5]*100, 1), "%)", sep = ""),
+     col="black", cex=1.5, las=1, asp=1,
+     pch=pos$pch_bw, bg=pos$col_bw)
+
+abline(v=0, lty=2, col="grey50")
+abline(h=0, lty=2, col="grey50")
+text(p$x[,1], p$x[,2], labels=row.names(p$x), pos=pos$pos.pca, font=1, cex=0.7)
+
+# Tamanho das setas
+l.x <- p$rotation[,1]*9
+l.y <- p$rotation[,2]*9
+
+arrows(x0=0, x1=l.x, y0=0, y1=l.y, col="red", length=0.1, lwd=1)
+
+# Label position das setas
+l.pos <- l.y #create a vector of y axis coordinates
+lo <- which(l.x < 0) #get the variables on the bottom half of the plot
+hi <- which(l.x > 0) #get variables on the top half
+
+# Replace values in the vector
+l.pos <- replace(l.pos, lo, "2")
+l.pos <- replace(l.pos, hi, "4")
+l.pos["m.depth_hab"] <- "1"
+l.pos["s.mud"] <- "1"
+l.pos["fq.w_vel"] <- "2"
+#   1
+# 2   4
+#   3
+
+text(l.x, l.y, labels=row.names(p$rotation), col="red", pos=l.pos, cex=0.7)
+
+# Legend
+library(dplyr)
+legend <- pos %>%
+  mutate(group = sub(".*-(..)-.*", "\\1", tag)) %>%  #extract CI, SA, etc.
+  distinct(group, col, pch, col_bw, pch_bw)
+legend
+legend("bottomleft", legend = legend$group,
+       col = "black", pt.bg = legend$col_bw, pch = legend$pch_bw,
+       pt.cex = 1, cex = 1)
+dev.off()
+
+tab <- matrix(c(p$x[,1], p$x[,2]), ncol=2)
+
+# Calculate correlations
+c1 <- cor(tab[1:4,])
+c2 <- cor(tab[5:8,])
+c3 <- cor(tab[9:11,])
+c4 <- cor(tab[12:14,])
+c5 <- cor(tab[15:18,])
+c6 <- cor(tab[19:22,])
+
+# Plot ellipse
+library(ellipse)
+polygon(ellipse(c1*(max(abs(p$rotation))*1), centre=colMeans(tab[1:4,]), level=0.95), col=adjustcolor("blue", alpha.f=0.25), border="blue")
+polygon(ellipse(c2*(max(abs(p$rotation))*1), centre=colMeans(tab[5:8,]), level=0.95), col=adjustcolor("green", alpha.f=0.25), border="green")
+polygon(ellipse(c3*(max(abs(p$rotation))*1), centre=colMeans(tab[9:11,]), level=0.95), col=adjustcolor("yellow", alpha.f=0.25), border="yellow")
+polygon(ellipse(c4*(max(abs(p$rotation))*1), centre=colMeans(tab[12:14,]), level=0.95), col=adjustcolor("red", alpha.f=0.25), border="red")
+polygon(ellipse(c5*(max(abs(p$rotation))*1), centre=colMeans(tab[15:18,]), level=0.95), col=adjustcolor("orange", alpha.f=0.25), border="orange")
+polygon(ellipse(c6*(max(abs(p$rotation))*1), centre=colMeans(tab[19:22,]), level=0.95), col=adjustcolor("pink", alpha.f=0.25), border="pink")
+
+# Load package
+library("factoextra")
+# Create groups
+group <- as.factor(t_grps$UA)
+group
+# Plot
+fviz_pca_biplot(p, repel=TRUE, pointsize=6, pointshape=21,
+                col.var="red", arrowsize=0.6, labelsize=5,
+                col.ind=group, palette=c("blue", "green", "yellow", "red", "orange", "pink"),
+                addEllipses=TRUE, ellipse.level=0.95)
+```
+
+```{r, HAB-PCA_results_table}
+#| label: hab_PCA_results_table
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| echo: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Results table for PCA environment data PCA"
+
+#PCA R base----
+
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+# Eigenvalues & variance explained
+eig.val <- get_eigenvalue(pca)
+eig_table <- data.frame(
+  PC = rownames(eig.val),
+  Eigenvalue = eig.val[, "eigenvalue"],
+  Variance_percent = round(eig.val[, "variance.percent"], 2),
+  Cumulative_variance_percent = round(eig.val[, "cumulative.variance.percent"], 2),
+  row.names = NULL)
+eig_table
+
+# Variable loadings (correlations) for retained PCs
+n_pc <- 2 #number of PCs
+loadings <- pca$var$coord[, 1:n_pc]
+
+loadings_table <- data.frame(
+  Variable = rownames(loadings),
+  round(loadings, 3),
+  row.names = NULL)
+colnames(loadings_table)[-1] <- paste0("PC", 1:n_pc)
+loadings_table
+
+# Variable contributions (%) to each PC
+contrib <- pca$var$contrib[, 1:n_pc]
+contrib_table <- data.frame(
+  Variable = rownames(contrib),
+  round(contrib, 2),
+  row.names = NULL)
+colnames(contrib_table)[-1] <- paste0("PC", 1:n_pc, "_contrib")
+contrib_table
+
+# Combined report-ready table
+pca_report_table <- merge(
+  loadings_table,
+  contrib_table,
+  by = "Variable",
+  sort = FALSE)
+rownames(pca_report_table) <- pca_report_table[, 1]
+pca_report_table <- pca_report_table[, -1]
+pca_report_table
+
+# Save tables
+sink(file = "pca_table.txt", split = T)
+pca_report_table
+sink()
+```
+
+**Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
 ```{r, CHUNK-boxplot_protein}
 #| eval: false
@@ -408,9 +1077,7 @@ text(x=c(1,2,3,4,5,6),y=c(34,35.2,35.6,98,98,87.7)+7,labels=c("a","a","a","c","b
 
 The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the [@sabae2015] study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver.
 
-## Moisture content
-
-The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the ReBio Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-mcsites).
+**Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the ReBio Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-mcsites).
 
 ```{r, CHUNK-boxplot_moisture_content}
 #| eval: false
@@ -494,9 +1161,7 @@ text(x=c(1,2,3,4,5,6),y=c(91.3,94.3,98.1,89.1,97.1,97.9)+3,labels=c("a","a","ab"
 
 The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity).
 
-## MXR phenotype activity
-
-The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the ReBio Guaribas (confirmed by the Kruskal-Wallis test and illustrated in (@fig-fluorescence)
+**MXR phenotype activity.** The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the ReBio Guaribas (confirmed by the Kruskal-Wallis test and illustrated in (@fig-fluorescence)
 
 ```{r, CHUNK-boxplot_MXR}
 #| eval: false
@@ -560,9 +1225,7 @@ tapply(tcc$MXR,tcc$Site,max, na.rm=T)
 text(x=c(1,2,3,4,5,6),y=c(68400,31371,44811,88000,150658,121050)+10000,labels=c("a","a","a","b","b","b"),cex=1)
 ```
 
-## Abiotic data
-
-The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).
+**Abiotic data.** The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).
 
 # Discussion
 

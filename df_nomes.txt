@@ -1,0 +1,7 @@
+"original" "final"
+"1" "Ponto5" "S1"
+"2" "Ponto6" "S2"
+"3" "Ponto7" "S3"
+"4" "Ponto8" "S4"
+"5" "Ponto9" "S5"
+"6" "Ponto10" "S6"

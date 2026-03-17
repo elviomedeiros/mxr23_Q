@@ -1,7 +1,7 @@
 ---
 title: "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings"
 subtitle: |
-  Physiological biomarkers of fish from an Atlantic Forest stream
+  Physiological biomarkers of fish as predictors of habitat quality in an Atlantic Forest stream
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
@@ -103,7 +103,9 @@ The identification of physiological stress biomarkers in the collected fish aims
 
 # Material and Methods
 
-**Study area and sampling design.** The present study was performed... @gouveia2017.
+**Study area and sampling design.** The present study was performed... @gouveia2017. @fig-mapa
+
+For the sake of comparison, we classified all sites into four categories defined *a priori* (@fig-refsites). Reference site or Type I site, which are the sites that occur within the conservation unit and are well preserved, with intact riparian forest and no crop fields nearby (at least 1 km distant), free flowing water (≥ 0.25 m/s), high dissolved oxygen concentration (≥ 6 mg/L) and temperature below 28 °C. Type II sites, are those that occur within the conservation unit, but are not well preserved, failing in one or more of the water quality criteria and/or having its riparian vegetation removed or managed. Type III sites are those outside the conservation unit but meet the water quality criteria for a type I site, and type IV sites are those that fall outside the conservation unit and are also disturbed, not meeting the water quality criteria for a type I site. Sites type III and IV were intentionally chosen not to meet the riparian forest and crop proximity criteria. Since they fall outside of the REBIO they are not expected to have intact riparian forest or to be at least 1 km distant from a crop field.
 
 **Environmental data collection.** Environmental characteristics of each sampling site were measured in four sets of variables: (a) site morphology, (b) water quality, (c) sediment composition, and (d) marginal habitat structure @medeiros2008. Site morphology was assessed by site width (cm) and depth (cm) and catchment scale variables (such as elevation and stream length) measured using handheld GPS and satellite imagery. Water quality was measured as physical and chemical variables using portable equipment for temperature (°C) and dissolved oxygen (mg/L). Transparency (cm) was measured using a Secchi disk and water velocity (m/s) was estimated using the float method @maitland1990. Sediment composition and the habitat physical structure followed protocols adapted by @medeiros2008 from [@pusey2004; @mugodo2006].
 
@@ -584,11 +586,11 @@ print(pca)
 eig.val <- get_eigenvalue(pca)
 eig.val
 
-sink(file = "cor_matrix.txt", append = FALSE)
+sink(file = "pca_cor_matrix.txt", append = FALSE)
 pca$var$cor
 sink()
 
-fviz_eig(pca, addlabels = TRUE, ylim = c(0,30))
+fviz_eig(pca, addlabels = TRUE) #, ylim = c(0,35)
 
 var <- get_pca_var(pca)
 var
@@ -659,7 +661,7 @@ fviz_contrib(pca, choice = "ind", axes = 1:2)
 # Same length as the number of active individuals in the PCA
 nrow(m_hab_part)
 set.seed(123)
-my.cont.var <- t_grps$ponto.n
+my.cont.var <- t_grps$Ref_site
 my.cont.var
 # Color individuals by the continuous variable
 fviz_pca_ind(pca, col.ind = my.cont.var,
@@ -1331,6 +1333,8 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 ## Figures {.unnumbered}
 
 ![Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/mapa.png){#fig-mapa}
+
+![Images of the main four types of sites found in the Reserva Biológica Guaribas and its surrounding areas (Mamanguape, PB). Type I or local reference site, well preserved and within the conservation unit. Type II site, preserved and outside the conservation unit. Type III site, disturbed but withing the conservation unit. Type IV site, disturbed and outside the conservation unit.](imagens/refsites.png){#fig-refsites}
 
 ![Total protein (mg) variance of data inside and outside ReBio Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
 

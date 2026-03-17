@@ -572,7 +572,7 @@ Larissa Rafaela Caetano da Silva:Data curation, Formal analysis, Software, Writi
 
 Enelise Marcelle Amado: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing -- review & editing.
 
-Elvio Sérgio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing -- review & editing.
+Elvio Sergio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing -- review & editing.
 
 # Ethical approval {.unnumbered}
 

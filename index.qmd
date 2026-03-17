@@ -406,7 +406,7 @@ Elvio Sérgio Figueredo Medeiros: Conceptualization, Data curation, Formal analy
 
 # Ethical approval {.unnumbered}
 
-Fish collection was authorized by the Instituto Chico Mendes de Conservação da Biodiversidade (license SISBIO-89415-2) and the project was approved by the Ethics Committee on Animal Use of the State University of Paraíba (CEUA-048/2023).
+Fish collection was authorized by the Instituto Chico Mendes de Conservação da Biodiversidade (license SISBIO-89415-2) and the project was approved by the Ethics Committee on Animal Use of the State University of Paraíba (protocol CEUA-048/2023).
 
 # References {.unnumbered}
 

@@ -2,6 +2,7 @@
 title: "Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings"
 subtitle: |
   Physiological biomarkers of fish as predictors of habitat quality in an Atlantic Forest stream
+  Linking fish physiological biomarkers to habitat integrity in an Atlantic Forest Stream
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602

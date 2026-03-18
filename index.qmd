@@ -538,7 +538,7 @@ gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure. PCA explained 41.9% of the variance in the environmental variables, with the first axis (27.6%) showing a gradient from large reservoirs to smaller streams sites. Large scale morphology variables such as altitude, river length and site width were important to describe most reservoirs, whereas river sites were better described by local physical, chemical and habitat variables, such as margins depth and water temperature. Among the habitat structure variations, overhanging vegetation and roots, were also important to describe stream sites. Larger reservoirs were mostly associated with a muddy substrate whereas river sites included a more diverse array of substrates, the most important being sand and gravel. Other variables such as slope (morphology), submerged vegetation and leaf litter (habitat structure) and water velocity (water quality) were important in explaining specific sites at given sampling occasions.
+Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure @fig-hab_PCA_fviz. PCA explained 41.9% of the variance in the environmental variables, with the first axis (27.6%) showing a gradient from large reservoirs to smaller streams sites. Large scale morphology variables such as altitude, river length and site width were important to describe most reservoirs, whereas river sites were better described by local physical, chemical and habitat variables, such as margins depth and water temperature. Among the habitat structure variations, overhanging vegetation and roots, were also important to describe stream sites. Larger reservoirs were mostly associated with a muddy substrate whereas river sites included a more diverse array of substrates, the most important being sand and gravel. Other variables such as slope (morphology), submerged vegetation and leaf litter (habitat structure) and water velocity (water quality) were important in explaining specific sites at given sampling occasions.
 
 ```{r}
 #| label: env-PCA_fviz
@@ -719,6 +719,7 @@ fviz_pca_biplot(pca, repel = TRUE,
 
 # Generate the PCA biplot with individuals in black
 library(ggrepel) #geom_text_repel
+png("fig-hab_PCA_fviz.png", width = 11, height = 9, units = "in", res = 400)
 fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
                             col.var = "red",  #variables color
                             col.ind = "black", #all individuals in black
@@ -727,6 +728,7 @@ fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
 #  geom_text_repel(aes(label = t_grps$Ref_site), direction = "both") + # direction = "x" or "y", label UAs from t_grps$UA, library(ggrepel)
   scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +  #adjust shape values
   theme_minimal()  #clean theme
+dev.off()
 
 ###FILTRANDO VETORES PRINCIPAIS
 var_coord <- pca$var$coord[, 1:2]
@@ -1332,6 +1334,10 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 ![Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/mapa.png){#fig-mapa}
 
 ![Images of the main four types of sites found in the Reserva Biológica Guaribas and its surrounding areas (Mamanguape, PB). Type I or local reference site, well preserved and within the conservation unit. Type II site, preserved and outside the conservation unit. Type III site, disturbed but withing the conservation unit. Type IV site, disturbed and outside the conservation unit.](imagens/refsites.png){#fig-refsites}
+
+![Principal Component Analysis of the environmental variables using the fviz function.](fig-hab_PCA_fviz.png){#fig-hab_PCA_fviz}
+
+![Principal Component Analysis of the environmental variables using the fviz function](fig-hab_PCA_fviz.png)
 
 ![Total protein (mg) variance of data inside and outside ReBio Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
 

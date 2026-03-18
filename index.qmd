@@ -680,7 +680,7 @@ fviz_pca_ind(pca,
 length(unique(my.cont.var))
 fviz_pca_ind(pca,
              geom.ind = "point",
-             col.ind = t_grps$UA,
+             col.ind = as.factor(t_grps$Ref_site),
              palette = "grey",
              addEllipses = TRUE, ellipse.type = "confidence",
              mean.point = TRUE,
@@ -692,7 +692,7 @@ fviz_pca_biplot(pca, repel = TRUE,
 )
 
 fviz_pca_biplot(pca,
-                col.ind = t_grps$UA, palette = "jco",
+                col.ind = as.factor(t_grps$Ref_site), palette = "jco",
                 addEllipses = TRUE, elipse.type = "euclid",
                 label = "var",
                 col.var = "black", repel = TRUE,
@@ -709,7 +709,7 @@ library(factoextra)
 library(ggplot2)
 
 # Convert t_grps$UA to a factor to ensure distinct shapes
-t_grps$UA <- as.factor(t_grps$UA)
+t_grps$Ref_site <- as.factor(t_grps$Ref_site)
 
 # Generate the PCA biplot with individuals in black
 fviz_pca_biplot(pca, repel = TRUE,
@@ -717,17 +717,14 @@ fviz_pca_biplot(pca, repel = TRUE,
                             col.ind = "black", #all individuals in black
                             geom = c("point", "text"))
 
-# Convert t_grps$UA to a factor to ensure distinct shapes
-t_grps$UA <- as.factor(t_grps$UA)
-
 # Generate the PCA biplot with individuals in black
 library(ggrepel) #geom_text_repel
-fviz_pca_biplot(pca, repel = TRUE, repel.var = TRUE,
+fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
                             col.var = "red",  #variables color
                             col.ind = "black", #all individuals in black
-                            geom = c("")) +  #c("point", "text", "")remove default individuals
-  geom_point(aes(shape = t_grps$UA), size = 3) + #map shapes to t_grps$UA
-  geom_text_repel(aes(label = t_grps$UA), direction = "both") + # direction = "x" or "y", label UAs from t_grps$UA, library(ggrepel)
+                            geom = c("text")) +  #c("point", "text", "")remove default individuals
+  geom_point(aes(shape = t_grps$Ref_site), size = 3) + #map shapes to t_grps$UA
+#  geom_text_repel(aes(label = t_grps$Ref_site), direction = "both") + # direction = "x" or "y", label UAs from t_grps$UA, library(ggrepel)
   scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +  #adjust shape values
   theme_minimal()  #clean theme
 

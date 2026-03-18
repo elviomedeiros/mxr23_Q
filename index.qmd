@@ -1041,6 +1041,20 @@ pca_report_table
 sink()
 ```
 
+**Fish community.** A total amount of 28155 individuals was collected, divided into 32 taxonomic groups. Out of these, Thiaridae (1340.15 ind./m2 ± 3068.95), larvae of Chironomidae (629.07 ind./m2 ± 1424.72), and Oligochaeta (380.49 ind./m2 ± 856.62) were the most the representative.
+```{r}
+#| label: non-used code
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "non-used code" 
+
+table(1:10)
+```
+
 **Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
 ```{r, CHUNK-boxplot_protein}

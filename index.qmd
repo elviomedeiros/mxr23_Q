@@ -104,7 +104,15 @@ The identification of physiological stress biomarkers in the collected fish aims
 
 # Material and Methods
 
-**Study area and sampling design.** The present study was performed... @gouveia2017. @fig-mapa
+**Study area and sampling design.** This study was conducted in the Guaribas Biological Reserve (REBIO Guaribas), in northeastern Brazil, a protected area created in 1990 to preserve one of the last remnants of the Atlantic Forest [@mmab; @brasil2000]. The reserve is located in the municipality of Mamanguape, state of Paraíba, in a heterogeneous landscape influenced by the adjacent Caatinga and Cerrado biomes.
+
+The regional climate is classified as As' [@köppen1928a], characterized by a rainy season from February to July and a dry period from October to December [@peel2007]. The average annual temperature varies from 24 to 26 °C, while the annual rainfall varies between 1,750 and 2,000 mm.
+
+The hydrographic network is composed of small streams fed by rain, notably the Barro Branco stream, a tributary of the Camaratuba River, where this study was carried out. These systems are influenced by riparian vegetation; however, parts of the buffer zone exhibit different levels of anthropogenic disturbance [@gouveia2017a].
+
+The surrounding landscape is predominantly agricultural, including sugarcane and coconut plantations, livestock farming, and small orchards. These land uses can act as sources of diffuse pollution, especially through pesticide runoff and domestic effluents, creating a spatial gradient of environmental disturbance [@mmaa; @soler2004].
+
+Sampling was conducted along the Barro Branco stream, comprising six sampling sites, and at each site, three subsamples were collected between November 2023 and February 2024. The sampling sites were distributed longitudinally to capture environmental variability and gradients of human influence. Sites P1 to P3 were located within the reserve, where more preserved conditions were expected, while sites P4 to P6 were situated in the buffer zone or in adjacent areas with greater human influence @fig-mapa. This design aimed to include different levels of habitat integrity, riparian condition, and water quality.
 
 For the sake of comparison, we classified all sites into four categories defined *a priori* (@fig-refsites). Reference site or Type I site, which are the sites that occur within the conservation unit and are well preserved, with intact riparian forest and no crop fields nearby (at least 1 km distant), free flowing water (≥ 0.25 m/s), high dissolved oxygen concentration (≥ 6 mg/L) and temperature below 28 °C. Type II sites, are those that occur within the conservation unit, but are not well preserved, failing in one or more of the water quality criteria and/or having its riparian vegetation removed or managed. Type III sites are those outside the conservation unit but meet the water quality criteria for a type I site, and type IV sites are those that fall outside the conservation unit and are also disturbed, not meeting the water quality criteria for a type I site. Sites type III and IV were intentionally chosen not to meet the riparian forest and crop proximity criteria. Since they fall outside of the REBIO they are not expected to have intact riparian forest or to be at least 1 km distant from a crop field.
 
@@ -127,7 +135,7 @@ For the sake of comparison, we classified all sites into four categories defined
 #| warning: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: Code: Importing and organizing environment data
+#| code-summary: "Code: Importing and organizing environment data"
 #| results: false
 
 #MXR23 - ORGANIZANDO DADOS----
@@ -1042,7 +1050,7 @@ sink()
 **Fish community.** A total of 422 individuals were collected. Fish were distributed among 6 species, 2 families, and a single order Characiformes. Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures.
 
 ```{r}
-#| label: non-used code
+#| label: non-used-code-01
 #| eval: false
 #| warning: false
 #| message: false
@@ -1078,7 +1086,7 @@ library(scales)
 library(visreg)
 citation()
 dir()
-setwd("C:/Users/ellen/Downloads/Manuscritos/mxr23_Q")
+setwd("C:/Users/Mirelly/Downloads/mxr23_Q")
 tcc=read.csv("Dados_TCC.csv", h=T, stringsAsFactors = T, dec=",") 
 #TP
 hist(tcc$TP, probability = T)

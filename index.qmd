@@ -127,7 +127,7 @@ For the sake of comparison, we classified all sites into four categories defined
 #| warning: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: Code: Importing and organizing environment data
+#| code-summary: "Code: Importing and organizing environment data"
 #| results: false
 
 #MXR23 - ORGANIZANDO DADOS----
@@ -345,7 +345,7 @@ m_hab_trns <- read.table("m_hab_trns.csv",
 
 # Results
 
-**Environmental variables.** Water flow was present only in smaller streams in lower altitudes (sites 4-6) and during the rainy season (0.10-0.17 m/s). Stream sites tended to be narrower with widths ranging from 5.4 to 29.6 m, compared with 72.2 to 330 m for reservoirs. Littoral depths varied widely from 4.7 to 81.3 cm across all sites. Dissolved oxygen (DO) ranged from 1.8 to 9.4 mg/L and temperatures from 24.0 and 35.2 °C. Turbidity was low with Secchi depths reaching 90 cm, even though some sites had depths as low as 16 cm of the Secchi disk. Mud and sand were the main substrates across all sampled sites (with average covers of 54.4 and 37.9%, respectively). The habitat elements that gave greater overall contributions were attached and filamentous algae (12% on average), littoral grass (9.0%) and aquatic macrophytes (8.4%), but these contributions varied widely across sites and season..
+**Environmental variables.** Water flow was generally slow or absent across sampled streams (0.00-0.35 m/s). Stream sites tended to be narrow, with widths ranging from 0.66 to 16.0 m. Average depths varied from 9.0 to 51.3 cm across all sites. Dissolved oxygen (DO) ranged from 4.9 to 8.5 mg/L and temperatures from 24.9 to 28.5 °C. Waters were slightly acidic to neutral, with pH ranging from 4.5 to 7.7. Mud and sand were the main substrates across all sampled sites (with average covers of 72.4 and 27.6%, respectively), while coarse substrates were absent. The habitat elements that gave greater overall contributions were overhanging terrestrial vegetation (53.8% on average), root masses (13.1%), littoral grass (11.1%) and leaf litter (11.1%), but these contributions varied widely across sites.
 
 ```{r}
 #| label: tbl_hab
@@ -537,7 +537,7 @@ gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure @fig-hab_PCA_fviz. PCA explained 41.9% of the variance in the environmental variables, with the first axis (27.6%) showing a gradient from large reservoirs to smaller streams sites. Large scale morphology variables such as altitude, river length and site width were important to describe most reservoirs, whereas river sites were better described by local physical, chemical and habitat variables, such as margins depth and water temperature. Among the habitat structure variations, overhanging vegetation and roots, were also important to describe stream sites. Larger reservoirs were mostly associated with a muddy substrate whereas river sites included a more diverse array of substrates, the most important being sand and gravel. Other variables such as slope (morphology), submerged vegetation and leaf litter (habitat structure) and water velocity (water quality) were important in explaining specific sites at given sampling occasions.
+Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure. PCA explained 52.4% of the variance in the environmental variables, with the first axis (30.9%) showing a clear spatial gradient. This primary axis separated sites P08 and P10—characterized by greater stream width, depth, and sandy substrate—from sites P05, P06, and P07, which were associated with muddy substrates, higher DO, and dense overhanging vegetation. The second axis (21.5%) was primarily driven by local habitat features, separating site P09, which was strongly associated with root masses and water velocity, from sites characterized by attached algae and macrophytes. The overall multivariate conditions did not differ significantly between the interior and the surroundings of the reserve, although specific local variables such as water turbidity, leaf litter cover, and attached algae were important in explaining specific sites across the conservation unit's boundary.
 
 ```{r}
 #| label: env-PCA_fviz
@@ -1039,10 +1039,10 @@ pca_report_table
 sink()
 ```
 
-**Fish community.** A total of 422 individuals were collected. Fish were distributed among 6 species, 2 families, and a single order Characiformes. Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures.
+**Fish community.** A total of 422 individuals were collected. Fish were distributed among 6 species, 2 families, and a single order Characiformes. Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures @tbl-abund.
 
 ```{r}
-#| label: non-used code
+#| label: non-used-code-01
 #| eval: false
 #| warning: false
 #| message: false
@@ -1051,7 +1051,78 @@ sink()
 #| code-overflow: wrap
 #| code-summary: "non-used code" 
 
-table(1:10)
+data <- mxr23
+data <- mxr23[!row.names(mxr23) %in% c("4-9-85", #NA
+                                       "1-10-7"),] #As.bim grande
+
+data[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
+                             "TH_branquia_p", "Proteinas_Totais_mg"
+                             )] <- NA
+
+library(dplyr)
+library(tidyr)
+grouped_data <- group_by(data, Especie, Amostra_tipo)
+summarised_data <- summarise(grouped_data, count = n())
+species_count_table <- spread(summarised_data, Amostra_tipo, count, fill = 0)
+print(species_count_table)
+
+species_count_table <- species_count_table %>%
+  rowwise() %>%
+  mutate(N = sum(c_across(where(is.numeric))))
+
+resumo <- as.data.frame(species_count_table)
+resumo
+
+rownames(resumo) <- resumo[,1] #tem  que ser um df
+resumo[,1] <- NULL
+
+soma <- apply(resumo,2,sum)
+soma
+
+soma_row <- as.data.frame(t(soma))
+rownames(soma_row) <- "Soma"
+
+resumo <- rbind(resumo, soma_row)
+resumo
+
+#############################################################################
+
+resumo2 <- data %>%
+  group_by(Site = Site, Especie = Especie, Amostra_tipo = Amostra_tipo) %>%
+  summarise(Count = n()) %>%
+  arrange(Site, Especie, Amostra_tipo)
+
+resumo2 <- as.data.frame(resumo2)
+resumo2
+
+write.table(resumo2, file = "resumo.csv", row.names = T, sep = "\t")
+read.table("resumo.csv", check.names = F)
+
+resumo2_wide <- resumo2 %>%
+  pivot_wider(names_from = c(Site, Amostra_tipo), values_from = Count, values_fill = list(Count = 0))
+resumo2_wide <- as.data.frame(resumo2_wide)
+resumo2_wide
+
+# Create the gt table
+library(gt)
+gt_table <- resumo2_wide %>%
+  gt() %>%
+  tab_header(
+    title = "Species Count by Site and Sample Type"
+  ) %>%
+  cols_label(
+    Especie = "Species"
+  ) %>%
+  fmt_number(
+    columns = everything(),
+    decimals = 0
+  ) %>%
+  cols_width(
+    everything() ~ px(100)
+  ) %>%
+  opt_table_outline()
+
+gt_table
 ```
 
 **Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
@@ -1368,6 +1439,63 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 ![Proportion between average values for each physiological marker analysed, comparing themselves in order to its relationship with the ReBio Guaribas, highlighting the disparity among data of total protein ("TP") and the MXR phenotype activity ("MXR"), and higher proximity among data of muscle ("MMC") and gill moisture content ("GMC").](imagens/Figure%209.png){#fig-bar}
 
 ## Tables {.unnumbered}
+
+```{r}
+#| label: tbl-abund
+#| tbl-cap: "Table abundance."
+#| echo: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(tidyr)
+library(gt)
+library(openxlsx)
+
+mxr23 <- read.xlsx("C:/Users/lices/Documents/UEPB V - MESTRADO/Github/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
+                   rowNames = T,
+                   colNames = T,
+                   sheet = "peixes-fisio")
+
+data <- mxr23
+data <- data[!row.names(data) %in% c("4-9-85", "1-10-7"), ]
+
+data[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
+                             "TH_branquia_p", "Proteinas_Totais_mg")] <- NA
+
+resumo2 <- data %>%
+  group_by(Site = Site, Especie = Especie, Amostra_tipo = Amostra_tipo) %>%
+  summarise(Count = n(), .groups = "drop") %>%
+  arrange(Site, Especie, Amostra_tipo)
+
+resumo2_wide <- resumo2 %>%
+  pivot_wider(
+    names_from = c(Site, Amostra_tipo), 
+    values_from = Count, 
+    values_fill = list(Count = 0)
+  )
+
+resumo2_wide %>%
+  gt() %>%
+  cols_label(
+    Especie = "Species"
+  ) %>%
+  fmt_number(
+    columns = everything(),
+    decimals = 0
+  ) %>%
+  tab_style(
+    style = cell_text(style = "italic"),
+    locations = cells_body(columns = Especie)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  opt_horizontal_padding(scale = 2) %>%
+  opt_table_lines("default")
+
+```
 
 \pagebreak
 \newpage

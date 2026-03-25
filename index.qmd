@@ -1039,6 +1039,356 @@ pca_report_table
 sink()
 ```
 
+
+```{r, CHUNK-PCA_particionada}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: PCA particionada"
+
+### limpar antes de começar
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+### verificar e definir diretório de trabalho
+getwd()
+setwd("C:/Users/Mirelly/Downloads/mxr23_Q")
+
+### carregar pacote e importar a matriz
+library(openxlsx)
+habitat <- read.xlsx("C:/Users/Mirelly/Downloads/mxr23_Q/data/rebio23-habitat.xlsx",
+                     rowNames = T,
+                     colNames = T,
+                     sheet = "ambiente",
+                     rows = 2:20)
+
+### substituir as na por 0
+habitat[is.na(habitat)] <- 0
+habitat
+
+### remove as colunas zeradas
+sum <- colSums(habitat)
+sum
+zero_sum <- names(which(colSums(habitat) == 0))
+zero_sum #nomes das colunas zeradas
+m_part_cols <- habitat[(colSums(habitat) != 0)] #em != a exclamação inverte o sentido
+zero_sum2 <- names(which(colSums(m_part_cols) == 0))
+zero_sum2 #nomes das colunas zeradas
+
+### recalcular soma das colunas depois de tirar as que estão zeradas
+sum<-colSums(m_part_cols)
+sum
+
+### importar matriz de grupos
+t_grps <- read.xlsx("C:/Users/Mirelly/Downloads/mxr23_Q/data/rebio23-habitat.xlsx",
+                    rowNames = T,
+                    colNames = T,
+                    sheet = "grupos",
+                    rows = 2:20)
+t_grps
+
+### salvar matriz de habitat filtrada
+write.table(m_part_cols, "m_hab.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+
+### salvar matriz de grupos
+write.table(t_grps, "t_grps.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+
+### reimportar matriz de grupos
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+### reimportar matriz de habitat
+m_hab <- read.csv("m_hab.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+### correlograma
+library(psych)
+colnames(m_hab)
+#png("fig-h.hab_pairs.png")
+pairs.panels(m_hab[,15:24],
+             method = "pearson", # correlation method
+             scale = FALSE, lm = FALSE,
+             hist.col = "#00AFBB", pch = 19,
+             density = TRUE,  # show density plots
+             ellipses = TRUE, # show correlation ellipses
+             alpha = 0.5)
+dev.off()
+
+### calcular matriz de correlação
+cor <- cor(m_hab)
+cor
+
+### plotar correlograma
+library(corrplot)
+#png("fig-hab_corrplot.png")
+corrplot(cor, method = "circle")
+dev.off()
+
+### deletando colineares ou irrelevantes
+### salvar saída das variáveis colineares
+sink(file = "colineares.txt", append = F, split = T)
+
+### definir manualmente colunas a remover
+colnames(m_hab)
+del_cols <- c(
+  "w.Temp_C",
+  "w.Cond_uS.cm",
+  "w.pH",
+  "m.Slope",
+  "m.Depth_max_cm",
+  "m.Depth_mar_cm",
+  "s.Mud",
+  "h.Subm_veg",
+  "h.Leaf_l",
+  "h.Algae_f",
+  "h.Debris_l",
+  "h.Debris_s"
+)
+
+### remover variáveis colineares
+m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
+
+### códigos para somar redundantes (não foi necessário)
+#m_hab_part$s.gravel <- m_hab_part$s.smlgrav + m_hab_part$s.lrggrav + m_hab_part$s.cobbles
+#m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
+#colnames(m_hab_part)
+#m_hab_part
+#sink()
+
+### visualizar nomes das variáveis filtradas
+colnames(m_hab_part)
+
+######################################################################################
+#                                                                                    #
+#Eu removi as variáveis de profundidade porque elas estavam muito correlacionadas    #
+#entre si (acima de 0,9), então basicamente estavam dizendo a mesma coisa.           #
+#Pra evitar redundância, deixei só a profundidade média.                             #
+#                                                                                    #
+#No caso do substrato, eu preferi manter sand em vez de mud                          #
+#porque sand junto com turb foi o que melhor explicou a separação                    #
+#no ponto 10 que era o mais degradado (Tipo IV).                                     #
+#                                                                                    #
+#Já os pontos de referência (Tipo I) tinham mais variáveis influenciando,            #
+#não era uma coisa tão concentrada.                                                  #
+#                                                                                    #
+#As outras variáveis acabaram tendo vetores bem curtos na PCA,                       # 
+#ou seja, contribuíam muito pouco pra explicar os padrões.                           #
+#A maioria tinha contribuição abaixo de 0,5, então já não fazia muito                #
+#sentido manter. Inclusive, várias dessas já tinham sido removidas antes             #
+# no seu script por serem pouco relevantes ou redundantes.                           #
+#                                                                                    #
+######################################################################################
+
+### transformação da matriz para fazer a PCA
+### aplicar transformação raiz quadrada
+m_hab_trns <- sqrt(m_hab_part)
+
+### Fazendo a PCA
+#install.packages("factoextra")
+library("FactoMineR")
+library("factoextra")
+
+### executar PCA
+pca <- PCA(m_hab_trns, scale.unit = TRUE, ncp = 5, graph = TRUE)
+print(pca)
+
+### extrair autovalores
+eig.val <- get_eigenvalue(pca)
+eig.val
+
+### salvar correlação das variáveis com os eixos
+sink(file = "pca_cor_matrix.txt", append = FALSE)
+pca$var$cor
+sink()
+
+### gráfico de variância explicada
+fviz_eig(pca, addlabels = TRUE)
+
+### extrair variáveis da PCA
+var <- get_pca_var(pca)
+var
+
+### plot das variáveis
+fviz_pca_var(pca, col.var = "black")
+
+### visualizar cos2
+library("corrplot")
+corrplot(var$cos2, is.corr=FALSE)
+
+### gráfico cos2
+fviz_cos2(pca, choice = "var", axes = 1:2)
+### plot com cores por cos2
+fviz_pca_var(pca, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE
+)
+### transparência por cos2
+fviz_pca_var(pca, alpha.var = "cos2")
+### contribuição das variáveis
+corrplot(var$contrib, is.corr=FALSE)
+
+### variáveis mais importantes
+fviz_contrib(pca, choice = "var", axes = 1, top = 10)
+fviz_contrib(pca, choice = "var", axes = 2, top = 10)
+fviz_contrib(pca, choice = "var", axes = 1:2, top = 10)
+### plot por contribuição
+fviz_pca_var(pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07")
+)
+### transparência por contribuição
+fviz_pca_var(pca, alpha.var = "contrib")
+
+### clusterização das variáveis
+set.seed(123)
+res.km <- kmeans(var$coord, centers = 3, nstart = 25)
+grp <- as.factor(res.km$cluster)
+
+### plot com clusters
+fviz_pca_var(pca, col.var = grp,
+             palette = c("#0073C2FF", "#EFC000FF", "#868686FF"),
+             legend.title = "Cluster")
+
+### extrair os habitats
+ind <- get_pca_ind(pca)
+ind
+ind$contrib
+
+### gráficos com os habitats
+fviz_pca_ind(pca)
+
+fviz_pca_ind(pca, col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE
+)
+
+fviz_pca_ind(pca, pointsize = "cos2",
+             pointshape = 21, fill = "#E7B800",
+             repel = TRUE
+)
+
+fviz_pca_ind(pca, col.ind = "cos2", pointsize = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE
+)
+
+### qualidade de cada habitat
+fviz_cos2(pca, choice = "ind")
+
+### contribuição de cada habitat
+fviz_contrib(pca, choice = "ind", axes = 1:2)
+
+### variável de agrupamento
+nrow(m_hab_part)
+set.seed(123)
+my.cont.var <- t_grps$Ref_site
+my.cont.var
+
+### plot por grupo
+fviz_pca_ind(pca,
+             col.ind = as.factor(t_grps$Ref_site),
+             palette = "jco",
+             addEllipses = TRUE)
+
+### plot com elipses
+fviz_pca_ind(pca,
+             geom.ind = "point",
+             col.ind = as.factor(my.cont.var),
+             palette = "grey",
+             addEllipses = TRUE,
+             legend.title = "Groups"
+)
+
+### número de grupos
+length(unique(my.cont.var))
+
+### elipses de confiança
+fviz_pca_ind(pca,
+             geom.ind = "point",
+             col.ind = as.factor(t_grps$Ref_site),
+             palette = "grey",
+             addEllipses = TRUE, ellipse.type = "confidence",
+             mean.point = TRUE,
+             legend.title = "Groups")
+
+### biplots
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "#2E9FDF",
+                col.ind = "#696969"
+)
+
+fviz_pca_biplot(pca,
+                col.ind = as.factor(t_grps$Ref_site), palette = "jco",
+                addEllipses = TRUE, elipse.type = "euclid",
+                label = "var",
+                col.var = "black", repel = TRUE,
+                legend.title = "Species")
+
+### GRAFICO FINAL
+### biplot final
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "red",
+                col.ind = "black"
+)
+
+library(factoextra)
+library(ggplot2)
+
+### garantir variável como fator
+t_grps$Ref_site <- as.factor(t_grps$Ref_site)
+
+### biplot com pontos e texto
+fviz_pca_biplot(pca, repel = TRUE,
+                col.var = "red",
+                col.ind = "black",
+                geom = c("point", "text"))
+
+### FILTRANDO VETORES PRINCIPAIS
+### selecionar variáveis mais importantes
+var_coord <- pca$var$coord[, 1:2]
+keep_vars <- apply(abs(var_coord) > 0.5, 1, any)
+keep_vars
+vars_to_keep <- rownames(var_coord)[keep_vars]
+vars_to_keep
+
+### criar PCA filtrada
+pca_filt <- pca
+pca_filt$var$coord <- pca$var$coord[vars_to_keep, , drop = FALSE]
+pca_filt$var$contrib <- pca$var$contrib[vars_to_keep, , drop = FALSE]
+pca_filt$var$cos2 <- pca$var$cos2[vars_to_keep, , drop = FALSE]
+
+### biplot final filtrado
+library(ggrepel)
+#png("fig-hab_PCA_fviz.png", width = 11, height = 9, units = "in", res = 400)
+fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
+                col.var = "red",
+                col.ind = "black",
+                geom = c("text")) +
+  geom_point(aes(shape = t_grps$Ref_site), size = 3) +
+  scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +
+  theme_minimal()
+dev.off()
+```
+
 **Fish community.** A total of 422 individuals were collected. Fish were distributed among 6 species, 2 families, and a single order Characiformes. Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures @tbl-abund.
 
 ```{r}
@@ -1452,7 +1802,7 @@ library(tidyr)
 library(gt)
 library(openxlsx)
 
-mxr23 <- read.xlsx("C:/Users/lices/Documents/UEPB V - MESTRADO/Github/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
+mxr23 <- read.xlsx("C:/Users/Mirelly/Downloads/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
                    rowNames = T,
                    colNames = T,
                    sheet = "peixes-fisio")

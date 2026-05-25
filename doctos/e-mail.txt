@@ -5,7 +5,7 @@ usethis::use_git_config(
   user.email = "elviomedeiros@servidor.uepb.edu.br"
 )
 usethis::git_sitrep()
-the chose "Sign in with a code""
+then choose "Sign in with a code""
 
 1. Instalação Básica
 Eles precisam ter o Git e o RStudio instalados.

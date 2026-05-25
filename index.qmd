@@ -129,7 +129,7 @@ The specimens were transported in plastic bags with air and local water to the A
 #| warning: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: Code: Importing and organizing environment data
+#| code-summary: "Code: Importing and organizing environment data"
 #| results: false
 
 #MXR23 - ORGANIZANDO DADOS----
@@ -789,7 +789,7 @@ fviz_pca_biplot(pca, repel = FALSE,
 dev.off()
 ```
 
-```{r, HAB-PCA_rbase}
+```{r}
 #| label: hab_PCA_rbase
 #| eval: false
 #| warning: false
@@ -977,7 +977,7 @@ fviz_pca_biplot(p, repel=TRUE, pointsize=6, pointshape=21,
                 addEllipses=TRUE, ellipse.level=0.95)
 ```
 
-```{r, HAB-PCA_results_table}
+```{r}
 #| label: hab_PCA_results_table
 #| eval: false
 #| warning: false
@@ -1044,7 +1044,7 @@ sink()
 **Fish community.** A total amount of 28155 individuals was collected, divided into 32 taxonomic groups. Out of these, Thiaridae (1340.15 ind./m2 ± 3068.95), larvae of Chironomidae (629.07 ind./m2 ± 1424.72), and Oligochaeta (380.49 ind./m2 ± 856.62) were the most the representative.
 
 ```{r}
-#| label: non-used code
+#| label: false table
 #| eval: false
 #| warning: false
 #| message: false
@@ -1058,7 +1058,8 @@ table(1:10)
 
 **Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
-```{r, CHUNK-boxplot_protein}
+```{r}
+#| label: boxplot_protein 
 #| eval: false
 #| message: false
 #| warning: false
@@ -1103,7 +1104,8 @@ legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical diff
 
 The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites (@fig-boxtpsites).
 
-```{r, CHUNK-boxplot_sampling_site}
+```{r}
+#| label: boxplot_sampling_site
 #| eval: false
 #| message: false
 #| warning: false
@@ -1134,7 +1136,8 @@ The increase of total plasmatic protein concentration in the animals exposed to 
 
 **Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the ReBio Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-mcsites).
 
-```{r, CHUNK-boxplot_moisture_content}
+```{r}
+#| label: boxplot_moisture_content 
 #| eval: false
 #| message: false
 #| warning: false
@@ -1186,7 +1189,8 @@ legend("top", legend=c("p-value=0,000004813"), text.font = 2, bty="n", cex=0.55,
 
 The ANOVA test demonstrated similarity between data from sites inside ReBio Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10 (@fig-boxmmcsites).
 
-```{r, CHUNK-boxplot_ANOVA_moisture_content}
+```{r}
+#| label: boxplot_ANOVA_moisture_content
 #| eval: false
 #| message: false
 #| warning: false
@@ -1218,7 +1222,8 @@ The overall statistical analysis performed for moisture content reinforces this 
 
 **MXR phenotype activity.** The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the ReBio Guaribas (confirmed by the Kruskal-Wallis test and illustrated in (@fig-fluorescence)
 
-```{r, CHUNK-boxplot_MXR}
+```{r}
+#| label: boxplot_MXR
 #| eval: false
 #| message: false
 #| warning: false
@@ -1250,7 +1255,8 @@ legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical diff
 
 was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve (@fig-boxmxr).
 
-```{r, CHUNK-boxplot_MXR_site}
+```{r}
+#| label: boxplot_MXR_site 
 #| eval: false
 #| message: false
 #| warning: false
@@ -1286,7 +1292,8 @@ text(x=c(1,2,3,4,5,6),y=c(68400,31371,44811,88000,150658,121050)+10000,labels=c(
 
 All parameters were effective to point out statistical differences between data from inside the ReBio Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the @fig-bar, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
 
-```{r, CHUNK-mean_physiological_markers}
+```{r}
+#| label: mean_physiological_markers
 #| eval: false
 #| message: false
 #| warning: false

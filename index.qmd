@@ -6,7 +6,6 @@ subtitle: |
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
-    corresponding: false
     email: adamastor.pinto@aluno.uepb.edu.br
     roles: []
     affiliations:

@@ -1326,17 +1326,17 @@ We are grateful to Thainá da Silva Oliveira for assistance with laboratory acti
 
 Authorship of this paper is based on @credit2026.
 
-Adamastor Coutinho Pinto: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing -- review & editing, Writing -- original draft.
+Adamastor Coutinho Pinto: Formal analysis, Writing -- original draft.
 
 Mayara Mirelly da Silva Monteiro: Data curation, Formal analysis, Software, Writing -- review & editing.
 
-Alice da Silva Barros: Data curation, Formal analysis, Software, Writing -- review & editing.
+Alice da Silva Barros: Formal analysis, Software, Writing -- review & editing.
 
-Larissa Rafaela Caetano da Silva:Data curation, Formal analysis, Software, Writing -- review & editing.
+Larissa Rafaela Caetano da Silva: Data curation, Methodolofy, Formal analysis, Software, Writing -- review & editing.
 
 Enelise Marcelle Amado: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing -- review & editing.
 
-Elvio Sergio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing -- review & editing.
+Elvio Sergio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing -- original draft, Writing -- review & editing.
 
 # Ethical approval {.unnumbered}
 

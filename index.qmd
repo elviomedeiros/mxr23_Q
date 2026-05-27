@@ -1807,7 +1807,7 @@ library(tidyr)
 library(gt)
 library(openxlsx)
 
-mxr23 <- read.xlsx("D:/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
+mxr23 <- read.xlsx("C:/Users/ellen/Downloads/Manuscritos/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
                    rowNames = T,
                    colNames = T,
                    sheet = "peixes-fisio")

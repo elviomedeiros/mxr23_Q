@@ -17,7 +17,7 @@ author:
     email: mayaramirelly68@gmail.com
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Alice da Silva Barros
     orcid: 0009-0008-6524-458X
     corresponding: false
@@ -31,21 +31,21 @@ author:
     email: larissa.caetano@aluno.uepb.edu.br
     roles: []
     affiliations:
-      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Enelise Marcelle Amado
     orcid: 0000-0002-3632-5427
     corresponding: true
     email: eneliseamado@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Elvio Sergio Figueredo Medeiros
     orcid: 0000-0002-7472-8147
     corresponding: true
     email: elviomedeiros@servidor.uepb.edu.br
     roles: []
     affiliations:
-      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, 666, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
+      - Grupo de Ecologia de Rios do Semiárido, Laboratório de Ecologia, Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
 keywords:
   - Ecological Health
   - Physiological Stress
@@ -1750,7 +1750,7 @@ Mayara Mirelly da Silva Monteiro: Data curation, Formal analysis, Software, Writ
 
 Alice da Silva Barros: Data curation, Formal analysis, Software, Writing -- review & editing.
 
-Larissa Rafaela Caetano da Silva:Data curation, Formal analysis, Software, Writing -- review & editing.
+Larissa Rafaela Caetano da Silva: Data curation, Formal analysis, Software, Writing -- review & editing.
 
 Enelise Marcelle Amado: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing -- review & editing.
 
@@ -1772,28 +1772,13 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 ## Figures {.unnumbered}
 
-
-![Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding ReBio Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/Mapa%20Atualizado.png){#fig-mapa}
-
-
-
-
-![Location of sampling sites within (P5 - 06°43'06,58555'' S, 35°10'54,70041''W -, P6 - 06°42'38,71927''S, 35°10'38,68013''W - and P7 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding REBIO Guaribas (P8 - 06°41'46,29119''S, 35°10'36,09933''W -, P9 - 06°40'56,47593''S, 35°10'27,84963''W - and P10 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/Mapa%20Atualizado.png){#fig-mapa}
-
+![Location of sampling sites within (P1 - 06°43'06,58555'' S, 35°10'54,70041''W -, P2 - 06°42'38,71927''S, 35°10'38,68013''W - and P3 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding REBIO Guaribas (P4 - 06°41'46,29119''S, 35°10'36,09933''W -, P5 - 06°40'56,47593''S, 35°10'27,84963''W - and P6 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/Mapa%20Atualizado.png){#fig-mapa}
 
 ![Images of the main four types of sites found in the Reserva Biológica Guaribas and its surrounding areas (Mamanguape, PB). Type I or local reference site, well preserved and within the conservation unit. Type II site, preserved and outside the conservation unit. Type III site, disturbed but withing the conservation unit. Type IV site, disturbed and outside the conservation unit.](imagens/refsites.png){#fig-refsites}
 
 ![Principal Component Analysis of the environmental variables using the fviz function.](fig-hab_PCA_fviz.png){#fig-hab_PCA_fviz}
 
-
-![Total protein (mg) variance of data inside and outside ReBio Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
-
-
-
-![Principal Component Analysis of the environmental variables using the fviz function](fig-hab_PCA_fviz.png)
-
 ![Total protein (mg) variance of data inside and outside REBIO Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
-
 
 ![Boxplot with total protein data of collected fish from the sampling sites inside (green) and outside REBIO Guaribas (red), including its respective grouping by similarity above each box.](imagens/Figura%204.png){#fig-boxtpsites}
 
@@ -1821,7 +1806,7 @@ library(tidyr)
 library(gt)
 library(openxlsx)
 
-mxr23 <- read.xlsx("D:/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
+mxr23 <- read.xlsx("C:/Users/ellen/Downloads/Manuscritos/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
                    rowNames = T,
                    colNames = T,
                    sheet = "peixes-fisio")

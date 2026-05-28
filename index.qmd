@@ -1722,7 +1722,8 @@ All parameters were effective to point out statistical differences between data 
 #| code-summary: "Code: Proportion of mean physiological markers"
 
 md=colMeans(tcc[grep("inside",x=tcc$Local),c(3:6)],na.rm = T)
-mf=colMeans(tcc[grep("outside",x=tcc$Local),c(3:6)],na.rm = T)
+mf=colMeans(tcc[grep(
+  "outside",x=tcc$Local),c(3:6)],na.rm = T)
 (médias=matrix(c(md,mf),byrow=T,nrow = 2,ncol=4,dimnames=list(c("inside","outside"),c("GMC","MMC","TP","MXR"))))
 (prop=proportions(médias,2))
 par(mfrow=c(1,1),mar=c(3,4,1,1),lwd=1)

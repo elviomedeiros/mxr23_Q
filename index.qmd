@@ -86,7 +86,29 @@ editor_options:
 
 # Introduction
 
-The devastation of rivers and streams from the Atlantic forest, biogeographical province [@udvardy1975] included in the list of the world's Hotspots (high biodiversity rates, endemism and anthropic pressure - [@myers2000], is caused mainly by pollution, deforestation, damming and introduction of exotic species. Pollution decreases abundance and richness of local fish, being aggravated by loss of riparian vegetation when there is deforestation or change of river course due to damming. These population reductions are also caused in the presence of invasive species, introduced accidentally or intentionally by humans, modifying the original competition/prey relation [@miranda2012]. With about 2-5% of the original vegetation preserved in Atlantic forest, one of the main strategies for conserving and preserving biodiversity from this and other biogeographical provinces is the delimitation of areas known as Conservative Units (CU), regulated in Brazil by the National System of Conservative Unit (SNUC) and implemented by Chico Mendes Institute (ICMBio) to be managed at federal, state and local levels [@miranda2012; @arruda2013].
+The Atlantic Forest is one of the world's most important biodiversity hotspots [@myers2000]. Despite occupying only a small fraction of its original distribution, it continues to support extraordinary levels of species richness and endemism [@marques2021]. At the same time, it is one of the most threatened tropical ecosystems on Earth due to habitat loss, fragmentation, urban expansion, and agricultural development [@theatla2021]. Conservation efforts in the Atlantic Forest have traditionally focused on terrestrial organisms such as plants, birds, and mammals. However, freshwater ecosystems are equally dependent on forest integrity and are often overlooked in conservation planning [@gouveia2017; @abilhoa2011].
+
+@padial2021 mention a wide range of threats to aquatic systems that can affect the Atlantic Forest, ranging from dam construction and flow alterations to the emerging threat of microplastic contamination [@eerkes-medrano2018]. Pollution, from microplastic or otherwise [@harmon2018], comes mostly from urban and agricultural sources, and untreated urban sewage is amongst the most common [@costa2020]. In agricultural areas, fish farming, ⁠agricultural runoff, and the ⁠destruction of riparian forests, remain as important threats to aquatic ecosystem integrity [@padial2021].
+
+Ecological responses to pollution, often become visible only after environmental impacts have already affected freshwater organisms [@macêdo2019]. For this reason, physiological biomarkers can provide particularly valuable early-warning indicators [@ondei2020].
+
+One biomarker evaluated in this research was the Multixenobiotic Resistance mechanism, or MXR.
+
+MXR functions as a cellular defense system against pollutants.
+
+When organisms encounter potentially harmful substances—including pesticides, heavy metals, pharmaceuticals, and microplastics—they activate transport proteins that remove toxic compounds from cells.
+
+This mechanism reduces intracellular accumulation of contaminants and protects cellular integrity.
+
+Measurements of MXR activity revealed higher values in organisms collected outside the reserve.
+
+Increased activity indicates greater exposure to environmental contaminants and suggests that aquatic organisms in surrounding streams are experiencing elevated chemical stress.
+
+These findings provide physiological evidence supporting patterns already observed through environmental measurements and community-level analyses.
+
+------------------------------------------------------------------------
+
+Pollution decreases abundance and richness of local fish, being aggravated by loss of riparian vegetation when there is deforestation or change of river course due to damming. These population reductions are also caused in the presence of invasive species, introduced accidentally or intentionally by humans, modifying the original competition/prey relation [@miranda2012]. With about 2-5% of the original vegetation preserved in Atlantic forest, one of the main strategies for conserving and preserving biodiversity from this and other biogeographical provinces is the delimitation of areas known as Conservative Units (CU), regulated in Brazil by the National System of Conservative Unit (SNUC) and implemented by Chico Mendes Institute (ICMBio) to be managed at federal, state and local levels [@miranda2012; @arruda2013].
 
 Ecological data, such as richness and species abundance, are the most studied and represent how aquatic animals deal with general pollution, but the toxicity responsible for behavioral change depends on the organism, time of exposure and particle type, which demonstrates the need for physiological studies, specially in natural environments [@amoatey2019]. As physiological, morphological and behavioural aspects represent how their functions are performed in the ecosystem, they are nominated functional characteristics, commonly studied by parameters of strength and resilience. Changes on these parameters reflect environmental changes that could not be seen by parameters of taxonomical diversity, which happens when different species possess similar functions, highlighting how these, still scarce studies, can be promising [@júnior2021]. Taking it into account, as also the relevance of Conservation Units for the Atlantic forest species, this study brings up the possibility to compare the ecological health from these waterbodies by identifying physiological stress markers from the fish within and near CU's.
 

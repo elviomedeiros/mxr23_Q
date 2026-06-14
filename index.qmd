@@ -100,7 +100,7 @@ In the present study, the hypothesis of markers linked to physiological stress o
 
 # Material and Methods
 
-**Study area and sampling design.** This study was conducted in the Guaribas Biological Reserve (REBIO Guaribas), a protected area of Atlantic Forest in in northeastern Brazil. The reserve is located in the municipality of Mamanguape, state of Paraíba, in a heterogeneous landscape influenced by the adjacent Caatinga and Cerrado ecoregions. It was created in 1990 to preserve one of the last remnants of the Atlantic Forest in the region [@mma2003]. Despite being one of the most restricted types of protected areas, there are a number human settlements in its buffer zone. The Management Plan for REBIOstates several rural communities directly surrounding the reserve (Caiana, Pepina, Imbiribeira, Brejinho, Água Fria, João Pereira and Piabuçu), in addition to indigenous human populations (mostly the Potiguaras) [@mma2003]. These populations are important because of their historic patterns of ocupation and land use, but also because their agricultural activities, fishing, modification of the natural vegetation for livestock and overal use of the natural resources from the buffer zone directly affect the conservation of the REBIO. This has been aggravated in recent years by large scale use of water and land for cultivation of monocultures, like sugarcane [@heinrichs2017]. The surrounding landscape is predominantly agricultural, including sugarcane and coconut plantations, livestock farming, and small orchards. These land uses can act as sources of diffuse pollution, especially through pesticide runoff and domestic effluents, creating a spatial gradient of environmental disturbance [@mmai; @soler2004]. Thus, the landscape is mainly rural and the land use causes direct impact to aquatic systems, by causing siltation of streams and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil \[@arruda2013; @ministériodomeioambiente2025\]
+**Study area and sampling design.** This study was conducted in the Guaribas Biological Reserve (REBIO Guaribas), a protected area of Atlantic Forest in in northeastern Brazil. The reserve is located in the municipality of Mamanguape, state of Paraíba, in a heterogeneous landscape influenced by the adjacent Caatinga and Cerrado ecoregions. It was created in 1990 to preserve one of the last remnants of the Atlantic Forest in the region [@mma2003]. Despite being one of the most restricted types of protected areas, there are a number human settlements in its buffer zone. The Management Plan for REBIOstates several rural communities directly surrounding the reserve (Caiana, Pepina, Imbiribeira, Brejinho, Água Fria, João Pereira and Piabuçu), in addition to indigenous human populations (mostly the Potiguaras) [@mma2003]. These populations are important because of their historic patterns of ocupation and land use, but also because their agricultural activities, fishing, modification of the natural vegetation for livestock and overal use of the natural resources from the buffer zone directly affect the conservation of the REBIO. This has been aggravated in recent years by large scale use of water and land for cultivation of monocultures, like sugarcane [@heinrichs2017]. The surrounding landscape is predominantly agricultural, including sugarcane and coconut plantations, livestock farming, and small orchards. These land uses can act as sources of diffuse pollution, especially through pesticide runoff and domestic effluents, creating a spatial gradient of environmental disturbance [@mma2003; @soler2004]. Thus, the landscape is mainly rural and the land use causes direct impact to aquatic systems, by causing siltation of streams and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil [@arruda2013; @ministériodomeioambiente2025]
 
 The climate is classified as As', characterized by a rainy season from February to July and a dry period from October to December [@peel2007]. The average annual temperature varies from 24 to 26 °C, while the annual rainfall varies between 1,750 and 2,000 mm. The hydrographic network is composed of small streams fed by rain, notably the Barro Branco stream, a tributary of the Camaratuba River, where this study was carried out. These systems are influenced by riparian vegetation; however, parts of the buffer zone exhibit different levels of anthropogenic disturbance [@gouveia2017]. Sampling was conducted along the Barro Branco stream, comprising six sampling sites, and at each site, three subsamples were collected between November 2023 and February 2024. The sampling sites were distributed longitudinally to capture environmental variability and gradients of human influence. Sites P1 to P3 were located within the reserve, where more preserved conditions were expected, while sites P4 to P6 were situated in the buffer zone or in adjacent areas with greater human influence (@fig-mapa). This design aimed to include different levels of habitat integrity, riparian condition, and water quality.
 
@@ -793,7 +793,7 @@ fviz_pca_biplot(pca, repel = FALSE,
 dev.off()
 ```
 
-```{r, HAB-PCA_rbase}
+```{r}
 #| label: hab_PCA_rbase
 #| eval: false
 #| warning: false
@@ -981,7 +981,7 @@ fviz_pca_biplot(p, repel=TRUE, pointsize=6, pointshape=21,
                 addEllipses=TRUE, ellipse.level=0.95)
 ```
 
-```{r, HAB-PCA_results_table}
+```{r}
 #| label: hab_PCA_results_table
 #| eval: false
 #| warning: false
@@ -1045,7 +1045,8 @@ pca_report_table
 sink()
 ```
 
-```{r, CHUNK-PCA_particionada}
+```{r}
+#| label: PCA_particionada
 #| eval: false
 #| message: false
 #| warning: false
@@ -1482,7 +1483,8 @@ gt_table
 
 **Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
-```{r, CHUNK-boxplot_protein}
+```{r}
+#| label: boxplot_protein
 #| eval: false
 #| message: false
 #| warning: false
@@ -1527,7 +1529,8 @@ legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical diff
 
 The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites (@fig-boxtpsites).
 
-```{r, CHUNK-boxplot_sampling_site}
+```{r}
+#| label: boxplot_sampling_site
 #| eval: false
 #| message: false
 #| warning: false
@@ -1558,7 +1561,8 @@ The increase of total plasmatic protein concentration in the animals exposed to 
 
 **Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-mcsites).
 
-```{r, CHUNK-boxplot_moisture_content}
+```{r}
+#| label: boxplot_moisture_content
 #| eval: false
 #| message: false
 #| warning: false
@@ -1610,7 +1614,8 @@ legend("top", legend=c("p-value=0,000004813"), text.font = 2, bty="n", cex=0.55,
 
 The ANOVA test demonstrated similarity between data from sites inside REBIO Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10 (@fig-boxmmcsites).
 
-```{r, CHUNK-boxplot_ANOVA_moisture_content}
+```{r}
+#| label: boxplot_ANOVA_moisture_content
 #| eval: false
 #| message: false
 #| warning: false
@@ -1642,7 +1647,8 @@ The overall statistical analysis performed for moisture content reinforces this 
 
 **MXR phenotype activity.** The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in (@fig-fluorescence)
 
-```{r, CHUNK-boxplot_MXR}
+```{r}
+#| label: boxplot_MXR
 #| eval: false
 #| message: false
 #| warning: false
@@ -1674,7 +1680,8 @@ legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical diff
 
 was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve (@fig-boxmxr).
 
-```{r, CHUNK-boxplot_MXR_site}
+```{r}
+#| label: boxplot_MXR_site
 #| eval: false
 #| message: false
 #| warning: false
@@ -1710,11 +1717,12 @@ text(x=c(1,2,3,4,5,6),y=c(68400,31371,44811,88000,150658,121050)+10000,labels=c(
 
 The hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (REBIO Guaribas), one of the 22 CU's inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state (@fig-mapa). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province -- 33,45% of the CU's), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence REBIO Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU [@arruda2013; @ministériodomeioambiente2025].
 
-The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of REBIO Guaribas made by @gouveia2017, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments [@miranda2012] - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations [@gouveia2017]. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco [@serra2010].
+The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of REBIO Guaribas made by @gouveia2017, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments [@miranda2012] - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations [@gouveia2017]. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco.
 
 All parameters were effective to point out statistical differences between data from inside the REBIO Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the @fig-bar, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
 
-```{r, CHUNK-mean_physiological_markers}
+```{r}
+#| label: mean_physiological_markers
 #| eval: false
 #| message: false
 #| warning: false
@@ -1736,7 +1744,7 @@ barplot(height = prop, horiz = T, las=1, col = c("darkgreen", "darkred"), legend
 
 These preliminary obtained data were precise to indicate significant differences among the conditions in which the fish inhabited. But as much MXR phenotype activity data were as disparate as the ones of total protein and even more precise to point out the uniformity among sampling sites inside and outside the REBIO Guaribas, it showed values opposite to what was expected, with higher fluorescence in the tissue of fish outside the reserve, normally indicating lower MXR phenotype activity. This inconsistency can be explained by the possible presence of chemosensitizers in the water, since the fish did not went through a decontamination period, and thus, pollutants could still be bound to the active Pgp site and preventing rhodamine B to attach to it. The presence of such chemosensitizers can be quantified through the creation of a calibration curve, as described by [@kurelec2000], but, until done, the relevance of the MXR phenotype analysis must be restricted to the statistical context.
 
-From the final results, an important positive evaluation can be made regarding the environmental protection that the Conservative Unity does within its extension, even when analysing one with historical problems of delimitation and still not entirely free of anthropic impacts. Adding the fact that it is located within the Atlantic forest, classified as a Hotspot, the verification of the efficiency of a CU in this biogeographical province is even more relevant, reinforcing the need for governments to create more legally protected areas as a key strategy to reduce global ecological crisis. This study also made an important description on the use of physiological biomarkers in ecological analysis, raising ecophysiology potential as a basis to future assays, which can be incorporated into effectiveness index such as seen in [@masullo2020a] paper and presenting quantifiable data that can complement studies with analysis of historical and geographical data, such as the one from [@assis2021].
+From the final results, an important positive evaluation can be made regarding the environmental protection that the Conservative Unity does within its extension, even when analysing one with historical problems of delimitation and still not entirely free of anthropic impacts. Adding the fact that it is located within the Atlantic forest, classified as a Hotspot, the verification of the efficiency of a CU in this biogeographical province is even more relevant, reinforcing the need for governments to create more legally protected areas as a key strategy to reduce global ecological crisis. This study also made an important description on the use of physiological biomarkers in ecological analysis, raising ecophysiology potential as a basis to future assays, which can be incorporated into effectiveness index such as seen in [@masullo2020] paper and presenting quantifiable data that can complement studies with analysis of historical and geographical data, such as the one from [@assis2021].
 
 # Conclusions {.unnumbered}
 
@@ -1801,9 +1809,15 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 ```{r}
 #| label: tbl-abund
 #| tbl-cap: "Table abundance."
-#| echo: false
-#| warning: false
+#| eval: false
 #| message: false
+#| warning: false
+#| results: false
+#| echo: true
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Proportion of mean physiological markers"
 
 library(dplyr)
 library(tidyr)

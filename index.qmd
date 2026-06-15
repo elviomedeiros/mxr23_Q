@@ -69,12 +69,8 @@ format:
     toc: true
     code-line-numbers: true
     colorlinks: true
-    execute:
-      echo: false
   docx:
-    execute:
-      echo: false
-    reference-doc: custom-reference.docx
+    reference-doc: refs/custom-rmarkdown-word.docx
 execute:
   echo: true
   result: hold
@@ -799,7 +795,6 @@ dev.off()
 #| warning: false
 #| message: false
 #| results: hide
-#| echo: false
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -987,7 +982,6 @@ fviz_pca_biplot(p, repel=TRUE, pointsize=6, pointshape=21,
 #| warning: false
 #| message: false
 #| results: hide
-#| echo: false
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1051,7 +1045,6 @@ sink()
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1489,7 +1482,6 @@ gt_table
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1535,7 +1527,6 @@ The subsequent ANOVA test confirmed the uniformity of values from the sites insi
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1567,7 +1558,6 @@ The increase of total plasmatic protein concentration in the animals exposed to 
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1620,7 +1610,6 @@ The ANOVA test demonstrated similarity between data from sites inside REBIO Guar
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1653,7 +1642,6 @@ The overall statistical analysis performed for moisture content reinforces this 
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1686,7 +1674,6 @@ was also the most conclusive when analysed by ANOVA test, being the only physiol
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
@@ -1727,7 +1714,6 @@ All parameters were effective to point out statistical differences between data 
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap

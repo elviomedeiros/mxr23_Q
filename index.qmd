@@ -138,9 +138,7 @@ Fish were transferred to plastic bags containing water from the collection site 
 dev.off() #apaga os graficos, se houver algum
 rm(list=ls(all=TRUE)) #limpa a memória
 cat("\014") #limpa o console
-#shell.exec(getwd())
 getwd()
-setwd("D:/Elvio/OneDrive/MSS/_Bentos-2006/Bentos2006_Q")
 library(openxlsx)
 
 ##CARREGANDO MATRIZES BRUTAS----
@@ -292,7 +290,7 @@ m_hab_part <- read.csv("m_hab_part.csv",
                        na.strings = NA)
 ```
 
-These variables were subsequently subjected to Principal Component Analysis (PCA) to evaluate multivariate correlations among sites. Prior to analysis, site morphology and water quality variables were square root transformed, whereas sediment composition and the marginal habitat structure (which were measured as percentages) were arcsine square-root transformed after relativization by column total @mccune2002. PCA was performed using the `FactoMineR` package in R @lê2008. All variables were centered and scaled to unit of variance.
+These variables were subsequently subjected to Principal Component Analysis (PCA) to evaluate multivariate correlations among sites. Prior to analysis, site morphology and water quality variables were square root transformed, whereas sediment composition and the marginal habitat structure (which were measured as percentages) were arcsine square-root transformed after relativization by column total [@mccune2002]. PCA was performed using the `FactoMineR` package in R [@lê2008]. All variables were centered and scaled to unit of variance.
 
 ```{r}
 #| label: env-PCA_org
@@ -463,7 +461,7 @@ round(summary_table[order(summary_table$Mean, decreasing = FALSE), ], 2)
 ```
 
 ```{r}
-#| label: hab_gttable
+#| label: gttable_habitat
 #| eval: false
 #| warning: false
 #| message: false
@@ -1791,6 +1789,13 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 ![Proportion between average values for each physiological marker analysed, comparing themselves in order to its relationship with the REBIO Guaribas, highlighting the disparity among data of total protein ("TP") and the MXR phenotype activity ("MXR"), and higher proximity among data of muscle ("MMC") and gill moisture content ("GMC").](imagens/Figure%209.png){#fig-bar}
 
 ## Tables {.unnumbered}
+
+```{r, tbl-hab_gttable}
+#| echo: false
+#| label: tbl-hab_gttable
+#| tbl-cap: "Environment data GT table."
+readRDS("gt-hab_gttable_xlsx.rds")
+```
 
 ```{r}
 #| label: tbl-abund

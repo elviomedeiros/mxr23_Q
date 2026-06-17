@@ -1790,7 +1790,7 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 ## Tables {.unnumbered}
 
-```{r, tbl-hab_gttable}
+```{r}
 #| echo: false
 #| label: tbl-hab_gttable
 #| tbl-cap: "Environment data GT table."

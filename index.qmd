@@ -1375,10 +1375,11 @@ fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
 dev.off()
 ```
 
-**Fish community.** A total of 422 individuals were collected. Fish were distributed among 6 species, 2 families, and a single order Characiformes. Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures @tbl-abund.
+**Fish community.** A total of 6 species were collected with their densities accoriding to their natural abundances. 
 
-```{r}
-#| label: non-used-code-01
+Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures @tbl-abund.
+
+```{r fish_comm}
 #| eval: false
 #| warning: false
 #| message: false
@@ -1387,16 +1388,43 @@ dev.off()
 #| code-overflow: wrap
 #| code-summary: "non-used code" 
 
-data <- mxr23
-data <- mxr23[!row.names(mxr23) %in% c("4-9-85", #NA
+dev.off() #apaga os graficos, se houver algum
+rm(list=ls(all=TRUE)) #limpa a memória
+cat("\014") #limpa o console
+
+getwd()
+library(openxlsx)
+mxr23 <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
+                   rowNames = T,
+                   colNames = T,
+                   sheet = "peixes-fisio")
+mxr23#[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.
+
+###### ARRUMANDO OS DADOS #####
+
+mxr23_part <- mxr23[!row.names(mxr23) %in% c("4-9-85", #NA
                                        "1-10-7"),] #As.bim grande
 
-data[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
+mxr23_part[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
                              "TH_branquia_p", "Proteinas_Totais_mg"
                              )] <- NA
 
+write.table(mxr23_part, "mxr23_part.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+##### RESUMO DOS DADOS #####
+
 library(dplyr)
 library(tidyr)
+
 grouped_data <- group_by(data, Especie, Amostra_tipo)
 summarised_data <- summarise(grouped_data, count = n())
 species_count_table <- spread(summarised_data, Amostra_tipo, count, fill = 0)
@@ -1421,7 +1449,7 @@ rownames(soma_row) <- "Soma"
 resumo <- rbind(resumo, soma_row)
 resumo
 
-#############################################################################
+###### RESUMO SPP POR UA #####
 
 resumo2 <- data %>%
   group_by(Site = Site, Especie = Especie, Amostra_tipo = Amostra_tipo) %>%
@@ -1459,12 +1487,47 @@ gt_table <- resumo2_wide %>%
   opt_table_outline()
 
 gt_table
+
+##### GRÁFICO POR N #####
+
+# Filtrar por Amostra_tipo "xx"
+filtered_Amostra_tipo <- data %>%
+  filter(Amostra_tipo != "xx")
+data <- filtered_Amostra_tipo
+
+# Count occurrences of each species by Amostra_tipo and Site
+species_count <- data %>%
+  group_by(Site, Especie, Amostra_tipo) %>%
+  summarise(Count = n(), .groups = 'drop')
+# Plot the counts
+library(ggplot2)
+ggplot(species_count, aes(x = Amostra_tipo, y = Count, fill = Especie)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  facet_wrap(~ Site) +
+  labs(title = "Count of Each Species per Amostra_tipo for Each Site",
+       x = "Amostra Tipo",
+       y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Count occurrences of each species by Amostra_tipo and Site
+species_count <- data %>%
+  group_by(Site, Especie, Amostra_tipo) %>%
+  summarise(Count = n(), .groups = 'drop')
+# Plot the counts with species on the x-axis
+ggplot(species_count, aes(x = Especie, y = Count, fill = Amostra_tipo)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  facet_wrap(~ Site) +
+  labs(title = "Count of Each Species per Amostra_tipo for Each Site",
+       x = "Species",
+       y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 **Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
-```{r}
-#| label: boxplot_protein
+```{r, proteinas_totais}
 #| eval: false
 #| message: false
 #| warning: false
@@ -1474,36 +1537,118 @@ gt_table
 #| code-overflow: wrap
 #| code-summary: "Code: Total Plasmatic Proteins (mg)"
 
-library(readxl) 
-library(gplots) 
-library(agricolae)
-library(sciplot)
-library(PMCMRplus)
-library(corrplot)
-library(psych)
-library(scales)
-library(visreg)
-citation()
-dir()
-setwd("D:/mxr23_Q")
-tcc=read.csv("Dados_TCC.csv", h=T, stringsAsFactors = T, dec=",") 
-#TP
-hist(tcc$TP, probability = T)
-lines(x=density(x=tcc$TP, na.rm=T, adjust=2)) #parece um pouco
-shapiro.test(tcc$TP) #0,001 = não normal
-bartlett.test(tcc$TP~tcc$Local) #0,000001765 = não homo ###kruskal
-kruskal.test(tcc$TP~tcc$Local) #0,00000002328 = diferem
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
 
-par(mfrow=c(1,1),mar=c(3,5,1,1),lwd=1)
-boxplot(tcc$TP~tcc$Local)
-boxplot(tcc$TP~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(15,140), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomes=c("INSIDE","OUTSIDE")
-pos=c(1,2)
-axis(side = 1,at = pos, labels = nomes, las=1,font=9)
-mtext(text="Total Plasmatic Proteins (mg)", side=2,line=3,cex=1,font=7)
-legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical difference", "(p-value=0,00000002328)"), text.font = 2, bty="n", cex=0.6, text.col="gray25")
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+table(data$Especie, is.na(data$Proteinas_Totais_mg))
+data <- data[data$Especie != "Characidium bimaculatum", ]
+
+##### GRAFICO POR ANÁLISE #####
+
+#N #data <- data %>% mutate(N = 1)
+#RPC
+#Rodamina_rfu_mg
+#TH_musculo_p
+#TH_branquias_p
+#Proteinas_Totais_mg
+
+# Convert the column to numeric, replace commas with dots for proper conversion
+data$Proteinas_Totais_mg <- as.numeric(gsub(",", ".", data$Proteinas_Totais_mg))
+VAR <- deparse(substitute(data$Proteinas_Totais_mg))
+var <- "Proteinas_Totais_mg" %>% rlang::sym()
+str(data)
+
+# Calculate the average for each combination of species, Amostra_tipo, and Site
+average <- data %>%
+  group_by(Site, Especie, Amostra_tipo) %>%
+  summarise(Average = mean(!!var, na.rm = TRUE), .groups = 'drop')
+# Plot the average RPC
+ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  facet_wrap(~ Site) +
+  labs(title = paste("Average POR ANÁLISE para", VAR, "per Species and Amostra_tipo for Each Site"),
+       x = "Species",
+       y = paste("Average", VAR)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# GRÁFICO POR ESPÉCIE ########################################################
+
+# Filter out the species Astyanax bimaculatus and Astyanax fasciatus
+
+filtered_data <- data
+
+filtered_data <- data %>%
+  filter(!Especie %in% c("Astyanax bimaculatus",
+                        "Astyanax fasciatus",
+                        "Characidium bimaculatum")) #EXCLUI USANDO O "!"
+filtered_data <- data %>%
+  filter(Especie %in% c("Hemigrammus unilineatus")) #ESCOLHE
+
+# Calculate the average for each combination of Amostra_tipo, Especie, and Site
+average <- filtered_data %>%
+  group_by(Site, Amostra_tipo, Especie) %>%
+  summarise(Average = mean(!!var, na.rm = TRUE), .groups = 'drop')
+# Plot the average RPC with Amostra_tipo on the x-axis
+ggplot(average, aes(x = Amostra_tipo, y = Average, fill = Especie)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  facet_wrap(~ Site) +
+  labs(title = paste("Average", VAR, "per Amostra_tipo for Each Site"),
+       x = "Amostra Tipo",
+       y = paste("Average", VAR)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# CORRELAÇÕES ##########################################################
+
+data <- filtered_data
+
+colnames(data)
+cor <- data %>%
+  select(Ponto, Ref_site, Compr.total_mm, Compr.padrao_mm, Altura_mm,
+  Peso_g, RPC, Rodamina_rfu_mg, TH_branquia_p, TH_musculo_p,
+  Proteinas_Totais_mg)
+str(cor)
+cor[] <- lapply(cor, function(x) as.numeric(gsub(",", ".", x)))
+
+plot(cor)
+plot(cor[,3:7])
+
+cor(cor,method="pearson")
+cor(cor[,1:3], method="spearman")
+
+library(psych)
+pairs.panels(cor[,8:11],
+             method = "pearson", # correlation method
+             scale = FALSE, lm = FALSE,
+             hist.col = "#00AFBB", pch = 19,
+             density = TRUE,  # show density plots
+             ellipses = TRUE, # show correlation ellipses
+             alpha = 0.5
+)
+
+cor %>%
+  with(cor.test(RPC, Peso_g, method = "pearson"))
+
+with(cor, plot(scale(RPC), scale(Peso_g)))
+with(cor, plot(RPC, Peso_g))
+
+plot((m_part$"Overh_veg" - mean(m_part$"Overh_veg")) / sd(m_part$"Overh_veg"))
+#plot((m_trns$"m.elev" - mean(m_trns$"m.elev")) / sd(m_trns$"m.elev"))
+with(cor, plot((RPC - mean(Peso_g)) / sd(Peso_g)))
+with(cor, plot((RPC - mean(RPC)) / sd(RPC),
+                  (Peso_g - mean(Peso_g)) / sd(Peso_g)))
+
+# FIM #########################################################################
+
+
 ```
 
 The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites (@fig-boxtpsites).

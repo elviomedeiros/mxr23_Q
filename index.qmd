@@ -1177,7 +1177,7 @@ colnames(m_hab_part)
 #Já os pontos de referência (Tipo I) tinham mais variáveis influenciando,            #
 #não era uma coisa tão concentrada.                                                  #
 #                                                                                    #
-#As outras variáveis acabaram tendo vetores bem curtos na PCA,                       # #                                                                                    #
+#As outras variáveis acabaram tendo vetores bem curtos na PCA,                       #
 #ou seja, contribuíam muito pouco pra explicar os padrões.                           #
 #A maioria tinha contribuição abaixo de 0,5, então já não fazia muito                #
 #sentido manter. Inclusive, várias dessas já tinham sido removidas antes             #

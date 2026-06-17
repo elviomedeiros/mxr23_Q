@@ -122,8 +122,7 @@ Fish were transferred to plastic bags containing water from the collection site 
 
 **Statistical analysis.** Environmental variables were checked for multivariate collinearity and square root transformed before analyses (@sokal1995).
 
-```{r}
-#| label: env-mxr23_org
+```{r env-mxr23_org}
 #| eval: false
 #| message: false
 #| warning: false
@@ -195,8 +194,7 @@ m_hab <- read.csv("m_hab.csv",
                    na.strings = NA)
 ```
 
-```{r}
-#| label: env-mxr23_corr
+```{r env-mxr23_corr}
 #| eval: false
 #| warning: false
 #| message: false
@@ -292,8 +290,7 @@ m_hab_part <- read.csv("m_hab_part.csv",
 
 These variables were subsequently subjected to Principal Component Analysis (PCA) to evaluate multivariate correlations among sites. Prior to analysis, site morphology and water quality variables were square root transformed, whereas sediment composition and the marginal habitat structure (which were measured as percentages) were arcsine square-root transformed after relativization by column total [@mccune2002]. PCA was performed using the `FactoMineR` package in R [@lê2008]. All variables were centered and scaled to unit of variance.
 
-```{r}
-#| label: env-PCA_org
+```{r env-PCA_org}
 #| eval: false
 #| warning: false
 #| message: false
@@ -347,8 +344,7 @@ m_hab_trns <- read.table("m_hab_trns.csv",
 
 **Environmental variables.** Water flow was generally slow or absent across sampled streams (0.00-0.35 m/s). Stream sites tended to be narrow, with widths ranging from 0.66 to 16.0 m. Average depths varied from 9.0 to 51.3 cm across all sites. Dissolved oxygen (DO) ranged from 4.9 to 8.5 mg/L and temperatures from 24.9 to 28.5 °C. Waters were slightly acidic to neutral, with pH ranging from 4.5 to 7.7. Mud and sand were the main substrates across all sampled sites (with average covers of 72.4 and 27.6%, respectively), while coarse substrates were absent. The habitat elements that gave greater overall contributions were overhanging terrestrial vegetation (53.8% on average), root masses (13.1%), littoral grass (11.1%) and leaf litter (11.1%), but these contributions varied widely across sites.
 
-```{r}
-#| label: tbl_hab
+```{r gttable_hab_excel}
 #| eval: false
 #| warning: false
 #| message: false
@@ -396,7 +392,7 @@ m_wide <- m %>%
 
 m_wide
 m_wide <- as.data.frame(m_wide)
-m_wide <- m_wide[, c("Variable", "Ponto5", "Ponto6", "Ponto7", "Ponto8", "Ponto9", "Ponto10")]
+m_wide <- m_wide[, c("Variable", "Ponto5", "Ponto6", "Ponto7", "Ponto8", "Ponto9", "Ponto10")] #sequência das colunas (ou linhas)
 m_wide
 
 # Salvado m_wide
@@ -418,50 +414,24 @@ wb <- loadWorkbook("tabela de habitat.xlsx")
 writeData(wb, sheet = "Sheet 1", x = m_wide)
 saveWorkbook(wb, "tabela de habitat.xlsx", overwrite = TRUE)
 
+# Tabela final ajustada no Excel
+library(readxl)
+hab_gttable <- read_excel(
+  path  = "tabela de habitat.xlsx",
+  sheet = "tabela_final",
+  range = "A1:G29") #ajustar para o tamanho da tabela final 
+hab_gttable
+library(gt)
+hab_gttable <- gt(hab_gttable)
+hab_gttable <- sub_missing(hab_gttable,
+                      columns = everything(), missing_text = "")
+#hab_gttable <- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)
+hab_gttable
+gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
+saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
 ```
 
-```{r}
-#| label: hab_var_summ
-#| eval: false
-#| warning: false
-#| message: false
-#| results: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Environment data variable summary"
-
-# Escolher sumário de uma variavel
-m
-var <- "w.Temp.C"
-m[m$Variable == var, "mean"] #cada valor de var
-summary(m[m$Variable == var, "mean"]) #sumário dos valores de var
-
-# Escolher sumário de um grupo de variáveis do df m
-vars <- unique(grep("^h\\.", m$Variable, value = TRUE))
-summaries <- list() #criam uma lista vazia para guardar os sumários
-# Loop para cada variável do grupo e guarda em summaries
-for (var in vars) {
-  summaries[[var]] <- summary(m[m$Variable == var, "mean"])
-}
-#var is a temporary variable used in the for loop to iterate through
-#each variable name that starts with "h."
-
-summaries
-summary_table <- do.call(rbind, lapply(summaries, as.data.frame.list))
-round(summary_table, 2)
-#sink(file = "summary_h.txt", split = TRUE)
-round(summary_table[order(summary_table$Mean, decreasing = FALSE), ], 2)
-#sink()
-
-# Tabela limpa
-#summary_table <- cbind(Variable = rownames(summary_table), summary_table)
-#rownames(summary_table) <- NULL
-#colnames(summary_table) <- c("Variable", "Min", "Q1", "Median", "Mean", "Q3", "Max")
-#summary_table
-```
-
-```{r}
-#| label: gttable_habitat
+```{r gttable_habitat}
 #| eval: false
 #| warning: false
 #| message: false
@@ -519,28 +489,50 @@ tabela_gt
 gtsave(tabela_gt, "gt-hab_gttable.html")
 gtsave(tabela_gt, "fig-hab_gttable.png")
 saveRDS(tabela_gt, "gt-hab_gttable.rds")
+```
 
-# Tabela final ajustada no Excel
-library(readxl)
-hab_gttable <- read_excel(
-  path  = "tabela de habitat.xlsx",
-  sheet = "tabela_final",
-  range = "A1:G25")
-hab_gttable
-library(gt)
-hab_gttable <- gt(hab_gttable)
-hab_gttable <- sub_missing(hab_gttable,
-                      columns = everything(), missing_text = "")
-#hab_gttable <- fmt_number(hab_gttable, columns = "F.O.(%)", decimals = 1)
-hab_gttable
-gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
-saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
+```{r hab_var_summ}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Environment data variable summary"
+
+# Escolher sumário de uma variavel
+m
+var <- "w.Temp.C"
+m[m$Variable == var, "mean"] #cada valor de var
+summary(m[m$Variable == var, "mean"]) #sumário dos valores de var
+
+# Escolher sumário de um grupo de variáveis do df m
+vars <- unique(grep("^h\\.", m$Variable, value = TRUE))
+summaries <- list() #criam uma lista vazia para guardar os sumários
+# Loop para cada variável do grupo e guarda em summaries
+for (var in vars) {
+  summaries[[var]] <- summary(m[m$Variable == var, "mean"])
+}
+#var is a temporary variable used in the for loop to iterate through
+#each variable name that starts with "h."
+
+summaries
+summary_table <- do.call(rbind, lapply(summaries, as.data.frame.list))
+round(summary_table, 2)
+#sink(file = "summary_h.txt", split = TRUE)
+round(summary_table[order(summary_table$Mean, decreasing = FALSE), ], 2)
+#sink()
+
+# Tabela limpa
+#summary_table <- cbind(Variable = rownames(summary_table), summary_table)
+#rownames(summary_table) <- NULL
+#colnames(summary_table) <- c("Variable", "Min", "Q1", "Median", "Mean", "Q3", "Max")
+#summary_table
 ```
 
 Principal Component Analysis described the overall structure of the study sites and the most important features in separating them in terms of their physical and chemical variables, site morphometry, sediment composition, and marginal habitat structure @fig-hab_PCA_fviz. PCA explained 52.4% of the variance in the environmental variables, with the first axis (30.9%) showing a clear spatial gradient. This primary axis separated sites P08 and P10—characterized by greater stream width, depth, and sandy substrate—from sites P05, P06, and P07, which were associated with muddy substrates, higher DO, and dense overhanging vegetation. The second axis (21.5%) was primarily driven by local habitat features, separating site P09, which was strongly associated with root masses and water velocity, from sites characterized by attached algae and macrophytes. The overall multivariate conditions did not differ significantly between the interior and the surroundings of the reserve, although specific local variables such as water turbidity, leaf litter cover, and attached algae were important in explaining specific sites across the conservation unit's boundary.
 
-```{r}
-#| label: env-PCA_fviz
+```{r env-PCA_fviz}
 #| eval: false
 #| warning: false
 #| message: false
@@ -787,8 +779,7 @@ fviz_pca_biplot(pca, repel = FALSE,
 dev.off()
 ```
 
-```{r}
-#| label: hab_PCA_rbase
+```{r hab_PCA_rbase}
 #| eval: false
 #| warning: false
 #| message: false
@@ -974,8 +965,7 @@ fviz_pca_biplot(p, repel=TRUE, pointsize=6, pointshape=21,
                 addEllipses=TRUE, ellipse.level=0.95)
 ```
 
-```{r}
-#| label: hab_PCA_results_table
+```{r hab_PCA_results_table}
 #| eval: false
 #| warning: false
 #| message: false
@@ -1037,8 +1027,7 @@ pca_report_table
 sink()
 ```
 
-```{r}
-#| label: PCA_particionada
+```{r PCA_particionada}
 #| eval: false
 #| message: false
 #| warning: false
@@ -1188,7 +1177,7 @@ colnames(m_hab_part)
 #Já os pontos de referência (Tipo I) tinham mais variáveis influenciando,            #
 #não era uma coisa tão concentrada.                                                  #
 #                                                                                    #
-#As outras variáveis acabaram tendo vetores bem curtos na PCA,                       # 
+#As outras variáveis acabaram tendo vetores bem curtos na PCA,                       # #                                                                                    #
 #ou seja, contribuíam muito pouco pra explicar os padrões.                           #
 #A maioria tinha contribuição abaixo de 0,5, então já não fazia muito                #
 #sentido manter. Inclusive, várias dessas já tinham sido removidas antes             #
@@ -1804,7 +1793,6 @@ readRDS("gt-hab_gttable_xlsx.rds")
 #| message: false
 #| warning: false
 #| results: false
-#| echo: true
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap

@@ -1549,7 +1549,7 @@ ggplot(species_count, aes(x = Especie, y = Count, fill = Amostra_tipo)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-**Plasmatic protein dosage.** The number of plasmatic protein dosages (n=44) was smaller than the total number of fish collected for this part of the analysis (n=78), because of the difficulty on collecting blood from smaller specimens and the need to collect a minimum amount of plasma (@fig-prot_tots). The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence.  After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
+**Plasmatic protein dosage.** The number of plasmatic protein dosages (n=44) was smaller than the total number of fish collected for this part of the analysis (n=78), because of the difficulty on collecting blood from smaller specimens and the need to collect a minimum amount of plasma (@fig-prot_tots). The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence.  After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity.
 
 ```{r, proteinas_totais}
 #| eval: false
@@ -1735,41 +1735,11 @@ with(cor, plot((RPC - mean(RPC)) / sd(RPC),
                   (Peso_g - mean(Peso_g)) / sd(Peso_g)))
 ```
 
-The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites (@fig-boxtpsites).
+The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites.
 
-```{r}
-#| label: boxplot_sampling_site
-#| eval: false
-#| message: false
-#| warning: false
-#| results: false
-#| purl: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Total plasmatic proteins by sampling site"
+**Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-prot_th).
 
-anova(lm(formula=tcc$TP~tcc$Site)) #0,00000000000002783 = diferença
-(tkPT=HSD.test(y=lm(formula=tcc$TP~tcc$Site),trt="tcc$Site",group=T)) 
-boxplot(tcc$TP~tcc$Site) #a,a,a,c,b,bc #dentro e fora muito mais isolados
- 
-par(mfrow=c(1,1),mar=c(3,5,1,1),lwd=0.75)
-boxplot(tcc$TP~tcc$Site,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkgreen","darkgreen","darkred","darkred","darkred"), ylim=c(20,140), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomesP=c("P5","P6","P7","P8","P9","P10")
-posP=c(1,2,3,4,5,6)
-axis(side = 1,at = posP, labels = nomesP, las=1,font=9)
-mtext(text="Total Plasmatic Protein (mg)", side=2,line=3,cex=1,font=7)
-tapply(tcc$TP,tcc$Site,max, na.rm=T)
-text(x=c(1,2,3,4,5,6),y=c(34,35.2,35.6,98,98,87.7)+7,labels=c("a","a","a","c","b","bc"),cex=1)
-```
-
-The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the [@sabae2015] study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver.
-
-**Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-mcsites).
-
-```{r}
-#| label: boxplot_moisture_content
+```{r, moisture_content}
 #| eval: false
 #| message: false
 #| warning: false
@@ -1779,81 +1749,138 @@ The increase of total plasmatic protein concentration in the animals exposed to 
 #| code-overflow: wrap
 #| code-summary: "Code: Moisture content (gills and muscle)"
 
-#TH_B = GMC
-hist(tcc$GMC, probability = T)
-lines(x=density(x=tcc$GMC, na.rm=T, adjust=2)) #quase
-shapiro.test(tcc$GMC) #0,06 = normal
-bartlett.test(tcc$GMC~tcc$Local) #0,7455 = homo ###teste t
-t.test(tcc$GMC~tcc$Local) #0,002728 = diferem
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
 
-par(mfrow=c(2,1),mar=c(2,5,1,1),lwd=1)
-boxplot(tcc$GMC~tcc$Local)
-boxplot(tcc$GMC~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(70,103), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomes=c("INSIDE","OUTSIDE")
-pos=c(1,2)
-axis(side = 1,at = pos, labels = nomes, las=1,font=9)
-mtext(text="Gill Moisture", side=2,line=3.5,cex=0.9,font=7)
-mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
-legend("top", legend=c("p-value=0,002728"), text.font = 2, bty="n", cex=0.55, text.col="gray25")
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
 
-#MMC
-hist(tcc$MMC, probability = T)
-lines(x=density(x=tcc$MMC, na.rm=T, adjust=2)) #parece
-shapiro.test(tcc$MMC) #0,002 = não normal
-bartlett.test(tcc$MMC~tcc$Local) #0,047 = não homo ###kruskal
-kruskal.test(tcc$MMC~tcc$Local) #0,000004813 = diferem
+table(data$Especie, is.na(data$TH_branquia_p))
+table(data$Especie, is.na(data$TH_musculo_p))
 
-par(mfrow=c(1,1),mar=c(1,5,5,1),lwd=1)
-boxplot(tcc$MMC~tcc$Local)
-boxplot(tcc$MMC~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(70,100), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomes=c("INSIDE","OUTSIDE")
-pos=c(1,2)
-axis(side = 1,at = pos, labels= nomes, las=1,font=9)
-mtext(text="Muscle Moisture", side=2,line=3.5,cex=0.9,font=7)
-mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
-legend("top", legend=c("p-value=0,000004813"), text.font = 2, bty="n", cex=0.55, text.col="gray25")
+##### GRAFICO POR ANÁLISE #####
+
+#N #data <- data %>% mutate(N = 1)
+#RPC
+#Rodamina_rfu_mg
+#TH_musculo_p
+#TH_branquias_p
+#Proteinas_Totais_mg
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# Convert the column to numeric, replace commas with dots for proper conversion
+data$TH_branquia_p <- as.numeric(gsub(",", ".", data$TH_branquia_p))
+data$TH_musculo_p  <- as.numeric(gsub(",", ".", data$TH_musculo_p))
+str(data)
+
+# Long format
+th_data <- pivot_longer(
+  data,
+  cols = c(TH_branquia_p, TH_musculo_p),
+  names_to = "Tecido",
+  values_to = "TH"
+)
+
+# Calculate the average for each combination of species, Amostra_tipo, and Site
+average <- summarise(
+  group_by(th_data, Site, Especie, Tecido),
+  Average = mean(TH, na.rm = TRUE),
+  n = sum(!is.na(TH)),
+  SE = ifelse(
+    n > 1,
+    sd(TH, na.rm = TRUE) / sqrt(n),
+    0
+  ),
+  .groups = "drop"
+)
+# Remove groups with no observations
+average <- average[average$n > 0, ]
+
+##### PLOT FINAL #####
+
+prot_th <-
+  ggplot(
+    average,
+    aes(
+      x = Especie,
+      y = Average,
+      fill = Tecido
+    )
+  ) +
+  geom_col(
+    position = position_dodge(width = 0.9)
+  ) +
+  geom_errorbar(
+    aes(
+      ymin = Average - SE,
+      ymax = Average + SE
+    ),
+    width = 0.2,
+    position = position_dodge(width = 0.9)
+  ) +
+  geom_text(
+    aes(
+      y = 5,
+      label = paste0("", n)
+    ),
+    size = 3,
+    position = position_dodge(width = 0.9)
+  ) +
+  facet_wrap(
+    ~Site,
+    labeller = labeller(
+      Site = c(
+        "B-P05" = "Site 1",
+        "B-P06" = "Site 2",
+        "B-P07" = "Site 3",
+        "B-P08" = "Site 4",
+        "B-P09" = "Site 5",
+        "B-P10" = "Site 6"
+      )
+    )
+  ) +
+  scale_fill_grey(
+    start = 0.4,
+    end = 0.8,
+    labels = c(
+      "TH_branquia_p" = "Gill",
+      "TH_musculo_p" = "Muscle"
+    )
+  ) +
+  labs(
+    x = "Species",
+    y = "Moisture concentration (%)",
+    fill = "Tissue"
+  ) +
+  theme_grey() +
+  theme(
+    axis.text.x = element_text(
+      angle = 45,
+      hjust = 1
+    ),
+    strip.background = element_rect(
+      fill = "grey85",
+      colour = "grey85"
+    )
+  )
+prot_th
+ggsave(prot_th, dpi = 300, filename = "fig-prot_th.png", bg = "white")
 ```
 
-The ANOVA test demonstrated similarity between data from sites inside REBIO Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10 (@fig-boxmmcsites).
-
-```{r}
-#| label: boxplot_ANOVA_moisture_content
-#| eval: false
-#| message: false
-#| warning: false
-#| results: false
-#| purl: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Moisture content by site"
-
-anova(lm(formula=tcc$GMC~tcc$Site)) #0,0000004971 = diferença
-(tkTHB=HSD.test(y=lm(formula=tcc$GMC~tcc$Site),trt="tcc$Site",group=T)) 
-boxplot(tcc$GMC~tcc$Site) #a,a,ab,a,bc,c ##P8 próximo aos de dentro, p9 e p10 mais isolados
-
-par(mfrow=c(1,1),mar=c(2,5,1,1),lwd=0.75)
-boxplot(tcc$GMC~tcc$Site,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkgreen","darkgreen","darkred","darkred","darkred"), ylim=c(70,103), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomesP=c("P5","P6","P7","P8","P9","P10")
-posP=c(1,2,3,4,5,6)
-axis(side = 1,at = posP, labels = nomesP, las=1,font=9)
-mtext(text="Gill Moisture", side=2,line=3.5,cex=0.9,font=7)
-mtext(text="Content (%)", side=2,line=2.7,cex=0.9,font=7)
-tapply(tcc$GMC,tcc$Site,max, na.rm=T)
-text(x=c(1,2,3,4,5,6),y=c(91.3,94.3,98.1,89.1,97.1,97.9)+3,labels=c("a","a","ab","a","bc","c"),cex=1)
-```
+The ANOVA test demonstrated similarity between data from sites inside REBIO Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10.
 
 The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity).
 
 **MXR phenotype activity.** The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in (@fig-fluorescence)
 
-```{r}
-#| label: boxplot_MXR
+```{r, MXR}
 #| eval: false
 #| message: false
 #| warning: false
@@ -1861,25 +1888,102 @@ The overall statistical analysis performed for moisture content reinforces this 
 #| purl: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Code: MXR phenotype activity (inside x outside)"
+#| code-summary: "Code: Rhodamine B concentration"
 
-#MXR
-hist(tcc$MXR, probability = T)
-lines(x=density(x=tcc$MXR, na.rm=T, adjust=2)) #não parece
-shapiro.test(tcc$MXR) #0,0000038 = não normal
-bartlett.test(tcc$MXR~tcc$Local) #0,000264 = não homo ##kruskal
-kruskal.test(tcc$MXR~tcc$Local) #0,0000000000005607 = diferem
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
 
-par(mfrow=c(1,1),mar=c(3,6,1,1),lwd=1)
-boxplot(tcc$MXR~tcc$Local)
-boxplot(tcc$MXR~tcc$Local,axes=F, varwidth=T, xlab="",ylab="", border="black", col=c("darkgreen","darkred"), ylim=c(6400,151000), outline = T, main="", horizontal = F)
-box(bty="o", lwd=2)
-axis(side=2,las=1,font=2)
-nomes=c("INSIDE","OUTSIDE")
-pos=c(1,2)
-axis(side = 1,at = pos, labels = nomes, las=1,font=9)
-mtext(text="Fluorescence/Mass of Tissue (rfu/mg)", side=2,line=4.5,cex=1,font=7)
-legend("topleft", legend=c("Kruskal-Wallis test demonstrated", "statistical difference", "(p-value=0,0000000000005607)"), text.font = 2, bty="n", cex=0.6, text.col="gray25")
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+table(data$Especie, is.na(data$Rodamina_rfu_mg))
+
+##### GRAFICO POR ANÁLISE #####
+
+#N #data <- data %>% mutate(N = 1)
+#RPC
+#Rodamina_rfu_mg
+#TH_musculo_p
+#TH_branquias_p
+#Proteinas_Totais_mg
+
+# Convert the column to numeric, replace commas with dots for proper conversion
+data$Rodamina_rfu_mg <- as.numeric(gsub(",", ".", data$Rodamina_rfu_mg))
+VAR <- deparse(substitute(data$Rodamina_rfu_mg))
+var <- "Rodamina_rfu_mg" %>% rlang::sym()
+str(data)
+
+# Calculate the average for each combination of species, Amostra_tipo, and Site
+average <- summarise(
+  group_by(data, Site, Especie, Amostra_tipo),
+  Average = mean(!!var, na.rm = TRUE),
+  n = sum(!is.na(!!var)),
+  SE = ifelse(
+    sum(!is.na(!!var)) > 1,
+    sd(!!var, na.rm = TRUE) / sqrt(sum(!is.na(!!var))),
+    0
+  ),
+  .groups = "drop"
+)
+average <- average[
+  average$Amostra_tipo == "rd" & !is.nan(average$Average),
+]
+# Plot the average
+ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  facet_wrap(~ Site) +
+  labs(title = paste("Average POR ANÁLISE para", VAR, "per Species and Amostra_tipo for Each Site"),
+       x = "Species",
+       y = paste("Average", VAR)) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+##### PLOT FINAL #####
+
+rodam <- 
+  ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
+  geom_bar(stat = "identity", position = position_dodge(), fill = "grey70") +
+    geom_errorbar(
+    aes(
+      ymin = Average - SE,
+      ymax = Average + SE
+    ),
+    width = 0.2
+  ) +
+  geom_text(
+    aes(
+      y = 5000,
+      label = paste0("n=", n)
+    ),
+    size = 3
+  ) +
+  facet_wrap(
+  ~ Site,
+  labeller = labeller(
+    Site = c(
+      "B-P05" = "Site 1",
+      "B-P06" = "Site 2",
+      "B-P07" = "Site 3",
+      "B-P08" = "Site 4",
+      "B-P09" = "Site 5",
+      "B-P10" = "Site 6"
+    )
+  )
+) +
+  scale_fill_grey(start = 0.2, end = 0.8) +
+  labs(title = "",
+       x = "Species",
+       y = "Rhodamine B concentration (RFU/mg tissue)",
+       fill = "Species") +
+  theme_grey() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
+rodam
+ggsave(rodam, dpi = 300, filename = "fig-rodam.png", bg = "white")
 ```
 
 was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve (@fig-boxmxr).
@@ -1921,6 +2025,11 @@ text(x=c(1,2,3,4,5,6),y=c(68400,31371,44811,88000,150658,121050)+10000,labels=c(
 The hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (REBIO Guaribas), one of the 22 CU's inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state (@fig-mapa). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province -- 33,45% of the CU's), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence REBIO Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU [@arruda2013; @mma2026].
 
 The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of REBIO Guaribas made by @gouveia2017, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments [@miranda2012] - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations [@gouveia2017]. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco.
+
+**Biomarkers**. The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the [@sabae2015] study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver.
+The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020.
+
+
 
 All parameters were effective to point out statistical differences between data from inside the REBIO Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the @fig-bar, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
 
@@ -2022,21 +2131,26 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 <summary>Fig.: Total protein (mg) variance</summary>
 
-![Total protein dosage (mg) variance of fish for sampling sites.](fig-prot_tots.png){#fig-prot_tots}
+![Total plasmatic proteins (mg) variance by sampling site and fish species.](fig-prot_tots.png){#fig-prot_tots}
 
 </details>
 
-![Total protein (mg) variance of data inside and outside REBIO Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
+<details>
 
-![Boxplot with total protein data of collected fish from the sampling sites inside (green) and outside REBIO Guaribas (red), including its respective grouping by similarity above each box.](imagens/Figura%204.png){#fig-boxtpsites}
+<summary>Fig.: Moisture content (%) of tissues</summary>
 
-![Moisture content (%) of tissues from sampling sites inside and outside the REBIO Guaribas, with the respective p-value between each locality.](imagens/Figura%205.png){#fig-mcsites}
+![Gill and muscle moisture content (%) by sampling site and fish species.](fig-prot_th.png){#fig-prot_th}
 
-![Boxplot with gill and muscle moisture content data of fish collected from sites inside (green) and outside REBIO Guaribas (red), with its respective grouping by similarity above each box.](imagens/Figura%206.png){#fig-boxmmcsites}
+</details>
 
-![Average fluorescence data from sampling sites inside and outside the REBIO Guaribas, expressed by relative fluorescence units/milligrammes of tissue (gill).](imagens/Figura%207.png){#fig-fluorescence}
+<details>
 
-![Boxplot with the MXR phenotype activity data of fish collected from sites inside (green) and outside the REBIO Guaribas (red), with its respective grouping by similarity above each box.](imagens/Figura%208.png){#fig-boxmxr}
+<summary>Fig.: Moisture content (%) of tissues</summary>
+
+![Average fluorescence expressed by relative fluorescence units/milligrammes of gill tissue of fish by sampling site.](fig-rodam.png){#fig-rodam}
+
+</details>
+
 
 ![Proportion between average values for each physiological marker analysed, comparing themselves in order to its relationship with the REBIO Guaribas, highlighting the disparity among data of total protein ("TP") and the MXR phenotype activity ("MXR"), and higher proximity among data of muscle ("MMC") and gill moisture content ("GMC").](imagens/Figure%209.png){#fig-bar}
 

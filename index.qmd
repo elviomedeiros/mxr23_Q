@@ -1375,9 +1375,7 @@ fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
 dev.off()
 ```
 
-**Fish community.** A total of 6 species were collected with their densities accoriding to their natural abundances. 
-
-Among the families recorded, Characidae was the richest with 5 species, Astyanax bimaculatus, Astyanax fasciatus, Hemigrammus marginatus, Hemigrammus rodwayi, and Hemigrammus unilineatus, while Crenuchidae was represented by only 1 species, Characidium bimaculatum, with a single specimen collected. The most abundant species were Hemigrammus unilineatus (45.2% of the individuals colleted). Other abundant species were Hemigrammus rodwayi (23.7%) and Hemigrammus marginatus (18.2%), establishing Hemigrammus as the dominant genus in the study area. Regarding their spatial distribution, only 1 species (H. unilineatus) was present at the sites located inside the Reserva Biológica Guaribas, whereas all 6 species were recorded in the surrounding areas. Out of the total collected fish, 118 specimens were submitted to the rhodamine B accumulation assay (MXR), 78 were used for total plasmatic protein dosage and moisture content quantification, and 226 individuals died prior to the physiological procedures @tbl-abund.
+**Fish community.** A total of six fish species were collected under a standardized sampling effort, so species representation reflected their natural abundances in the study area. Among the families recorded, Characidae was the richest, comprising five species (*Astyanax bimaculatus*, *Astyanax fasciatus*, *Hemigrammus marginatus*, *Hemigrammus rodwayi*, and *Hemigrammus unilineatus*), whereas Crenuchidae was represented by a single species, *Characidium bimaculatum*, from which only one specimen was collected. *Hemigrammus unilineatus* was the most abundant species, representing 66.3% of all individuals analyzed, followed by *Astyanax fasciatus* (14.8%) and *Hemigrammus rodwayi* (11.2%). *Astyanax bimaculatus* accounted for 4.6% of the specimens, whereas *Hemigrammus marginatus* and *Characidium bimaculatum* represented only 2.5% and 0.5%, respectively. Since species representation in the physiological analyses reflected their natural abundances, the number of individuals available was divided for each subsequent biomarker analysis, in order to reflect the natural composition of the fish assemblage. Of the total fish collected, 118 specimens were submitted to the rhodamine B accumulation assay (MXR) and 78 were used for total plasma protein and moisture content analyses (@fig-counts). Given its low count, *Characidium bimaculatum* was removed from all biomarker analyses.
 
 ```{r fish_comm}
 #| eval: false
@@ -1386,7 +1384,7 @@ Among the families recorded, Characidae was the richest with 5 species, Astyanax
 #| results: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "non-used code" 
+#| code-summary: "Proportion of physiological markers" 
 
 dev.off() #apaga os graficos, se houver algum
 rm(list=ls(all=TRUE)) #limpa a memória
@@ -1408,6 +1406,7 @@ mxr23_part <- mxr23[!row.names(mxr23) %in% c("4-9-85", #NA
 mxr23_part[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
                              "TH_branquia_p", "Proteinas_Totais_mg"
                              )] <- NA
+mxr23_part <- mxr23_part[mxr23_part$Especie != "Characidium bimaculatum", ]
 
 write.table(mxr23_part, "mxr23_part.csv",
             sep = ";", dec = ".", #"\t",
@@ -1499,16 +1498,41 @@ data <- filtered_Amostra_tipo
 species_count <- data %>%
   group_by(Site, Especie, Amostra_tipo) %>%
   summarise(Count = n(), .groups = 'drop')
+
 # Plot the counts
 library(ggplot2)
-ggplot(species_count, aes(x = Amostra_tipo, y = Count, fill = Especie)) +
+
+counts <- ggplot(species_count, aes(x = Amostra_tipo, y = Count, fill = Especie)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  facet_wrap(~ Site) +
-  labs(title = "Count of Each Species per Amostra_tipo for Each Site",
-       x = "Amostra Tipo",
-       y = "Count") +
+  facet_wrap(
+  ~ Site,
+  labeller = labeller(
+    Site = c(
+      "B-P05" = "Site 1",
+      "B-P06" = "Site 2",
+      "B-P07" = "Site 3",
+      "B-P08" = "Site 4",
+      "B-P09" = "Site 5",
+      "B-P10" = "Site 6"
+    )
+  )
+) +
+   scale_x_discrete(
+    labels = c(
+      "rd" = "MXR",
+      "th" = "Moisture"
+    )
+  ) +
+  scale_fill_grey(start = 0.2, end = 0.8) +
+  labs(title = "",
+       x = "Sample use",
+       y = "Count",
+       fill = "Species") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+counts
+ggsave(counts, dpi = 300, filename = "fig-counts.png", bg = "white")
+
 
 # Count occurrences of each species by Amostra_tipo and Site
 species_count <- data %>%
@@ -1548,7 +1572,6 @@ data <- read.csv("mxr23_part.csv",
                    na.strings = NA)
 
 table(data$Especie, is.na(data$Proteinas_Totais_mg))
-data <- data[data$Especie != "Characidium bimaculatum", ]
 
 ##### GRAFICO POR ANÁLISE #####
 
@@ -1902,11 +1925,31 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 ## Figures {.unnumbered}
 
-![Location of sampling sites within (P1 - 06°43'06,58555'' S, 35°10'54,70041''W -, P2 - 06°42'38,71927''S, 35°10'38,68013''W - and P3 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding REBIO Guaribas (P4 - 06°41'46,29119''S, 35°10'36,09933''W -, P5 - 06°40'56,47593''S, 35°10'27,84963''W - and P6 - 06°40'18,97010''S, 35°10'34,68148''W). In total, 92 fish were collected inside the Conservation Unity and 97 outside it.](imagens/Mapa%20Atualizado.png){#fig-mapa}
+<details>
 
+<summary>Fig.: Location of sampling sites</summary>
+![Location of sampling sites within (Site 1 - 06°43'06,58555'' S, 35°10'54,70041''W -, Site 2 - 06°42'38,71927''S, 35°10'38,68013''W - and Site 3 - 06°43'06,58555''S, 35°10'54,70041''W) and surrounding the REBIO Guaribas (Site 4 - 06°41'46,29119''S, 35°10'36,09933''W -, Site 5 - 06°40'56,47593''S, 35°10'27,84963''W - and Site 6 - 06°40'18,97010''S, 35°10'34,68148''W).](imagens/mapa_final.png){#fig-mapa}
+</details>
+
+<details>
+<summary>Fig.: Images of the main four types of sites</summary>
 ![Images of the main four types of sites found in the Reserva Biológica Guaribas and its surrounding areas (Mamanguape, PB). Type I or local reference site, well preserved and within the conservation unit. Type II site, preserved and outside the conservation unit. Type III site, disturbed but withing the conservation unit. Type IV site, disturbed and outside the conservation unit.](imagens/refsites.png){#fig-refsites}
 
+</details>
+
+<details>
+<summary>Fig.: Principal Component Analysis of the environmental variables</summary>
 ![Principal Component Analysis of the environmental variables using the fviz function.](fig-hab_PCA_fviz.png){#fig-hab_PCA_fviz}
+</details>
+
+<details>
+
+<summary>Fig.: Counts of number of individuals per species and biomarker use</summary>
+
+![Counts of number of individuals per species and biomarker use (MXR = MXR phenotype activity and Moisture = Plasmatic protein dosage and moisture content) for each study site.](fig-counts.png){#fig-counts}
+
+</details>
+
 
 ![Total protein (mg) variance of data inside and outside REBIO Guaribas.](imagens/Figura%203.png){#fig-boxtpinandout}
 
@@ -1924,74 +1967,17 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 ## Tables {.unnumbered}
 
+<details>
+
+<summary>Fig.: Environmental data table</summary>
 ```{r}
 #| echo: false
 #| label: tbl-hab_gttable
 #| tbl-cap: "Environment data GT table."
 readRDS("gt-hab_gttable_xlsx.rds")
 ```
+</details>
 
-```{r}
-#| label: tbl-abund
-#| tbl-cap: "Table abundance."
-#| eval: false
-#| message: false
-#| warning: false
-#| results: false
-#| purl: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Proportion of mean physiological markers"
-
-library(dplyr)
-library(tidyr)
-library(gt)
-library(openxlsx)
-
-mxr23 <- read.xlsx("C:/Users/ellen/Downloads/Manuscritos/mxr23_Q/data/rebio23-peixes_5-10.xlsx",
-                   rowNames = T,
-                   colNames = T,
-                   sheet = "peixes-fisio")
-
-data <- mxr23
-data <- data[!row.names(data) %in% c("4-9-85", "1-10-7"), ]
-
-data[c("1-10-4","1-10-5"), c("Rodamina_rfu_mg", "TH_musculo_p",
-                             "TH_branquia_p", "Proteinas_Totais_mg")] <- NA
-
-resumo2 <- data %>%
-  group_by(Site = Site, Especie = Especie, Amostra_tipo = Amostra_tipo) %>%
-  summarise(Count = n(), .groups = "drop") %>%
-  arrange(Site, Especie, Amostra_tipo)
-
-resumo2_wide <- resumo2 %>%
-  pivot_wider(
-    names_from = c(Site, Amostra_tipo), 
-    values_from = Count, 
-    values_fill = list(Count = 0)
-  )
-
-resumo2_wide %>%
-  gt() %>%
-  cols_label(
-    Especie = "Species"
-  ) %>%
-  fmt_number(
-    columns = everything(),
-    decimals = 0
-  ) %>%
-  tab_style(
-    style = cell_text(style = "italic"),
-    locations = cells_body(columns = Especie)
-  ) %>%
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-  ) %>%
-  opt_horizontal_padding(scale = 2) %>%
-  opt_table_lines("default")
-
-```
 
 \pagebreak
 \newpage

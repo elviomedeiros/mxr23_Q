@@ -1377,14 +1377,14 @@ dev.off()
 
 **Fish community.** A total of six fish species were collected under a standardized sampling effort, so species representation reflected their natural abundances in the study area. Among the families recorded, Characidae was the richest, comprising five species (*Astyanax bimaculatus*, *Astyanax fasciatus*, *Hemigrammus marginatus*, *Hemigrammus rodwayi*, and *Hemigrammus unilineatus*), whereas Crenuchidae was represented by a single species, *Characidium bimaculatum*, from which only one specimen was collected. *Hemigrammus unilineatus* was the most abundant species, representing 66.3% of all individuals analyzed, followed by *Astyanax fasciatus* (14.8%) and *Hemigrammus rodwayi* (11.2%). *Astyanax bimaculatus* accounted for 4.6% of the specimens, whereas *Hemigrammus marginatus* and *Characidium bimaculatum* represented only 2.5% and 0.5%, respectively. Since species representation in the physiological analyses reflected their natural abundances, the number of individuals available was divided for each subsequent biomarker analysis, in order to reflect the natural composition of the fish assemblage. Of the total fish collected, 118 specimens were submitted to the rhodamine B accumulation assay (MXR) and 78 were used for total plasma protein and moisture content analyses (@fig-counts). Given its low count, *Characidium bimaculatum* was removed from all biomarker analyses.
 
-```{r fish_comm}
+```{r fish_counts}
 #| eval: false
 #| warning: false
 #| message: false
 #| results: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Proportion of physiological markers" 
+#| code-summary: "Counts of fish" 
 
 dev.off() #apaga os graficos, se houver algum
 rm(list=ls(all=TRUE)) #limpa a memória
@@ -1549,7 +1549,7 @@ ggplot(species_count, aes(x = Especie, y = Count, fill = Amostra_tipo)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-**Plasmatic protein dosage.** The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence. The total number of plasmatic protein dosages (n=44) was smaller than the total number of collected fish for this part of the analysis (n=78) because of the difficulty on collecting blood from smaller specimens, in addition to the need to collect a minimum amount of plasma required by the Bradford method. After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
+**Plasmatic protein dosage.** The number of plasmatic protein dosages (n=44) was smaller than the total number of fish collected for this part of the analysis (n=78), because of the difficulty on collecting blood from smaller specimens and the need to collect a minimum amount of plasma (@fig-prot_tot). The average plasmatic protein concentration, parameter that is positively correlated to environmental stress, was of 32,2 mg in the sampling sites within the Reserva Biológica Guaribas (n = 18 plasma samples) and 80,1 mg in the outside sites (n=26), revealing an almost 150% higher concentration in the sites with greater human influence.  After checking the non-normality of variance of the total protein data, a non parametric Kruskal-Wallis test confirmed the existence of statistically significant difference (p-value\<0,005) between the data collected from fish inside and outside the Conservative Unity (@fig-boxtpinandout).
 
 ```{r, proteinas_totais}
 #| eval: false
@@ -1589,10 +1589,21 @@ var <- "Proteinas_Totais_mg" %>% rlang::sym()
 str(data)
 
 # Calculate the average for each combination of species, Amostra_tipo, and Site
-average <- data %>%
-  group_by(Site, Especie, Amostra_tipo) %>%
-  summarise(Average = mean(!!var, na.rm = TRUE), .groups = 'drop')
-# Plot the average RPC
+average <- summarise(
+  group_by(data, Site, Especie, Amostra_tipo),
+  Average = mean(!!var, na.rm = TRUE),
+  n = sum(!is.na(!!var)),
+  SE = ifelse(
+    sum(!is.na(!!var)) > 1,
+    sd(!!var, na.rm = TRUE) / sqrt(sum(!is.na(!!var))),
+    0
+  ),
+  .groups = "drop"
+)
+average <- average[
+  average$Amostra_tipo == "th" & !is.nan(average$Average),
+]
+# Plot the average
 ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
   geom_bar(stat = "identity", position = position_dodge()) +
   facet_wrap(~ Site) +
@@ -1602,7 +1613,61 @@ ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-# GRÁFICO POR ESPÉCIE ########################################################
+##### PLOT FINAL #####
+
+prot_tots <- 
+  ggplot(average, aes(x = Especie, y = Average, fill = Amostra_tipo)) +
+  geom_bar(stat = "identity", position = position_dodge(), fill = "grey70") +
+    geom_errorbar(
+    aes(
+      ymin = Average - SE,
+      ymax = Average + SE
+    ),
+    width = 0.2
+  ) +
+  geom_text(
+    aes(
+      y = 10,
+      label = paste0("n=", n)
+    ),
+    size = 3
+  ) +
+  facet_wrap(
+  ~ Site,
+  labeller = labeller(
+    Site = c(
+      "B-P05" = "Site 1",
+      "B-P06" = "Site 2",
+      "B-P07" = "Site 3",
+      "B-P08" = "Site 4",
+      "B-P09" = "Site 5",
+      "B-P10" = "Site 6"
+    )
+  )
+) +
+  scale_fill_grey(start = 0.2, end = 0.8) +
+  labs(title = "",
+       x = "Species",
+       y = "Plasmatic protein dosage (mg)",
+       fill = "Species") +
+  theme_grey() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
+prot_tots
+ggsave(prot_tots, dpi = 300, filename = "fig-prot_tots.png", bg = "white")
+```
+
+```{r, proteinas_totais_spp}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Total Plasmatic Proteins (mg) per species"
+
+##### GRÁFICO POR ESPÉCIE #####
 
 # Filter out the species Astyanax bimaculatus and Astyanax fasciatus
 
@@ -1629,7 +1694,7 @@ ggplot(average, aes(x = Amostra_tipo, y = Average, fill = Especie)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-# CORRELAÇÕES ##########################################################
+##### CORRELAÇÕES #####
 
 data <- filtered_data
 
@@ -1668,10 +1733,6 @@ plot((m_part$"Overh_veg" - mean(m_part$"Overh_veg")) / sd(m_part$"Overh_veg"))
 with(cor, plot((RPC - mean(Peso_g)) / sd(Peso_g)))
 with(cor, plot((RPC - mean(RPC)) / sd(RPC),
                   (Peso_g - mean(Peso_g)) / sd(Peso_g)))
-
-# FIM #########################################################################
-
-
 ```
 
 The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites (@fig-boxtpsites).
@@ -1954,6 +2015,14 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 <summary>Fig.: Counts of number of individuals per species and biomarker use</summary>
 
 ![Counts of number of individuals per species and biomarker use (MXR = MXR phenotype activity and Moisture = Plasmatic protein dosage and moisture content) for each study site.](fig-counts.png){#fig-counts}
+
+</details>
+
+<details>
+
+<summary>Fig.: Total protein (mg) variance</summary>
+
+![Total protein dosage (mg) variance of fish for sampling sites.](fig-prot_tots.png){#fig-prot_tots}
 
 </details>
 

@@ -26,3 +26,10 @@ Rodamina_rfu_mg
 3 B-P07  77  1.000          No
 4 B-P08 252 <0.001         Yes
 5 B-P09 316 <0.001         Yes
+Rodamina_rfu_mg - two.sided
+   Site   W      p Significant
+1 B-P10 380  0.002         Yes
+2 B-P06  42 <0.001         Yes
+3 B-P07  77  0.001         Yes
+4 B-P08 252 <0.001         Yes
+5 B-P09 316  0.001         Yes

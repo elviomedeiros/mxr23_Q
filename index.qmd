@@ -1739,7 +1739,7 @@ with(cor, plot((RPC - mean(RPC)) / sd(RPC),
                   (Peso_g - mean(Peso_g)) / sd(Peso_g)))
 ```
 
-Plasma total protein concentrations differed between sampling sites when compared with the reference site (Site 1). Mean protein concentrations were significantly higher at the sites 4, 5 and 6 (91.25 ± 5.68, 74.22 ± 3.31 and 74.79 ± 6.55 mg, respectively) than the reference site (33.53 ± 0.32 mg; one-sided Welch's t-test, p \< 0.003). In contrast, no significant increase was observed at Sites 2 and 3 (29.41 ± 1.59 and 33.75 ± 0.80 mg, respectively; p \> 0.4). The highest mean protein concentration was recorded at Site 4, representing an approximately 2.7-fold increase relative to the reference site.
+Plasma total protein concentrations differed between sampling sites when compared with the reference site (Site 1). Mean protein concentrations were significantly higher at the sites 4, 5 and 6 (91.25 ± 5.68, 74.22 ± 3.31 and 74.79 ± 6.55 mg, respectively) than the reference site (33.53 ± 0.32 mg; Wilcoxon rank-sum test, p \< 0.02). In contrast, no significant increase was observed at Sites 2 and 3 (29.41 ± 1.59 and 33.75 ± 0.80 mg, respectively; p \> 0.4). The highest mean protein concentration was recorded at Site 4, representing an approximately 2.7-fold increase relative to the reference site.
 
 ```{r, proteinas_totais_spp_t-tests}
 #| eval: false
@@ -1861,7 +1861,9 @@ results_w
 #sink()
 ```
 
-**Moisture content.** Gill and muscle tissues moisture content showed similar results, with gill moisture concentrations being significantly higher than those observed at the reference site (Site 1; 82.82 ± 1.75%) at Sites 6 and 5 (mean values of 93.89 ± 0.98% and 90.13 ± 1.19%, one-sided Welch's t-test; p \< 0.001 and p = 0.002, respectively). No significant increases were detected at Sites 2, 3, or 4 (84.35 ± 1.60%, 85.63 ± 1.94%, and 82.84 ± 0.75%, respectively; p \> 0.05 in all cases). The muscle moisture concentrations at the reference site averaged 80.31 ± 1.48%. Significantly higher values were observed at Sites 6 and 5, where mean moisture concentrations reached 86.02 ± 2.49% and 84.29 ± 0.88%, respectively (one-sided Welch's t-test; p = 0.034 and p = 0.018, respectively). In contrast, moisture concentrations at Sites 2, 3, and 4 (80.11 ± 0.66%, 80.58 ± 0.94%, and 82.38 ± 0.62%, respectively) did not differ significantly from those at the reference site (p \> 0.05) (@fig-prot_th).
+**Moisture content.** Gill and muscle tissues moisture content showed similar results, with gill moisture concentrations being significantly higher than those observed at the reference site (Site 1; 82.82 ± 1.75%) at Sites 5 and 6 (mean values of 90.13 ± 1.19% and 93.89 ± 0.98%, Wilcoxon rank-sum test; p \< 0.004). No significant increases were detected at Sites 2, 3, or 4 (84.35 ± 1.60%, 85.63 ± 1.94%, and 82.84 ± 0.75%, respectively; p \> 0.1 in all cases).
+
+The muscle moisture concentrations at the reference site averaged 80.31 ± 1.48%. Significantly higher values were observed at Sites 4, 5 and 6, where mean moisture concentrations reached 82.38 ± 0.62% and 84.29 ± 0.88%, 86.02 ± 2.49%, respectively (Wilcoxon rank-sum test; p <= 0.04). In contrast, moisture concentrations at Sites 2 and 3 (80.11 ± 0.66% and 80.58 ± 0.94%) did not differ significantly from those at the reference site (p \> 0.39) (@fig-prot_th).
 
 ```{r, moisture_content}
 #| eval: false
@@ -2120,7 +2122,7 @@ results_w
 #sink()
 ```
 
-**MXR phenotype activity.** Rhodamine B concentrations differed among sampling sites relative to the reference site (Site 1), which exhibited a mean concentration of 38,396.35 ± 4,749.86 RFU mg⁻¹. Significantly higher concentrations were observed at Sites 4, 5 and 6, with mean values of 73,113.69 ± 5,311.65, 67,116.05 ± 7,023.54 RFU mg⁻¹ and 62,929.41 ± 6,196.21, respectively (one-sided Welch's t-test; p \< 0.003). In contrast, Rhodamine B concentrations at Sites 2 and 3 (16,978.11 ± 2,139.98 and 20,973.12 ± 2,373.55 RFU mg⁻¹, respectively) were not significantly greater than those observed at the reference site (p \> 0.05). The highest mean concentration was recorded at Site 4, corresponding to an approximately 1.9-fold increase relative to the reference site.
+**MXR phenotype activity.** Rhodamine B concentrations differed among sampling sites relative to the reference site (Site 1), which exhibited a mean concentration of 38,396.35 ± 4,749.86 RFU mg⁻¹. Significantly higher concentrations were observed at Sites 4, 5 and 6, with mean values of 73,113.69 ± 5,311.65, 67,116.05 ± 7,023.54 and 62,929.41 ± 6,196.21 RFU mg⁻¹, respectively (Wilcoxon rank-sum test; p \< 0.01). In contrast, Rhodamine B concentrations at Sites 2 and 3 (16,978.11 ± 2,139.98 and 20,973.12 ± 2,373.55 RFU mg⁻¹, respectively) were not significantly greater than those observed at the reference site (p \> 0.10). The highest mean concentration was recorded at Site 4, corresponding to an approximately 1.9-fold increase relative to the reference site.
 
 ```{r, MXR}
 #| eval: false

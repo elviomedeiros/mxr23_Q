@@ -340,7 +340,7 @@ m_hab_trns <- read.table("m_hab_trns.csv",
                   na.strings = NA)
 ```
 
-All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. Comparisons were performed using single-sided one-sample t-tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean values observed at the reference site [@zar2010]. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
+All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. Comparisons were performed using single-sided one-sample t-tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010]. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
 
 # Results
 
@@ -1379,6 +1379,8 @@ dev.off()
 
 **Fish community.** A total of six fish species were collected under a standardized sampling effort, so species representation reflected their natural abundances in the study area. Among the families recorded, Characidae was the richest, comprising five species (*Astyanax bimaculatus*, *Astyanax fasciatus*, *Hemigrammus marginatus*, *Hemigrammus rodwayi*, and *Hemigrammus unilineatus*), whereas Crenuchidae was represented by a single species, *Characidium bimaculatum*, from which only one specimen was collected. *Hemigrammus unilineatus* was the most abundant species, representing 66.3% of all individuals analyzed, followed by *Astyanax fasciatus* (14.8%) and *Hemigrammus rodwayi* (11.2%). *Astyanax bimaculatus* accounted for 4.6% of the specimens, whereas *Hemigrammus marginatus* and *Characidium bimaculatum* represented only 2.5% and 0.5%, respectively. Since species representation in the physiological analyses reflected their natural abundances, the number of individuals available was divided for each subsequent biomarker analysis, in order to reflect the natural composition of the fish assemblage. Of the total fish collected, 118 specimens were submitted to the rhodamine B accumulation assay and 78 were used for total plasma protein and moisture content analyses (@fig-counts). Given its low count, *Characidium bimaculatum* was removed from all biomarker analyses.
 
+**Nutrient concentration.** The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).
+
 ```{r fish_counts}
 #| eval: false
 #| warning: false
@@ -1739,6 +1741,77 @@ with(cor, plot((RPC - mean(RPC)) / sd(RPC),
 
 The subsequent ANOVA test confirmed the uniformity of values from the sites inside the reserve (all grouped as "a"), differently from the outside sites.
 
+```{r, proteinas_totais_spp_t-tests}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Total Plasmatic Proteins t-tests: one-sided two-sample t-test"
+colnames(data)
+table(data$Especie, is.na(data$Proteinas_Totais_mg))
+var <- "Proteinas_Totais_mg"
+
+# Reference site
+ref <- data[[var]][
+  data$Site == "B-P05" &
+  !is.na(data[[var]])
+]
+
+# Sites to compare
+sites <- setdiff(unique(data$Site), "B-P05")
+
+# Run tests
+results <- data.frame()
+
+for(site in sites){
+
+  test_data <- data[[var]][
+  data$Site == site &
+  !is.na(data[[var]])
+]
+
+  tt <- t.test(
+    test_data,
+    ref,
+    alternative = "greater"
+  )
+
+  results <- rbind(
+  results,
+  data.frame(
+    Site = site,
+    Mean_Site = mean(test_data),
+    SD_Site = sd(test_data),
+    SE_Site = sd(test_data) / sqrt(length(test_data)),
+    Mean_Ref = mean(ref),
+    SD_Ref = sd(ref),
+    SE_Ref = sd(ref) / sqrt(length(ref)),
+    N_Site = length(test_data),
+    N_Ref = length(ref),
+    t = unname(tt$statistic),
+    df = unname(tt$parameter),
+    p = tt$p.value
+  )
+)
+}
+
+results
+
+results$Significant <- ifelse(results$p < 0.05, "Yes", "No")
+
+results$p <- ifelse(
+  results$p < 0.001,
+  "<0.001",
+  sprintf("%.3f", results$p)
+)
+#sink("t-tests_prot_tots.txt", append = TRUE)
+results
+#sink()
+```
+
 **Moisture content.** The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. However, through T test (gills, which data had normal variation) and Kruskal-Wallis test (muscle, with non-normal variation data), it was detected statistical difference for both tissues between fish from the sampling sites inside and outside the Guaribas (@fig-prot_th).
 
 ```{r, moisture_content}
@@ -1878,6 +1951,79 @@ ggsave(prot_th, dpi = 300, filename = "fig-prot_th.png", bg = "white")
 
 The ANOVA test demonstrated similarity between data from sites inside REBIO Guaribas (P5, P6 and P7) and P8, and a lesser similarity with P9, that was also close to P10.
 
+```{r, moisture_content_t-tests}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Moisture content (gills and muscle) t-tests: one-sided two-sample t-test"
+
+table(data$Especie, is.na(data$TH_branquia_p))
+table(data$Especie, is.na(data$TH_musculo_p))
+
+var <- "TH_musculo_p"
+
+# Reference site
+ref <- data[[var]][
+  data$Site == "B-P05" &
+  !is.na(data[[var]])
+]
+
+# Sites to compare
+sites <- setdiff(unique(data$Site), "B-P05")
+
+# Run tests
+results <- data.frame()
+
+for(site in sites){
+
+  test_data <- data[[var]][
+  data$Site == site &
+  !is.na(data[[var]])
+]
+
+  tt <- t.test(
+    test_data,
+    ref,
+    alternative = "greater"
+  )
+
+  results <- rbind(
+  results,
+  data.frame(
+    Site = site,
+    Mean_Site = mean(test_data),
+    SD_Site = sd(test_data),
+    SE_Site = sd(test_data) / sqrt(length(test_data)),
+    Mean_Ref = mean(ref),
+    SD_Ref = sd(ref),
+    SE_Ref = sd(ref) / sqrt(length(ref)),
+    N_Site = length(test_data),
+    N_Ref = length(ref),
+    t = unname(tt$statistic),
+    df = unname(tt$parameter),
+    p = tt$p.value
+  )
+)
+}
+
+results
+
+results$Significant <- ifelse(results$p < 0.05, "Yes", "No")
+
+results$p <- ifelse(
+  results$p < 0.001,
+  "<0.001",
+  sprintf("%.3f", results$p)
+)
+#sink("t-tests_prot_th.txt", append = TRUE)
+results
+#sink()
+```
+
 The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity).
 
 **MXR phenotype activity.** The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in
@@ -1990,7 +2136,76 @@ ggsave(rodam, dpi = 300, filename = "fig-rodam.png", bg = "white")
 
 was also the most conclusive when analysed by ANOVA test, being the only physiological parameter that shows total uniformity for both relationship with the reserve.
 
-**Abiotic data.** The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).
+```{r, MXR_t-tests}
+#| eval: false
+#| message: false
+#| warning: false
+#| results: false
+#| purl: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Rhodamine B concentration t-tests: one-sided two-sample t-test"
+
+table(data$Especie, is.na(data$Rodamina_rfu_mg))
+var <- "Rodamina_rfu_mg"
+
+# Reference site
+ref <- data[[var]][
+  data$Site == "B-P05" &
+  !is.na(data[[var]])
+]
+
+# Sites to compare
+sites <- setdiff(unique(data$Site), "B-P05")
+
+# Run tests
+results <- data.frame()
+
+for(site in sites){
+
+  test_data <- data[[var]][
+  data$Site == site &
+  !is.na(data[[var]])
+]
+
+  tt <- t.test(
+    test_data,
+    ref,
+    alternative = "greater"
+  )
+
+  results <- rbind(
+  results,
+  data.frame(
+    Site = site,
+    Mean_Site = mean(test_data),
+    SD_Site = sd(test_data),
+    SE_Site = sd(test_data) / sqrt(length(test_data)),
+    Mean_Ref = mean(ref),
+    SD_Ref = sd(ref),
+    SE_Ref = sd(ref) / sqrt(length(ref)),
+    N_Site = length(test_data),
+    N_Ref = length(ref),
+    t = unname(tt$statistic),
+    df = unname(tt$parameter),
+    p = tt$p.value
+  )
+)
+}
+
+results
+
+results$Significant <- ifelse(results$p < 0.05, "Yes", "No")
+
+results$p <- ifelse(
+  results$p < 0.001,
+  "<0.001",
+  sprintf("%.3f", results$p)
+)
+sink("t-tests_rodam.txt", append = TRUE)
+results
+sink()
+```
 
 # Discussion
 
@@ -2114,9 +2329,9 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 <details>
 
-<summary>Fig.: Moisture content (%) of tissues</summary>
+<summary>Fig.: Average fluorescence for rhodamin B</summary>
 
-![Average fluorescence expressed by relative fluorescence units/milligrammes of gill tissue of fish by sampling site.](fig-rodam.png){#fig-rodam}
+![Average fluorescence of rhodamin B expressed by relative fluorescence units/milligrammes of gill tissue of fish by sampling site.](fig-rodam.png){#fig-rodam}
 
 </details>
 

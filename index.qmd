@@ -340,7 +340,7 @@ m_hab_trns <- read.table("m_hab_trns.csv",
                   na.strings = NA)
 ```
 
-All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using single-sided one-sample t-tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010]. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
+All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010]. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
 
 # Results
 
@@ -1750,7 +1750,17 @@ Plasma total protein concentrations differed between sampling sites when compare
 #| code-fold: true
 #| code-overflow: wrap
 #| code-summary: "Code: Total Plasmatic Proteins t-tests: one-sided two-sample t-test"
-colnames(data)
+
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
 table(data$Especie, is.na(data$Proteinas_Totais_mg))
 var <- "Proteinas_Totais_mg"
 
@@ -1839,7 +1849,16 @@ for(site in sites){
 }
 
 results_w$Significant <- ifelse(results_w$p < 0.05, "Yes", "No")
+
+results_w$p <- ifelse(
+  results_w$p < 0.001,
+  "<0.001",
+  sprintf("%.3f", results_w$p)
+)
+
+#sink("t-tests_np.txt", append = FALSE)
 results_w
+#sink()
 ```
 
 **Moisture content.** Gill and muscle tissues moisture content showed similar results, with gill moisture concentrations being significantly higher than those observed at the reference site (Site 1; 82.82 ± 1.75%) at Sites 6 and 5 (mean values of 93.89 ± 0.98% and 90.13 ± 1.19%, one-sided Welch's t-test; p \< 0.001 and p = 0.002, respectively). No significant increases were detected at Sites 2, 3, or 4 (84.35 ± 1.60%, 85.63 ± 1.94%, and 82.84 ± 0.75%, respectively; p \> 0.05 in all cases). The muscle moisture concentrations at the reference site averaged 80.31 ± 1.48%. Significantly higher values were observed at Sites 6 and 5, where mean moisture concentrations reached 86.02 ± 2.49% and 84.29 ± 0.88%, respectively (one-sided Welch's t-test; p = 0.034 and p = 0.018, respectively). In contrast, moisture concentrations at Sites 2, 3, and 4 (80.11 ± 0.66%, 80.58 ± 0.94%, and 82.38 ± 0.62%, respectively) did not differ significantly from those at the reference site (p \> 0.05) (@fig-prot_th).
@@ -1989,6 +2008,16 @@ ggsave(prot_th, dpi = 300, filename = "fig-prot_th.png", bg = "white")
 #| code-overflow: wrap
 #| code-summary: "Code: Moisture content (gills and muscle) t-tests: one-sided two-sample t-test"
 
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
 table(data$Especie, is.na(data$TH_branquia_p))
 table(data$Especie, is.na(data$TH_musculo_p))
 
@@ -2049,6 +2078,45 @@ results$p <- ifelse(
 )
 #sink("t-tests_prot_th.txt", append = TRUE)
 results
+#sink()
+
+##### NÃO-PARAMETRICO #####
+
+results_w <- data.frame()
+
+for(site in sites){
+
+  test_data <- data[[var]][
+    data$Site == site &
+    !is.na(data[[var]])
+  ]
+
+  wt <- wilcox.test(
+    test_data,
+    ref,
+    alternative = "greater"
+  )
+
+  results_w <- rbind(
+    results_w,
+    data.frame(
+      Site = site,
+      W = unname(wt$statistic),
+      p = wt$p.value
+    )
+  )
+}
+
+results_w$Significant <- ifelse(results_w$p < 0.05, "Yes", "No")
+
+results_w$p <- ifelse(
+  results_w$p < 0.001,
+  "<0.001",
+  sprintf("%.3f", results_w$p)
+)
+
+#sink("t-tests_np.txt", append = TRUE)
+results_w
 #sink()
 ```
 
@@ -2170,6 +2238,16 @@ ggsave(rodam, dpi = 300, filename = "fig-rodam.png", bg = "white")
 #| code-overflow: wrap
 #| code-summary: "Code: Rhodamine B concentration t-tests: one-sided two-sample t-test"
 
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+data <- read.csv("mxr23_part.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
 table(data$Especie, is.na(data$Rodamina_rfu_mg))
 var <- "Rodamina_rfu_mg"
 
@@ -2265,8 +2343,9 @@ results_w$p <- ifelse(
   sprintf("%.3f", results_w$p)
 )
 
+#sink("t-tests_np.txt", append = TRUE)
 results_w
-
+#sink()
 ```
 
 # Discussion

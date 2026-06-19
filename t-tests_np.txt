@@ -1,0 +1,28 @@
+Proteinas_Totais_mg
+   Site  W     p Significant
+1 B-P10 15 0.018         Yes
+2 B-P06  3 0.989          No
+3 B-P07  7 0.429          No
+4 B-P08 30 0.003         Yes
+5 B-P09 33 0.003         Yes
+TH_branquia_p
+   Site    W      p Significant
+1 B-P10 92.0 <0.001         Yes
+2 B-P06 76.0  0.245          No
+3 B-P07 64.0  0.119          No
+4 B-P08 66.0  0.258          No
+5 B-P09 96.5  0.003         Yes
+TH_musculo_p
+   Site     W     p Significant
+1 B-P10  67.0 0.040         Yes
+2 B-P06  77.0 0.399          No
+3 B-P07  58.5 0.513          No
+4 B-P08 111.0 0.001         Yes
+5 B-P09 100.0 0.011         Yes
+Rodamina_rfu_mg
+   Site   W      p Significant
+1 B-P10 380  0.001         Yes
+2 B-P06  42  1.000          No
+3 B-P07  77  1.000          No
+4 B-P08 252 <0.001         Yes
+5 B-P09 316 <0.001         Yes

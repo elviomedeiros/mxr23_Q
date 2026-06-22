@@ -12,7 +12,7 @@
 <meta name="author" content="Larissa Rafaela Caetano da Silva">
 <meta name="author" content="Enelise Marcelle Amado">
 <meta name="author" content="Elvio Sergio Figueredo Medeiros">
-<meta name="dcterms.date" content="2026-06-19">
+<meta name="dcterms.date" content="2026-06-22">
 <meta name="keywords" content="Ecological Health, Physiological Stress">
 
 <title>Physiological biomarkers of stream fish from the Atlantic Forest within a Conservation Unit and its surroundings – Manuscript MXR23</title>
@@ -4038,7 +4038,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 19, 2026</p>
+      <p class="date">June 22, 2026</p>
     </div>
   </div>
   
@@ -4048,7 +4048,7 @@ vertical-align: -.125em;
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    The Atlantic Forest is one of the most degraded biogeographical provinces of Brazil, and the creation of Conservative Unities is one of the main methods to reduce biodiversity loss in its extension. The project described here aims to compare the environmental conditions of streams, utilizing ecophysiological parameters that can indicate the presence of pollutants. For that, abiotic data and fish of a single genera (Hemigrammus) were collected inside the Guaribas Biological Reserve (Paraíba, Brazil) and outside it, subjected to different human interference. From the collected specimens, physiological markers were used as uniformity parameters for the distinct relationships between the fish from the study, being the quantification of total plasmatic proteins, moisture content of tissues, and the activity of MXR phenotype. Although the last one had inconclusive results, all of the parameters statistically demonstrated the existence of differences between the two groups and a more pronounced uniformity between the sites within the reserve. Combining this with the fact that fish from outside the reserve had a higher concentration of plasmatic proteins and also higher amounts of ammonia in the water of these sites, it was possible to argue that the conclusions regarding the effectiveness of the Conservative Unity were highly positive.
+    The Atlantic Forest is one of the world’s most important biodiversity hotspots. Despite occupying only a small fraction of its original distribution, it continues to support extraordinary levels of species richness and endemism. At the same time, it is one of the most threatened tropical ecosystems on Earth due to habitat loss, fragmentation, urban expansion, and agricultural development. The present study evaluated whether biomarkers of physiological stress in fish could detect environmental disturbances occurring within and around the Guaribas Biological Reserve (REBIO Guaribas), a strictly protected area of Atlantic Forest in northeastern Brazil. Despite sites within the administrative boundaries of the REBIO showing no signs alteration, from both environmental variables and biomarkers, significant differences in biomarker responses were observed among sampling sites, indicating that environmental conditions are not homogeneous throughout the stream studied. Elevated levels of all biomarkers at sites located outside or near the boundaries of the protected area suggest exposure to environmental stressors potentially associated with anthropogenic activities. These findings support the use of biochemical and physiological biomarkers as sensitive tools for detecting sublethal effects of environmental degradation, even in landscapes that contain legally protected areas.
   </div>
 </div>
 
@@ -4285,7 +4285,7 @@ vertical-align: -.125em;
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                  <span class="at">na.strings =</span> <span class="cn">NA</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using single-sided one-sample t-tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site <span class="citation" data-cites="zar2010">(<a href="#ref-zar2010" role="doc-biblioref">Zar, 2010</a>)</span>. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio <span class="citation" data-cites="rstudioteam2022 rcoreteam2017">(<a href="#ref-rcoreteam2017" role="doc-biblioref">R Core Team, 2017</a>; <a href="#ref-rstudioteam2022" role="doc-biblioref">R Studio Team, 2022</a>)</span>.</p>
+<p>All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site <span class="citation" data-cites="zar2010">(<a href="#ref-zar2010" role="doc-biblioref">Zar, 2010</a>)</span>. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio <span class="citation" data-cites="rstudioteam2022 rcoreteam2017">(<a href="#ref-rcoreteam2017" role="doc-biblioref">R Core Team, 2017</a>; <a href="#ref-rstudioteam2022" role="doc-biblioref">R Studio Team, 2022</a>)</span>.</p>
 </section>
 <section id="results" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Results</h1>
@@ -5614,103 +5614,122 @@ vertical-align: -.125em;
 <span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>                  (Peso_g <span class="sc">-</span> <span class="fu">mean</span>(Peso_g)) <span class="sc">/</span> <span class="fu">sd</span>(Peso_g)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Plasma total protein concentrations differed between sampling sites when compared with the reference site (Site 1). Mean protein concentrations were significantly higher at the sites 4, 5 and 6 (91.25 ± 5.68, 74.22 ± 3.31 and 74.79 ± 6.55 mg, respectively) than the reference site (33.53 ± 0.32 mg; one-sided Welch’s t-test, p &lt; 0.003). In contrast, no significant increase was observed at Sites 2 and 3 (29.41 ± 1.59 and 33.75 ± 0.80 mg, respectively; p &gt; 0.4). The highest mean protein concentration was recorded at Site 4, representing an approximately 2.7-fold increase relative to the reference site.</p>
+<p>Plasma total protein concentrations differed between sampling sites when compared with the reference site (Site 1). Mean protein concentrations were significantly higher at the sites 4, 5 and 6 (91.25 ± 5.68, 74.22 ± 3.31 and 74.79 ± 6.55 mg, respectively) than the reference site (33.53 ± 0.32 mg; Wilcoxon rank-sum test, p &lt; 0.02). In contrast, no significant increase was observed at Sites 2 and 3 (29.41 ± 1.59 and 33.75 ± 0.80 mg, respectively; p &gt; 0.4). The highest mean protein concentration was recorded at Site 4, representing an approximately 2.7-fold increase relative to the reference site.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Total Plasmatic Proteins t-tests: one-sided two-sample t-test</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>Proteinas_Totais_mg))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;Proteinas_Totais_mg&quot;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mxr23_part.csv&quot;</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>Proteinas_Totais_mg))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;Proteinas_Totais_mg&quot;</span></span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    ref,</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  results,</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_prot_tots.txt&quot;, append = TRUE)</span></span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  results,</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
 <span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### NÃO-PARAMETRICO #####</span></span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>results_w <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_prot_tots.txt&quot;, append = TRUE)</span></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a><span class="do">##### NÃO-PARAMETRICO #####</span></span>
 <span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(</span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>    ref,</span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
-<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>  results_w <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>    results_w,</span>
-<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">Site =</span> site,</span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">W =</span> <span class="fu">unname</span>(wt<span class="sc">$</span>statistic),</span>
-<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">p =</span> wt<span class="sc">$</span>p.value</span>
-<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>results_w <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
 <span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>results_w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>  results_w <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>    results_w,</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">Site =</span> site,</span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">W =</span> <span class="fu">unname</span>(wt<span class="sc">$</span>statistic),</span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">p =</span> wt<span class="sc">$</span>p.value</span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>  results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results_w<span class="sc">$</span>p)</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_np.txt&quot;, append = FALSE)</span></span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>results_w</span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p><strong>Moisture content.</strong> Gill and muscle tissues moisture content showed similar results, with gill moisture concentrations being significantly higher than those observed at the reference site (Site 1; 82.82 ± 1.75%) at Sites 6 and 5 (mean values of 93.89 ± 0.98% and 90.13 ± 1.19%, one-sided Welch’s t-test; p &lt; 0.001 and p = 0.002, respectively). No significant increases were detected at Sites 2, 3, or 4 (84.35 ± 1.60%, 85.63 ± 1.94%, and 82.84 ± 0.75%, respectively; p &gt; 0.05 in all cases). The muscle moisture concentrations at the reference site averaged 80.31 ± 1.48%. Significantly higher values were observed at Sites 6 and 5, where mean moisture concentrations reached 86.02 ± 2.49% and 84.29 ± 0.88%, respectively (one-sided Welch’s t-test; p = 0.034 and p = 0.018, respectively). In contrast, moisture concentrations at Sites 2, 3, and 4 (80.11 ± 0.66%, 80.58 ± 0.94%, and 82.38 ± 0.62%, respectively) did not differ significantly from those at the reference site (p &gt; 0.05) (<a href="#fig-prot_th" class="quarto-xref">Figure 6</a>).</p>
+<p><strong>Moisture content.</strong> Gill and muscle tissues moisture content showed similar results, with gill moisture concentrations being significantly higher than those observed at the reference site (Site 1; 82.82 ± 1.75%) at Sites 5 and 6 (mean values of 90.13 ± 1.19% and 93.89 ± 0.98%, Wilcoxon rank-sum test; p &lt; 0.004). No significant increases were detected at Sites 2, 3, or 4 (84.35 ± 1.60%, 85.63 ± 1.94%, and 82.84 ± 0.75%, respectively; p &gt; 0.1 in all cases).</p>
+<p>The muscle moisture concentrations at the reference site averaged 80.31 ± 1.48%. Significantly higher values were observed at Sites 4, 5 and 6, where mean moisture concentrations reached 82.38 ± 0.62% and 84.29 ± 0.88%, 86.02 ± 2.49%, respectively (Wilcoxon rank-sum test; p ≤ 0.04). In contrast, moisture concentrations at Sites 2 and 3 (80.11 ± 0.66% and 80.58 ± 0.94%) did not differ significantly from those at the reference site (p &gt; 0.39) (<a href="#fig-prot_th" class="quarto-xref">Figure 6</a>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Moisture content (gills and muscle)</summary>
@@ -5842,70 +5861,119 @@ vertical-align: -.125em;
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Moisture content (gills and muscle) t-tests: one-sided two-sample t-test</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>TH_branquia_p))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>TH_musculo_p))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;TH_musculo_p&quot;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mxr23_part.csv&quot;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>TH_branquia_p))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>TH_musculo_p))</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;TH_musculo_p&quot;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    ref,</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  results,</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
-<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
-<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
-<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_prot_th.txt&quot;, append = TRUE)</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  results,</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_prot_th.txt&quot;, append = TRUE)</span></span>
+<span id="cb16-70"><a href="#cb16-70" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb16-71"><a href="#cb16-71" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span>
+<span id="cb16-72"><a href="#cb16-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-73"><a href="#cb16-73" aria-hidden="true" tabindex="-1"></a><span class="do">##### NÃO-PARAMETRICO #####</span></span>
+<span id="cb16-74"><a href="#cb16-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-75"><a href="#cb16-75" aria-hidden="true" tabindex="-1"></a>results_w <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb16-76"><a href="#cb16-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-77"><a href="#cb16-77" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb16-78"><a href="#cb16-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-79"><a href="#cb16-79" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb16-80"><a href="#cb16-80" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb16-81"><a href="#cb16-81" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb16-82"><a href="#cb16-82" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb16-83"><a href="#cb16-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-84"><a href="#cb16-84" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(</span>
+<span id="cb16-85"><a href="#cb16-85" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb16-86"><a href="#cb16-86" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb16-87"><a href="#cb16-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
+<span id="cb16-88"><a href="#cb16-88" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-89"><a href="#cb16-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-90"><a href="#cb16-90" aria-hidden="true" tabindex="-1"></a>  results_w <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb16-91"><a href="#cb16-91" aria-hidden="true" tabindex="-1"></a>    results_w,</span>
+<span id="cb16-92"><a href="#cb16-92" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb16-93"><a href="#cb16-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">Site =</span> site,</span>
+<span id="cb16-94"><a href="#cb16-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">W =</span> <span class="fu">unname</span>(wt<span class="sc">$</span>statistic),</span>
+<span id="cb16-95"><a href="#cb16-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">p =</span> wt<span class="sc">$</span>p.value</span>
+<span id="cb16-96"><a href="#cb16-96" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-97"><a href="#cb16-97" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-98"><a href="#cb16-98" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-99"><a href="#cb16-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-100"><a href="#cb16-100" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb16-101"><a href="#cb16-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-102"><a href="#cb16-102" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb16-103"><a href="#cb16-103" aria-hidden="true" tabindex="-1"></a>  results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb16-104"><a href="#cb16-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb16-105"><a href="#cb16-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results_w<span class="sc">$</span>p)</span>
+<span id="cb16-106"><a href="#cb16-106" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-107"><a href="#cb16-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-108"><a href="#cb16-108" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_np.txt&quot;, append = TRUE)</span></span>
+<span id="cb16-109"><a href="#cb16-109" aria-hidden="true" tabindex="-1"></a>results_w</span>
+<span id="cb16-110"><a href="#cb16-110" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p><strong>MXR phenotype activity.</strong> Rhodamine B concentrations differed among sampling sites relative to the reference site (Site 1), which exhibited a mean concentration of 38,396.35 ± 4,749.86 RFU mg⁻¹. Significantly higher concentrations were observed at Sites 4, 5 and 6, with mean values of 73,113.69 ± 5,311.65, 67,116.05 ± 7,023.54 RFU mg⁻¹ and 62,929.41 ± 6,196.21, respectively (one-sided Welch’s t-test; p &lt; 0.003). In contrast, Rhodamine B concentrations at Sites 2 and 3 (16,978.11 ± 2,139.98 and 20,973.12 ± 2,373.55 RFU mg⁻¹, respectively) were not significantly greater than those observed at the reference site (p &gt; 0.05). The highest mean concentration was recorded at Site 4, corresponding to an approximately 1.9-fold increase relative to the reference site.</p>
+<p><strong>MXR phenotype activity.</strong> Rhodamine B concentrations differed among sampling sites relative to the reference site (Site 1), which exhibited a mean concentration of 38,396.35 ± 4,749.86 RFU mg⁻¹. Significantly higher concentrations were observed at Sites 4, 5 and 6, with mean values of 73,113.69 ± 5,311.65, 67,116.05 ± 7,023.54 and 62,929.41 ± 6,196.21 RFU mg⁻¹, respectively (Wilcoxon rank-sum test; p &lt; 0.01). In contrast, Rhodamine B concentrations at Sites 2 and 3 (16,978.11 ± 2,139.98 and 20,973.12 ± 2,373.55 RFU mg⁻¹, respectively) were actually significantly lower than those observed at the reference site (two-sided Wilcoxon rank-sum test; p &lt; 0.01). The highest mean concentration was recorded at Site 4, corresponding to an approximately 1.9-fold increase relative to the reference site.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Rhodamine B concentration</summary>
@@ -6008,108 +6076,121 @@ vertical-align: -.125em;
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Rhodamine B concentration t-tests: one-sided two-sample t-test</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>Rodamina_rfu_mg))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;Rodamina_rfu_mg&quot;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\014</span><span class="st">&quot;</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;mxr23_part.csv&quot;</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>Especie, <span class="fu">is.na</span>(data<span class="sc">$</span>Rodamina_rfu_mg))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">&quot;Rodamina_rfu_mg&quot;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference site</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>ref <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> <span class="st">&quot;B-P05&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Sites to compare</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Site), <span class="st">&quot;B-P05&quot;</span>)</span>
 <span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    ref,</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  results,</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_rodam.txt&quot;, append = TRUE)</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  tt <span class="ot">&lt;-</span> <span class="fu">t.test</span>(</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>  results,</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">Site =</span> site,</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Site =</span> <span class="fu">mean</span>(test_data),</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Site =</span> <span class="fu">sd</span>(test_data),</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Site =</span> <span class="fu">sd</span>(test_data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(test_data)),</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ref =</span> <span class="fu">mean</span>(ref),</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ref =</span> <span class="fu">sd</span>(ref),</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">SE_Ref =</span> <span class="fu">sd</span>(ref) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(ref)),</span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Site =</span> <span class="fu">length</span>(test_data),</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">N_Ref =</span> <span class="fu">length</span>(ref),</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>statistic),</span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="fu">unname</span>(tt<span class="sc">$</span>parameter),</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> tt<span class="sc">$</span>p.value</span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>results</span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### NÃO-PARAMETRICO #####</span></span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>results_w <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
-<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(</span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>    ref,</span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span></span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>  results_w <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>    results_w,</span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>      <span class="at">Site =</span> site,</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>      <span class="at">W =</span> <span class="fu">unname</span>(wt<span class="sc">$</span>statistic),</span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">p =</span> wt<span class="sc">$</span>p.value</span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>  results<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results<span class="sc">$</span>p)</span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_rodam.txt&quot;, append = TRUE)</span></span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>results</span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a><span class="do">##### NÃO-PARAMETRICO #####</span></span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>results_w <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> sites){</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> data[[var]][</span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>Site <span class="sc">==</span> site <span class="sc">&amp;</span></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(data[[var]])</span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>    test_data,</span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>    ref,</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span></span>
+<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a>  results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results_w<span class="sc">$</span>p)</span>
-<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a>results_w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>  results_w <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a>    results_w,</span>
+<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">Site =</span> site,</span>
+<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">W =</span> <span class="fu">unname</span>(wt<span class="sc">$</span>statistic),</span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">p =</span> wt<span class="sc">$</span>p.value</span>
+<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>Significant <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
+<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a>results_w<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>  results_w<span class="sc">$</span>p <span class="sc">&lt;</span> <span class="fl">0.001</span>,</span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;&lt;0.001&quot;</span>,</span>
+<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">&quot;%.3f&quot;</span>, results_w<span class="sc">$</span>p)</span>
+<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="co">#sink(&quot;t-tests_np.txt&quot;, append = TRUE)</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a>results_w</span>
+<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a><span class="co">#sink()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="discussion" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Discussion</h1>
-<p>The hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (REBIO Guaribas), one of the 22 CU’s inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state (<a href="#fig-mapa" class="quarto-xref">Figure 1</a>). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province – 33,45% of the CU’s), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence REBIO Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU <span class="citation" data-cites="arruda2013 mma2026">(<a href="#ref-arruda2013" role="doc-biblioref">Arruda et al., 2013</a>; <a href="#ref-mma2026" role="doc-biblioref">MMA, 2026</a>)</span>.</p>
+<p>The present study evaluated whether biomarkers of physiological stress in headwater stream fish could detect environmental disturbances occurring within and around a protected area of Atlantic Forest in northeastern Brazil. Despite sites within the administrative boundaries of the REBIO showing no signs alteration, from both environmental variables and biomarkers, significant differences in biomarker responses were observed among sampling sites, indicating that environmental conditions are not homogeneous throughout the stream studied. Elevated levels of all biomarkers at sites located outside or near the boundaries of the protected area suggest exposure to environmental stressors potentially associated with anthropogenic activities. These findings support the use of biochemical and physiological biomarkers as sensitive tools for detecting sublethal effects of environmental degradation, even in landscapes that contain legally protected areas.</p>
+<p>stress levels occurring inside and outside of a Conservation Unity was tested in the Guaribas Environmental Reserve (REBIO Guaribas), one of the 22 CU’s inside the Atlantic forest area of Paraíba state, located in the Zona da Mata, wettest and most economically relevant mesoregion from the state (<a href="#fig-mapa" class="quarto-xref">Figure 1</a>). Grouped, according to SNUC, as one of the integral protection areas (aimed to conserve biodiversity, being minority within the biogeographical province – 33,45% of the CU’s), the definition of environmental reserves prohibits human interference inside their limits, except for management actions that aim its preservation and recovery. Despite being one of the most restricted types of Conservation Units, there are 22 populations that influence REBIO Guaribas due to historic factors of occupation and absence of an effective buffer zone around the three areas that make up the reserve. Those populations are mainly rural and cause direct impact, by using wood and plants from the reserve, and indirect, causing siltation of rivers and contaminating groundwater through the use of septic tanks and releasing agricultural chemicals into the soil, promoting possible comparable ecophysiological responses in the ichthyofauna inside and around the CU <span class="citation" data-cites="arruda2013 mma2026">(<a href="#ref-arruda2013" role="doc-biblioref">Arruda et al., 2013</a>; <a href="#ref-mma2026" role="doc-biblioref">MMA, 2026</a>)</span>.</p>
 <p>The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of REBIO Guaribas made by <span class="citation" data-cites="gouveia2017">Gouveia et al. (<a href="#ref-gouveia2017" role="doc-biblioref">2017</a>)</span>, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments <span class="citation" data-cites="miranda2012">(<a href="#ref-miranda2012" role="doc-biblioref">Miranda, 2012</a>)</span> - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations <span class="citation" data-cites="gouveia2017">(<a href="#ref-gouveia2017" role="doc-biblioref">Gouveia et al., 2017</a>)</span>. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco.</p>
 <p><strong>Biomarkers</strong>. The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the <span class="citation" data-cites="sabae2015">(<a href="#ref-sabae2015" role="doc-biblioref">Sabae &amp; Mohamed, 2015</a>)</span> study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by <span class="citation" data-cites="haredi2020">Haredi et al. (<a href="#ref-haredi2020" role="doc-biblioref">2020</a>)</span>. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by <span class="citation" data-cites="haredi2020">Haredi et al. (<a href="#ref-haredi2020" role="doc-biblioref">2020</a>)</span>. The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity). The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by <span class="citation" data-cites="kurelec2000">Kurelec et al. (<a href="#ref-kurelec2000" role="doc-biblioref">2000</a>)</span>. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B <span class="citation" data-cites="smital2004">(<a href="#ref-smital2004" role="doc-biblioref">Smital et al., 2004</a>)</span> Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in</p>
 <p>All parameters were effective to point out statistical differences between data from inside the REBIO Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the <a href="#fig-bar" class="quarto-xref">Figure 8</a>, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.</p>
@@ -6438,20 +6519,20 @@ Table 1: Environment data GT table.
 </figcaption>
 <div aria-describedby="tbl-hab_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="kkixtopxqm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kkixtopxqm table {
+<div id="lquowluwlx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lquowluwlx table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#kkixtopxqm thead, #kkixtopxqm tbody, #kkixtopxqm tfoot, #kkixtopxqm tr, #kkixtopxqm td, #kkixtopxqm th {
+#lquowluwlx thead, #lquowluwlx tbody, #lquowluwlx tfoot, #lquowluwlx tr, #lquowluwlx td, #lquowluwlx th {
 border-style: none;
 }
-#kkixtopxqm p {
+#lquowluwlx p {
 margin: 0;
 padding: 0;
 }
-#kkixtopxqm .gt_table {
+#lquowluwlx .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -6476,11 +6557,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#kkixtopxqm .gt_caption {
+#lquowluwlx .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#kkixtopxqm .gt_title {
+#lquowluwlx .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -6491,7 +6572,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#kkixtopxqm .gt_subtitle {
+#lquowluwlx .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -6502,7 +6583,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#kkixtopxqm .gt_heading {
+#lquowluwlx .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -6513,12 +6594,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kkixtopxqm .gt_bottom_border {
+#lquowluwlx .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kkixtopxqm .gt_col_headings {
+#lquowluwlx .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6532,7 +6613,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kkixtopxqm .gt_col_heading {
+#lquowluwlx .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6551,7 +6632,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#kkixtopxqm .gt_column_spanner_outer {
+#lquowluwlx .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6562,13 +6643,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#kkixtopxqm .gt_column_spanner_outer:first-child {
+#lquowluwlx .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#kkixtopxqm .gt_column_spanner_outer:last-child {
+#lquowluwlx .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#kkixtopxqm .gt_column_spanner {
+#lquowluwlx .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -6579,10 +6660,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#kkixtopxqm .gt_spanner_row {
+#lquowluwlx .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#kkixtopxqm .gt_group_heading {
+#lquowluwlx .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6607,7 +6688,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#kkixtopxqm .gt_empty_group_heading {
+#lquowluwlx .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -6621,13 +6702,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#kkixtopxqm .gt_from_md > :first-child {
+#lquowluwlx .gt_from_md > :first-child {
 margin-top: 0;
 }
-#kkixtopxqm .gt_from_md > :last-child {
+#lquowluwlx .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#kkixtopxqm .gt_row {
+#lquowluwlx .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6645,7 +6726,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#kkixtopxqm .gt_stub {
+#lquowluwlx .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6657,7 +6738,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kkixtopxqm .gt_stub_row_group {
+#lquowluwlx .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -6670,13 +6751,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#kkixtopxqm .gt_row_group_first td {
+#lquowluwlx .gt_row_group_first td {
 border-top-width: 2px;
 }
-#kkixtopxqm .gt_row_group_first th {
+#lquowluwlx .gt_row_group_first th {
 border-top-width: 2px;
 }
-#kkixtopxqm .gt_summary_row {
+#lquowluwlx .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6685,14 +6766,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kkixtopxqm .gt_first_summary_row {
+#lquowluwlx .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#kkixtopxqm .gt_first_summary_row.thick {
+#lquowluwlx .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#kkixtopxqm .gt_last_summary_row {
+#lquowluwlx .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6701,7 +6782,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kkixtopxqm .gt_grand_summary_row {
+#lquowluwlx .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6710,7 +6791,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kkixtopxqm .gt_first_grand_summary_row {
+#lquowluwlx .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6719,7 +6800,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#kkixtopxqm .gt_last_grand_summary_row_top {
+#lquowluwlx .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6728,10 +6809,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#kkixtopxqm .gt_striped {
+#lquowluwlx .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#kkixtopxqm .gt_table_body {
+#lquowluwlx .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6739,7 +6820,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kkixtopxqm .gt_footnotes {
+#lquowluwlx .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6752,7 +6833,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kkixtopxqm .gt_footnote {
+#lquowluwlx .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -6760,7 +6841,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kkixtopxqm .gt_sourcenotes {
+#lquowluwlx .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6773,64 +6854,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kkixtopxqm .gt_sourcenote {
+#lquowluwlx .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kkixtopxqm .gt_left {
+#lquowluwlx .gt_left {
 text-align: left;
 }
-#kkixtopxqm .gt_center {
+#lquowluwlx .gt_center {
 text-align: center;
 }
-#kkixtopxqm .gt_right {
+#lquowluwlx .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#kkixtopxqm .gt_font_normal {
+#lquowluwlx .gt_font_normal {
 font-weight: normal;
 }
-#kkixtopxqm .gt_font_bold {
+#lquowluwlx .gt_font_bold {
 font-weight: bold;
 }
-#kkixtopxqm .gt_font_italic {
+#lquowluwlx .gt_font_italic {
 font-style: italic;
 }
-#kkixtopxqm .gt_super {
+#lquowluwlx .gt_super {
 font-size: 65%;
 }
-#kkixtopxqm .gt_footnote_marks {
+#lquowluwlx .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#kkixtopxqm .gt_asterisk {
+#lquowluwlx .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#kkixtopxqm .gt_indent_1 {
+#lquowluwlx .gt_indent_1 {
 text-indent: 5px;
 }
-#kkixtopxqm .gt_indent_2 {
+#lquowluwlx .gt_indent_2 {
 text-indent: 10px;
 }
-#kkixtopxqm .gt_indent_3 {
+#lquowluwlx .gt_indent_3 {
 text-indent: 15px;
 }
-#kkixtopxqm .gt_indent_4 {
+#lquowluwlx .gt_indent_4 {
 text-indent: 20px;
 }
-#kkixtopxqm .gt_indent_5 {
+#lquowluwlx .gt_indent_5 {
 text-indent: 25px;
 }
-#kkixtopxqm .katex-display {
+#lquowluwlx .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#kkixtopxqm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lquowluwlx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>

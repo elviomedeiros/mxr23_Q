@@ -4964,7 +4964,7 @@ vertical-align: -.125em;
 <p><strong>Plasmatic protein dosage.</strong> For the the determination of plasmatic protein dosage, the plasma samples were defrosted and an aliquot of 2 µL of each was diluted with 8 µL of distilled water (⅕ proportion) to perform the total protein dosage, where the dye was also diluted in ⅕ proportion (BioRad® protein assay) <span class="citation" data-cites="bradford1976">(<a href="#ref-bradford1976" role="doc-biblioref">Bradford, 1976</a>)</span>. The intensity of each sample coloration was measured with a microplate reader (SpectraMax i3) at 595 nm wave length, and compared to a standard curve (BSA protein). The results were transferred to a spreadsheet, where the average value in milligrams of protein dosage was calculated for each sampling site.</p>
 <p><strong>Moisture content.</strong> For the analysis of moisture content, parameter related to the osmoregulatory function, fish tissue samples (gill and muscle) were individually stored in 2 mL eppendorf tubes (previously weighted), initially weighted with the tissue moist, and, after 24 hours inside a 60°C oven, weighted with the dry tissue and the percentual content of tissue water was calculated <span class="citation" data-cites="david2018">(<a href="#ref-david2018" role="doc-biblioref">David et al., 2018</a>)</span>.</p>
 <p><strong>MXR phenotype activity.</strong> The multixenobiotic resistance activity was analysed through the rhodamine B accumulation assay adapted from <span class="citation" data-cites="smital1998">Smital &amp; Kurelec (<a href="#ref-smital1998" role="doc-biblioref">1998</a>)</span>. Rhodamine B is a substrate of P-glycoprotein, the molecular basis of the MXR phenotype. Thus, after exposing the fish to this substrate, the analysis of the amount of rhodamine accumulated in the animal’s tissues (mainly the gills) reflects the activity of the MXR phenotype: the greater the accumulation, the lower the activity, and the lower the accumulation, the greater the activity. Therefore, specimens of fish from each sampling site (three inside the Conservative Unity and three outside, total of six sampling sites) were transferred to plastic aquariums containing dechlorinated water and rhodamine B at 2,5 µM concentration, staying in this condition for one hour. The aquarium remained under constant aeration and protected from direct light. After exposition, the fish were anesthetized with eugenol and sacrificed for gill sampling. The tissue samples were allocated in Eppendorfs tubes and weighted in an analytical scale. The weight of moist tissue was obtained by subtracting the weight of the previously weighted empty eppendorf tubes.The tissues were then homogenized with 500 µL of distilled water and the supernatant was transferred in triplicate of 100 µL to a 96-well microplate. The fluorescence intensity of the supernatant (corresponding to the intracellular rhodamine B fluorescence in the tissue) was measured in the microplate reader (SectraMax i3) at 544 nm excitation and 590 nm emission. The fluorescence value was then normalized by the moist tissue weight in milligrammes <span class="citation" data-cites="macêdo2019">(<a href="#ref-macêdo2019" role="doc-biblioref">Macêdo et al., 2019</a>)</span>.</p>
-<p><strong>Statistical analysis.</strong> Environmental variables were assessed for multivariate collinearity and subsequently transformed using a square root transformation prior to analysis, following the approach described by <span class="citation" data-cites="sokal1995">Sokal &amp; Rohlf (<a href="#ref-sokal1995" role="doc-biblioref">1995</a>)</span>.</p>
+<p><strong>Statistical analysis.</strong> Environmental variables were assessed for multivariate collinearity, excluding redundant variables and combining those that conveyed similar information to reduce data redundancy, following the approach described by <span class="citation" data-cites="sokal1995">Sokal &amp; Rohlf (<a href="#ref-sokal1995" role="doc-biblioref">1995</a>)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code: Importing and organizing environment data</summary>
@@ -5097,7 +5097,7 @@ vertical-align: -.125em;
 <span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>m_hab_part</span>
 <span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(m_hab, <span class="st">&quot;m_hab_part.csv&quot;</span>,</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(m_hab_part, <span class="st">&quot;m_hab_part.csv&quot;</span>,</span>
 <span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="co">#&quot;\t&quot;,</span></span>
 <span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> <span class="cn">TRUE</span>,</span>
@@ -5128,30 +5128,46 @@ vertical-align: -.125em;
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>m_hab_part <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;m_hab_part.csv&quot;</span>,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">row.names =</span> <span class="dv">1</span>,</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                  <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">na.strings =</span> <span class="cn">NA</span>)</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_hab_part)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#fix(m_hab_part)</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="do">###RELATIVIZAÇÕES E TRANSFORMAÇÕES----</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>m_hab_trns <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(m_hab_part)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#m_hab_trns[m_hab_trns == -Inf] &lt;- 0</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#m_hab_trns$g.altitude &lt;- NULL #DELETA COLUNA</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvado m_hab_trns</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(m_hab_trns, <span class="st">&quot;m_hab_trns.csv&quot;</span>,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="co">#&quot;\t&quot;,</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">append =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>m_hab_trns <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;m_hab_trns.csv&quot;</span>,</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                  <span class="at">row.names =</span> <span class="dv">1</span>,</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                  <span class="at">na.strings =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="do">###RELATIVIZAÇÕES E TRANSFORMAÇÕES----</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="do">###################### TRANSFORMAÇOES E RELATIVIZAÇÕES</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecionando variáveis que começam com &quot;w&quot; ou &quot;m&quot;</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>m_q <span class="ot">&lt;-</span> m_hab_part[, <span class="fu">grep</span>(<span class="st">&quot;^(w|m)&quot;</span>, <span class="fu">colnames</span>(m_hab_part))]</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecionando variáveis que começam com &quot;s&quot; ou &quot;h&quot;</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>m_h <span class="ot">&lt;-</span> m_hab_part[, <span class="fu">grep</span>(<span class="st">&quot;^(s|h)&quot;</span>, <span class="fu">colnames</span>(m_hab_part))]</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Removendo os dois primeiros caracteres dos nomes das colunas</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_q) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;^..&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">colnames</span>(m_q))</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(m_h) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;^..&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">colnames</span>(m_h))</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformações</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>m_q <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(m_q)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>m_h <span class="ot">&lt;-</span> <span class="fu">asin</span>(<span class="fu">sqrt</span>(<span class="fu">decostand</span>(m_h, <span class="at">method =</span> <span class="st">&quot;total&quot;</span>, <span class="at">MARGIN =</span> <span class="dv">2</span>)))</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Juntando tudo em uma única tabela</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>hab_trns <span class="ot">&lt;-</span> <span class="fu">cbind</span>(m_h, m_q)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Salvado m_hab_trns</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(hab_trns, <span class="st">&quot;m_hab_trns.csv&quot;</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="co">#&quot;\t&quot;,</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>            <span class="at">append =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>m_hab_trns <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;m_hab_trns.csv&quot;</span>,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                         <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                         <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                         <span class="at">na.strings =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site <span class="citation" data-cites="zar2010">(<a href="#ref-zar2010" role="doc-biblioref">Zar, 2010</a>)</span>. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio <span class="citation" data-cites="rstudioteam2022 rcoreteam2017">(<a href="#ref-rcoreteam2017" role="doc-biblioref">R Core Team, 2017</a>; <a href="#ref-rstudioteam2022" role="doc-biblioref">R Studio Team, 2022</a>)</span>.</p>
@@ -7381,20 +7397,20 @@ Table 1: Environment data GT table.
 </figcaption>
 <div aria-describedby="tbl-hab_gttable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="bajjolbylv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bajjolbylv table {
+<div id="yrbuuxdbuj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yrbuuxdbuj table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#bajjolbylv thead, #bajjolbylv tbody, #bajjolbylv tfoot, #bajjolbylv tr, #bajjolbylv td, #bajjolbylv th {
+#yrbuuxdbuj thead, #yrbuuxdbuj tbody, #yrbuuxdbuj tfoot, #yrbuuxdbuj tr, #yrbuuxdbuj td, #yrbuuxdbuj th {
 border-style: none;
 }
-#bajjolbylv p {
+#yrbuuxdbuj p {
 margin: 0;
 padding: 0;
 }
-#bajjolbylv .gt_table {
+#yrbuuxdbuj .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -7419,11 +7435,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#bajjolbylv .gt_caption {
+#yrbuuxdbuj .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#bajjolbylv .gt_title {
+#yrbuuxdbuj .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -7434,7 +7450,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#bajjolbylv .gt_subtitle {
+#yrbuuxdbuj .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -7445,7 +7461,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#bajjolbylv .gt_heading {
+#yrbuuxdbuj .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -7456,12 +7472,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bajjolbylv .gt_bottom_border {
+#yrbuuxdbuj .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bajjolbylv .gt_col_headings {
+#yrbuuxdbuj .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -7475,7 +7491,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bajjolbylv .gt_col_heading {
+#yrbuuxdbuj .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7494,7 +7510,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#bajjolbylv .gt_column_spanner_outer {
+#yrbuuxdbuj .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7505,13 +7521,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#bajjolbylv .gt_column_spanner_outer:first-child {
+#yrbuuxdbuj .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#bajjolbylv .gt_column_spanner_outer:last-child {
+#yrbuuxdbuj .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#bajjolbylv .gt_column_spanner {
+#yrbuuxdbuj .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -7522,10 +7538,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#bajjolbylv .gt_spanner_row {
+#yrbuuxdbuj .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#bajjolbylv .gt_group_heading {
+#yrbuuxdbuj .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7550,7 +7566,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#bajjolbylv .gt_empty_group_heading {
+#yrbuuxdbuj .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -7564,13 +7580,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#bajjolbylv .gt_from_md > :first-child {
+#yrbuuxdbuj .gt_from_md > :first-child {
 margin-top: 0;
 }
-#bajjolbylv .gt_from_md > :last-child {
+#yrbuuxdbuj .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#bajjolbylv .gt_row {
+#yrbuuxdbuj .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7588,7 +7604,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#bajjolbylv .gt_stub {
+#yrbuuxdbuj .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7600,7 +7616,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bajjolbylv .gt_stub_row_group {
+#yrbuuxdbuj .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -7613,13 +7629,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#bajjolbylv .gt_row_group_first td {
+#yrbuuxdbuj .gt_row_group_first td {
 border-top-width: 2px;
 }
-#bajjolbylv .gt_row_group_first th {
+#yrbuuxdbuj .gt_row_group_first th {
 border-top-width: 2px;
 }
-#bajjolbylv .gt_summary_row {
+#yrbuuxdbuj .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -7628,14 +7644,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bajjolbylv .gt_first_summary_row {
+#yrbuuxdbuj .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#bajjolbylv .gt_first_summary_row.thick {
+#yrbuuxdbuj .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#bajjolbylv .gt_last_summary_row {
+#yrbuuxdbuj .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7644,7 +7660,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bajjolbylv .gt_grand_summary_row {
+#yrbuuxdbuj .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -7653,7 +7669,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bajjolbylv .gt_first_grand_summary_row {
+#yrbuuxdbuj .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7662,7 +7678,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#bajjolbylv .gt_last_grand_summary_row_top {
+#yrbuuxdbuj .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -7671,10 +7687,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#bajjolbylv .gt_striped {
+#yrbuuxdbuj .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#bajjolbylv .gt_table_body {
+#yrbuuxdbuj .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -7682,7 +7698,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bajjolbylv .gt_footnotes {
+#yrbuuxdbuj .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -7695,7 +7711,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bajjolbylv .gt_footnote {
+#yrbuuxdbuj .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -7703,7 +7719,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bajjolbylv .gt_sourcenotes {
+#yrbuuxdbuj .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -7716,64 +7732,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bajjolbylv .gt_sourcenote {
+#yrbuuxdbuj .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bajjolbylv .gt_left {
+#yrbuuxdbuj .gt_left {
 text-align: left;
 }
-#bajjolbylv .gt_center {
+#yrbuuxdbuj .gt_center {
 text-align: center;
 }
-#bajjolbylv .gt_right {
+#yrbuuxdbuj .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#bajjolbylv .gt_font_normal {
+#yrbuuxdbuj .gt_font_normal {
 font-weight: normal;
 }
-#bajjolbylv .gt_font_bold {
+#yrbuuxdbuj .gt_font_bold {
 font-weight: bold;
 }
-#bajjolbylv .gt_font_italic {
+#yrbuuxdbuj .gt_font_italic {
 font-style: italic;
 }
-#bajjolbylv .gt_super {
+#yrbuuxdbuj .gt_super {
 font-size: 65%;
 }
-#bajjolbylv .gt_footnote_marks {
+#yrbuuxdbuj .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#bajjolbylv .gt_asterisk {
+#yrbuuxdbuj .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#bajjolbylv .gt_indent_1 {
+#yrbuuxdbuj .gt_indent_1 {
 text-indent: 5px;
 }
-#bajjolbylv .gt_indent_2 {
+#yrbuuxdbuj .gt_indent_2 {
 text-indent: 10px;
 }
-#bajjolbylv .gt_indent_3 {
+#yrbuuxdbuj .gt_indent_3 {
 text-indent: 15px;
 }
-#bajjolbylv .gt_indent_4 {
+#yrbuuxdbuj .gt_indent_4 {
 text-indent: 20px;
 }
-#bajjolbylv .gt_indent_5 {
+#yrbuuxdbuj .gt_indent_5 {
 text-indent: 25px;
 }
-#bajjolbylv .katex-display {
+#yrbuuxdbuj .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#bajjolbylv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yrbuuxdbuj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>

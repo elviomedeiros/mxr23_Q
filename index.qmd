@@ -122,7 +122,7 @@ Fish were transferred to plastic bags containing water from the collection site 
 
 **MXR phenotype activity.** The multixenobiotic resistance activity was analysed through the rhodamine B accumulation assay adapted from @smital1998. Rhodamine B is a substrate of P-glycoprotein, the molecular basis of the MXR phenotype. Thus, after exposing the fish to this substrate, the analysis of the amount of rhodamine accumulated in the animal's tissues (mainly the gills) reflects the activity of the MXR phenotype: the greater the accumulation, the lower the activity, and the lower the accumulation, the greater the activity. Therefore, specimens of fish from each sampling site (three inside the Conservative Unity and three outside, total of six sampling sites) were transferred to plastic aquariums containing dechlorinated water and rhodamine B at 2,5 µM concentration, staying in this condition for one hour. The aquarium remained under constant aeration and protected from direct light. After exposition, the fish were anesthetized with eugenol and sacrificed for gill sampling. The tissue samples were allocated in Eppendorfs tubes and weighted in an analytical scale. The weight of moist tissue was obtained by subtracting the weight of the previously weighted empty eppendorf tubes.The tissues were then homogenized with 500 µL of distilled water and the supernatant was transferred in triplicate of 100 µL to a 96-well microplate. The fluorescence intensity of the supernatant (corresponding to the intracellular rhodamine B fluorescence in the tissue) was measured in the microplate reader (SectraMax i3) at 544 nm excitation and 590 nm emission. The fluorescence value was then normalized by the moist tissue weight in milligrammes [@macêdo2019].
 
-**Statistical analysis.** Environmental variables were assessed for multivariate collinearity and subsequently transformed using a square root transformation prior to analysis, following the approach described by @sokal1995.
+**Statistical analysis.** Environmental variables were assessed for multivariate collinearity, excluding redundant variables and combining those that conveyed similar information to reduce data redundancy, following the approach described by @sokal1995.
 
 ```{r env-mxr23_org}
 #| eval: false
@@ -268,7 +268,7 @@ colnames(m_hab_part)
 m_hab_part
 
 
-write.table(m_hab, "m_hab_part.csv",
+write.table(m_hab_part, "m_hab_part.csv",
             sep = ";", dec = ".", #"\t",
             row.names = TRUE,
             quote = TRUE,
@@ -306,30 +306,46 @@ t_grps <- read.csv("t_grps.csv",
                    header = TRUE,
                    na.strings = NA)
 m_hab_part <- read.csv("m_hab_part.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
 
 colnames(m_hab_part)
-#fix(m_hab_part)
 
 ###RELATIVIZAÇÕES E TRANSFORMAÇÕES----
-m_hab_trns <- sqrt(m_hab_part)
-#m_hab_trns[m_hab_trns == -Inf] <- 0
-#m_hab_trns$g.altitude <- NULL #DELETA COLUNA
+###################### TRANSFORMAÇOES E RELATIVIZAÇÕES
+library(vegan)
+library(tidyverse)
+
+# Selecionando variáveis que começam com "w" ou "m"
+m_q <- m_hab_part[, grep("^(w|m)", colnames(m_hab_part))]
+
+# Selecionando variáveis que começam com "s" ou "h"
+m_h <- m_hab_part[, grep("^(s|h)", colnames(m_hab_part))]
+
+# Removendo os dois primeiros caracteres dos nomes das colunas
+colnames(m_q) <- sub("^..", "", colnames(m_q))
+colnames(m_h) <- sub("^..", "", colnames(m_h))
+
+# Transformações
+m_q <- sqrt(m_q)
+m_h <- asin(sqrt(decostand(m_h, method = "total", MARGIN = 2)))
+
+# Juntando tudo em uma única tabela
+hab_trns <- cbind(m_h, m_q)
 
 # Salvado m_hab_trns
-write.table(m_hab_trns, "m_hab_trns.csv",
+write.table(hab_trns, "m_hab_trns.csv",
             sep = ";", dec = ".", #"\t",
             row.names = TRUE,
             quote = TRUE,
             append = FALSE)
 m_hab_trns <- read.table("m_hab_trns.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
+                         sep = ";", dec = ".",
+                         row.names = 1,
+                         header = TRUE,
+                         na.strings = NA)
 ```
 
 All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010]. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].

@@ -1,8 +1,8 @@
 ---
-title: "Linking fish physiological biomarkers to habitat integrity in an Atlantic Forest Stream"
+title: "Linking fish physiological biomarkers to habitat integrity in the Atlantic Forest"
 subtitle: |
-  Subtitle 1
-  Subtitle 2
+  Biological Conservation OR
+  Neotropical Ichthyology
 author:
   - name: Adamastor Coutinho Pinto
     orcid: 0000-0001-7930-4602
@@ -11,6 +11,13 @@ author:
     roles: []
     affiliations:
       - Programa de Pós-Graduação em Ecologia e Conservação (PPGEC), Universidade Estadual da Paraíba - Campus I, Rua Baraúnas, 351, Bairro Bodocongó, CEP 58109-753, Campina Grande, PB, Brazil.
+    - name: Larissa Rafaela Caetano da Silva
+    orcid: 0000-0003-4433-4785
+    corresponding: false
+    email: larissa.caetano@aluno.uepb.edu.br
+    roles: []
+    affiliations:
+      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Mayara Mirelly da Silva Monteiro
     orcid: 0009-0001-3332-1340
     corresponding: false
@@ -25,13 +32,6 @@ author:
     roles: []
     affiliations:
       - Programa de Pós-Graduação em Ecologia e Conservação (PPGEC), Universidade Estadual da Paraíba - Campus I, Rua Baraúnas, 351, Bairro Bodocongó, CEP 58109-753, Campina Grande, PB, Brazil.
-  - name: Larissa Rafaela Caetano da Silva
-    orcid: 0000-0003-4433-4785
-    corresponding: false
-    email: larissa.caetano@aluno.uepb.edu.br
-    roles: []
-    affiliations:
-      - Laboratório de Ecofisiologia Animal (LEFA), Departamento de Ciências Biológicas, Universidade Estadual da Paraíba – UEPB, Campus V, Rua Horácio Trajano de Oliveira, S/N, Cristo, CEP 58071-470, João Pessoa, PB, Brazil.
   - name: Enelise Marcelle Amado
     orcid: 0000-0002-3632-5427
     corresponding: true
@@ -108,7 +108,7 @@ The ecophysiological evaluation of human impact on the forest, was mainly guided
 
 **Environmental data collection.** In order to quantitatively confirm the classification of site category types (I, II, III and IV), environmental characteristics of each site were assessed based on four sets of variables: (a) site morphology, (b) water quality, (c) sediment composition, and (d) marginal habitat structure. Site morphology was characterized by measuring stream width (cm) and depth (cm) from three randomly selected transects. Catchment-scale variables, such as elevation and stream length, were obtained using a handheld GPS and satellite imagery. Water quality was evaluated through physical and chemical variables measured with portable equipment, including temperature (°C) and dissolved oxygen concentration (mg/L). Water turbidity was determined in the laboratory using a turbidimeter, based on water samples collected at each sampling site. Water velocity (m/s) was estimated using the float method by @maitland1990. Sediment composition and habitat physical structure were assessed following protocols adapted by @medeiros2008 from @pusey2004 and @mugodo2006. These variables were estimated from 9 to 12 one-meter quadrats distributed along the stream margins (terrestrial–aquatic interface). Within each quadrat, the percentage cover of sediment types (mud, sand, cobbles, small gravel, large gravel, rocks, and bedrock) and littoral and subaquatic habitat structures was visually estimated. Habitat structure variables included macrophytes, marginal grasses, leaf litter, attached algae, filamentous algae, overhanging vegetation, submerged vegetation, small woody debris, large woody debris, and root masses.
 
-Samples of water (250 mL) from each site were taken and refrigerated for concentration analysis (μg L⁻¹) of ammonia, nitrite, nitrate, orthophosphate (soluble reactive phosphorus) and total phosphorus. Nutrient concentrations were obtained based on Standard Methods for the Examination of Water [-@apha1998] and @mackereth1978.
+Three 250 mL replicate samples of water from each site were taken and refrigerated for concentration analysis (μg L⁻¹) of ammonia, nitrite, nitrate, orthophosphate (soluble reactive phosphorus) and total phosphorus. Nutrient concentrations were obtained based on Standard Methods for the Examination of Water [-@apha1998] and @mackereth1978.
 
 **Fish collection and maintenance.** Fish were collected between October and November 2023 along the Barro Branco Stream at six previously established sampling points, three located inside and three outside the Guaribas Biological Reserve, following a methodology adapted from @gouveia2017. Sampling was carried out during the day using a beach seine net (4 m long, 1.5 m high, and 5 mm mesh) and a hand net (50 cm wide and 5 mm mesh) operated with sweeping movements in shallow waters, according to @medeiros2010. Sampling effort was standardized across all collection events and sampling points. Fish sampling was performed randomly, therefore the occurrence of the species at each sampling site and the sample size varied according to natural dynamic of fish populations.
 
@@ -2360,32 +2360,9 @@ stress levels occurring inside and outside of a Conservation Unity was tested in
 
 The ecophysiological evaluation of human impact on the forest, which is close to areas of monoculture and natural vegetation modified for livestock, was mainly guided by the fish species inventory of REBIO Guaribas made by @gouveia2017, in a study that lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - Oreochromis niloticus, second most farmed fish species in the world and tolerant to osmotic variation, and Poecilia reticulata, largely used in mosquito control and resistant to stressful environments [@miranda2012] - and none are listed as threatened. The predominance of small fish inhabiting small basins explains the higher level of endemism in streams, resulting from the allopatric speciation generated by the low dispersion made by these fish and the consequent isolation of populations [@gouveia2017]. Having in mind that these stream fish are phylogenetic close, this paper offers representative data for the entire local ichthyofauna using species of Hemigrammus genus, of the Characiformes order, characterized by a black conspicuous spot delimited on the dorsal fin. Its type species, Hemigrammus unilineatus, has a compressed and slightly elongated body and exhibits wide geographical distribution both in Central and South America, with registers in other Brazilian states, such as Alagoas and Pernambuco.
 
-**Biomarkers**. The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the [@sabae2015] study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity). The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in
-*The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).*
-The elevated ammonia concentrations observed at Sites 4–6, particularly at Site 6, may indicate inputs of domestic or agricultural effluents into the aquatic environment. According to @piedras2006, increased environmental ammonia can lead to metabolic ammonia retention and toxic effects in fish, although toxicity depends on interactions with other environmental variables such as temperature, pH, and salinity. The strong negative correlation between dissolved oxygen and ammonia concentration observed in the present study further suggests that sites with greater organic inputs may be experiencing water quality degradation.
-
+**Biomarkers**. The increase of total plasmatic protein concentration in the animals exposed to pollution is consistent with the [@sabae2015] study, which attributes this increase to five possibilities: activation of metabolic systems as answer to pollutants exposure, degradation of cellular material in the liver, severe pathological conditions in the liver and kidneys, loss of water in the plasma, and induction of proteic synthesis in the liver. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. The average values of moisture content, parameter related to the osmoregulatory function, were 84,3% for the gill and 80,3% for the muscle of fish inside the REBIO Guaribas (n=38 fish). Regarding the fish from sampling sites surrounding the reserve (n=40), the averages were 88,9% for the gills and 82,3% for the muscle, increasing, in order, only about 5,6% and 2,5% the values from inside, results that are not very expressive, like the ones described by @haredi2020. The overall statistical analysis performed for moisture content reinforces this as a more discreet and inefficient parameter to make direct quantitative comparison for animals exposed to low salinity variation from the environment, but still accurate in determining the uniformity degree of more representative groups (i.e., fish from inside and outside the Conservative Unity). The average values of normalized fluorescence measured in fish gills were 25.449 rfu/mg (relative fluorescence units/milligramme of tissue) for inside the Conservative Unity (n=54 fish) and 67.138,3 rfu/mg for outside (n=57), value nearly 2,64 times bigger. This difference between averages is opposite to the expected (higher fluorescence signals a lower MXR phenotype activity, meaning a lower exposition to pollutants), that can be explained by the presence of MXR phenotype inhibitors, which were highly correlated to more polluted waters by @kurelec2000. Among the possible pollutants presents, pesticides, fragrances, microbial degradation products and natural inhibitors from invasive species were described as compounds with high affinity to the Pgp or inhibiting the PKC (protein kinase C) modulator, resulting in high accumulation of rhodamine B [@smital2004] Despite the unexpected result, the variance difference between data from the MXR phenotype activity inside and outside the REBIO Guaribas (confirmed by the Kruskal-Wallis test and illustrated in *The abiotic data from every sampling site water was measured and reunited in Tab. 1. The abnormal proportion of ammonia indicates the presence of effluents in the water outside the Reserva Biológica Guaribas, and, as discussed by [@piedras2006], this elevated concentration generates metabolic ammonia retention, causing toxicity. The same paper also points out that the toxicity of non-ionized ammonia in the aquatic environment is greater for smaller organisms, but depends on the interaction with other environmental variables, such as temperature, pH and salinity, demanding specific studies with the target species to determine their tolerance to ammonia.The Pearson correlation analysis among biotic data showed only one significant correlation, between Total Protein and MXR phenotype activity (0,6 - moderate and positive), and among abiotic data only two significance, between Nitrate e Phosphor (0,69 - moderate and positive) and between Dissolved Oxygen and Ammonia (-0,82 - strong and negative). It was also detected significant correlation among both data, between Gill Moisture Content and Ammonia (0,55 - moderate and positive), between Gill Moisture Content and Dissolved Oxygen (-0,62 - moderate and negative), and between MXR activity and Nitrate (-0,62 - moderate and negative).* The elevated ammonia concentrations observed at Sites 4–6, particularly at Site 6, may indicate inputs of domestic or agricultural effluents into the aquatic environment. According to @piedras2006, increased environmental ammonia can lead to metabolic ammonia retention and toxic effects in fish, although toxicity depends on interactions with other environmental variables such as temperature, pH, and salinity. The strong negative correlation between dissolved oxygen and ammonia concentration observed in the present study further suggests that sites with greater organic inputs may be experiencing water quality degradation.
 
 All parameters were effective to point out statistical differences between data from inside the REBIO Guaribas and its surroundings, highlighting - alongside the higher levels of ammonia in the water and plasmatic proteins in the fish - that changes in the environment are impacting the fish from the streams studied. Beyond that, the statistical analysis of physiological parameters from fish collected inside the Conservation Unity showed uniform results among its three sampling sites, consistent with what is expected from natural environments with little human influence. The same did not occur among the three sites outside the CU (with the exception of the MXR phenotype activity), indicating the action of different levels of environmental stress. The differences between the average results from the physiological parameters measured inside and outside the Conservation Unity were illustrated in the fig-bar, highlighting the total protein as one that proved itself as an excellent biomarker to detect pollutants in the aquatic environment.
-
-```{r}
-#| label: mean_physiological_markers
-#| eval: false
-#| message: false
-#| warning: false
-#| results: false
-#| purl: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Proportion of mean physiological markers"
-
-md=colMeans(tcc[grep("inside",x=tcc$Local),c(3:6)],na.rm = T)
-mf=colMeans(tcc[grep(
-  "outside",x=tcc$Local),c(3:6)],na.rm = T)
-(médias=matrix(c(md,mf),byrow=T,nrow = 2,ncol=4,dimnames=list(c("inside","outside"),c("GMC","MMC","TP","MXR"))))
-(prop=proportions(médias,2))
-par(mfrow=c(1,1),mar=c(3,4,1,1),lwd=1)
-barplot(height = prop, horiz = T, las=1, col = c("darkgreen", "darkred"), legend.text = T)
-```
 
 These preliminary obtained data were precise to indicate significant differences among the conditions in which the fish inhabited. But as much MXR phenotype activity data were as disparate as the ones of total protein and even more precise to point out the uniformity among sampling sites inside and outside the REBIO Guaribas, it showed values opposite to what was expected, with higher fluorescence in the tissue of fish outside the reserve, normally indicating lower MXR phenotype activity. This inconsistency can be explained by the possible presence of chemosensitizers in the water, since the fish did not went through a decontamination period, and thus, pollutants could still be bound to the active Pgp site and preventing rhodamine B to attach to it. The presence of such chemosensitizers can be quantified through the creation of a calibration curve, as described by [@kurelec2000], but, until done, the relevance of the MXR phenotype analysis must be restricted to the statistical context.
 
@@ -2395,27 +2372,31 @@ From the final results, an important positive evaluation can be made regarding t
 
 # Acknowledgements {.unnumbered}
 
-We are grateful to Thainá da Silva Oliveira for assistance with laboratory activities; and to Ellen Gomes da Silva for assistance with fieldwork activities. ACP and ASB are grateful to Programa de Pós-Graduação em Ecologia e Conservação (PPGEC-UEPB) and CAPES for scholarship granted. MMSM and LRCS are grateful to Programa de Iniciação Científica (PIBIC-UEPB) and CNPq for scholarship granted.
+We are grateful to Thainá da Silva Oliveira (Programa de Iniciação Cientifica, PIBIC-UEPB) for assistance with laboratory activities; and to Ellen Gomes da Silva (Programa de Iniciação Cientifica, PIBIC-UEPB) for assistance with fieldwork activities. ACP and ASB are grateful to Programa de Pós-Graduação em Ecologia e Conservação (PPGEC-UEPB) and CAPES for scholarship granted. MMSM and LRCS are grateful to Programa de Iniciação Científica (PIBIC-UEPB) and CNPq for scholarship granted.
 
 # Authorship contribution statement {.unnumbered}
 
 Authorship of this paper is based on @credit2026.
 
-Adamastor Coutinho Pinto: Conceptualization, Data curation, Formal analysis, Investigation, Software, Visualization, Writing -- review & editing, Writing -- original draft.
+Adamastor Coutinho Pinto: Investigation, Formal analysis, Writing -- original draft.
+
+Larissa Rafaela Caetano da Silva: Data curation, Formal analysis.
 
 Mayara Mirelly da Silva Monteiro: Data curation, Formal analysis, Software, Writing -- review & editing.
 
 Alice da Silva Barros: Data curation, Formal analysis, Software, Writing -- review & editing.
 
-Larissa Rafaela Caetano da Silva: Data curation, Formal analysis, Software, Writing -- review & editing.
-
-Enelise Marcelle Amado: Conceptualization, Data curation, Methodology, Project administration, Resources, Supervision, Validation, Writing -- review & editing.
+Enelise Marcelle Amado: Data curation, Methodology, Resources, Supervision, Validation, Writing -- review & editing.
 
 Elvio Sergio Figueredo Medeiros: Conceptualization, Data curation, Formal analysis, Funding acquisition, Methodology, Project administration, Resources, Software, Supervision, Validation, Writing -- review & editing.
 
 # Ethical approval {.unnumbered}
 
 Fish collection was authorized by the Instituto Chico Mendes de Conservação da Biodiversidade (license SISBIO-89415-2) and the project was approved by the Ethics Committee on Animal Use of the State University of Paraíba (protocol CEUA-048/2023).
+
+# Declaration of generative AI and AI-assisted technologies in the manuscript preparation process {.unnumbered}
+
+During the preparation of this manuscript, the authors used ChatGPT (OpenAI) to assist with English language editing and improve the clarity and fluency of the writing. The authors carefully reviewed and revised all AI-generated suggestions and take full responsibility for the accuracy and content of the final manuscript [@cnpq2026].
 
 # References {.unnumbered}
 
@@ -2471,7 +2452,7 @@ Fish collection was authorized by the Instituto Chico Mendes de Conservação da
 
 <details>
 
-<summary>Fig.: Counts of number of individuals per species and biomarker </summary>
+<summary>Fig.: Counts of number of individuals per species and biomarker</summary>
 
 ![Counts of number of individuals per species and biomarker.](fig-counts.png){#fig-counts}
 

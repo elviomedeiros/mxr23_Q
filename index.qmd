@@ -1,7 +1,8 @@
 ---
 title: "Linking fish physiological biomarkers to habitat integrity in the Atlantic Forest"
 subtitle: |
-  Biological Conservation OR
+  Biological Conservation<br>
+  OR<br>
   Neotropical Ichthyology
 author:
   - name: Adamastor Coutinho Pinto
@@ -439,66 +440,6 @@ hab_gttable <- sub_missing(hab_gttable,
 hab_gttable
 gtsave(hab_gttable, "gt-hab_gttable_xlsx.html")
 saveRDS(hab_gttable, "gt-hab_gttable_xlsx.rds")
-```
-
-```{r gttable_habitat}
-#| eval: false
-#| warning: false
-#| message: false
-#| results: hide
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Code: Environment data GT table"
-
-library(readr)
-library(dplyr)
-library(gt)
-
-m_wide_hab <- read.table("m_wide_hab.txt",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
-
-#m_mapa <- read_tsv("column_labels.txt", show_col_types = FALSE)
-dados <- m_wide_hab
-dados
-nomes <- names(dados)[-1]
-nomes
-
-df_nomes <- data.frame(
-  original = nomes,
-  final    = nomes,
-  stringsAsFactors = FALSE)
-
-df_nomes
-df_nomes$final <- gsub("_", "<br>", df_nomes$final)
-dados <- mutate(dados,across(-Variable, ~ gsub(" \\(", "<br>(", .)))
-#fix(df_nomes)
-#write.table(df_nomes, "df_nomes.txt")
-df_nomes <- read.table("df_nomes.txt")
-
-labels_finais <- setNames(
-  lapply(df_nomes$final, md),
-  nomes)
-
-tabela_gt <- dados %>%
-  gt(rowname_col = "Variable") %>%
-#  tab_header(
-#    title = "Características Ambientais",
-#    subtitle = "Valores apresentados como média (mín–máx)"
-#  ) %>%
-  fmt_markdown(
-    columns = -Variable) %>%
-  cols_align(
-    align = "right",
-    columns = -Variable) %>%
-  cols_label(.list = labels_finais)
-
-tabela_gt
-gtsave(tabela_gt, "gt-hab_gttable.html")
-gtsave(tabela_gt, "fig-hab_gttable.png")
-saveRDS(tabela_gt, "gt-hab_gttable.rds")
 ```
 
 ```{r hab_var_summ}
@@ -2524,4 +2465,66 @@ readRDS("gt-hab_gttable_xlsx.rds")
 
 table(1:10)
 ```
+
+
+```{r gttable_habitat}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: hide
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Environment data GT table"
+
+library(readr)
+library(dplyr)
+library(gt)
+
+m_wide_hab <- read.table("m_wide_hab.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+#m_mapa <- read_tsv("column_labels.txt", show_col_types = FALSE)
+dados <- m_wide_hab
+dados
+nomes <- names(dados)[-1]
+nomes
+
+df_nomes <- data.frame(
+  original = nomes,
+  final    = nomes,
+  stringsAsFactors = FALSE)
+
+df_nomes
+df_nomes$final <- gsub("_", "<br>", df_nomes$final)
+dados <- mutate(dados,across(-Variable, ~ gsub(" \\(", "<br>(", .)))
+#fix(df_nomes)
+#write.table(df_nomes, "df_nomes.txt")
+df_nomes <- read.table("df_nomes.txt")
+
+labels_finais <- setNames(
+  lapply(df_nomes$final, md),
+  nomes)
+
+tabela_gt <- dados %>%
+  gt(rowname_col = "Variable") %>%
+#  tab_header(
+#    title = "Características Ambientais",
+#    subtitle = "Valores apresentados como média (mín–máx)"
+#  ) %>%
+  fmt_markdown(
+    columns = -Variable) %>%
+  cols_align(
+    align = "right",
+    columns = -Variable) %>%
+  cols_label(.list = labels_finais)
+
+tabela_gt
+gtsave(tabela_gt, "gt-hab_gttable.html")
+gtsave(tabela_gt, "fig-hab_gttable.png")
+saveRDS(tabela_gt, "gt-hab_gttable.rds")
+```
+
 :::

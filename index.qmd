@@ -429,7 +429,7 @@ library(readxl)
 hab_gttable <- read_excel(
   path  = "tabela de habitat.xlsx",
   sheet = "tabela_final",
-  range = "A1:G29") #ajustar para o tamanho da tabela final 
+  range = "A1:G25") #ajustar para o tamanho da tabela final 
 hab_gttable
 library(gt)
 hab_gttable <- gt(hab_gttable)

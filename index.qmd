@@ -122,7 +122,7 @@ Fish were transferred to plastic bags containing water from the collection site 
 
 **MXR phenotype activity.** The multixenobiotic resistance activity was analysed through the rhodamine B accumulation assay adapted from @smital1998. Rhodamine B is a substrate of P-glycoprotein, the molecular basis of the MXR phenotype. Thus, after exposing the fish to this substrate, the analysis of the amount of rhodamine accumulated in the animal's tissues (mainly the gills) reflects the activity of the MXR phenotype: the greater the accumulation, the lower the activity, and the lower the accumulation, the greater the activity. Therefore, specimens of fish from each sampling site (three inside the Conservative Unity and three outside, total of six sampling sites) were transferred to plastic aquariums containing dechlorinated water and rhodamine B at 2,5 µM concentration, staying in this condition for one hour. The aquarium remained under constant aeration and protected from direct light. After exposition, the fish were anesthetized with eugenol and sacrificed for gill sampling. The tissue samples were allocated in Eppendorfs tubes and weighted in an analytical scale. The weight of moist tissue was obtained by subtracting the weight of the previously weighted empty eppendorf tubes.The tissues were then homogenized with 500 µL of distilled water and the supernatant was transferred in triplicate of 100 µL to a 96-well microplate. The fluorescence intensity of the supernatant (corresponding to the intracellular rhodamine B fluorescence in the tissue) was measured in the microplate reader (SectraMax i3) at 544 nm excitation and 590 nm emission. The fluorescence value was then normalized by the moist tissue weight in milligrammes [@macêdo2019].
 
-**Statistical analysis.** Environmental variables were checked for multivariate collinearity and square root transformed before analyses (@sokal1995).
+**Statistical analysis.** Environmental variables were assessed for multivariate collinearity and subsequently transformed using a square root transformation prior to analysis, following the approach described by @sokal1995.
 
 ```{r env-mxr23_org}
 #| eval: false
@@ -144,12 +144,12 @@ library(openxlsx)
 
 ##CARREGANDO MATRIZES BRUTAS----
 
-habitat <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
+habitat <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
                      rowNames = T,
                      colNames = T,
                      sheet = "ambiente",
                      rows = 2:20)
-habitat[1:5,1:5] #[1:5,1:5] mostra apenas as linhas e colunas de 1 a 5.
+
 habitat[is.na(habitat)] <- 0
 habitat
 
@@ -164,11 +164,11 @@ zero_sum2 #nomes das colunas zeradas
 sum<-colSums(m_part_cols)
 sum
 
-t_grps <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
-                     rowNames = T,
-                     colNames = T,
-                     sheet = "grupos",
-                     rows = 2:20)
+t_grps <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+                    rowNames = T,
+                    colNames = T,
+                    sheet = "grupos",
+                    rows = 2:20)
 t_grps
 
 
@@ -190,10 +190,10 @@ t_grps <- read.csv("t_grps.csv",
                    header = TRUE,
                    na.strings = NA)
 m_hab <- read.csv("m_hab.csv",
-                   sep = ";", dec = ".",
-                   row.names = 1,
-                   header = TRUE,
-                   na.strings = NA)
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
 ```
 
 ```{r env-mxr23_corr}
@@ -213,6 +213,7 @@ m_hab <- read.csv("m_hab.csv",
 dev.off()
 rm(list=ls(all=TRUE))
 cat("\014")
+
 t_grps <- read.csv("t_grps.csv",
                    sep = ";", dec = ".",
                    row.names = 1,
@@ -247,36 +248,25 @@ png("fig-hab_corrplot.png")
 corrplot(cor, method = "circle")
 dev.off()
 
-#### IMPRESSÃO EM PAPEL
-#win.print()
-#corrplot(cor, method = "circle")
-#dev.off()
-
 ##DELETANDO COLINEARES----
 
-#sink(file = "colineares.txt", append = F, split = T)
-#colnames(m_hab)
-#del_cols <- c() #"g.river_length","g.altitude" #NÃO DELETEI VARIÁVEIS
-#m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
+sink(file = "colineares.txt", append = F, split = T)
+colnames(m_hab)
+del_cols <- c("m.Depth_max_cm", "m.Depth_mar_cm")
+m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
 
 ##SOMANDO REDUNDANTES----
 
-#m_hab_part$s.gravel <- m_hab_part$s.smlgrav + m_hab_part$s.lrggrav + m_hab_part$s.cobbles
-#m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
-#                             %in% c("s.smlgrav", "s.lrggrav", "s.cobbles"))]
-#m_hab_part$s.rock <- m_hab_part$s.rocks + m_hab_part$s.bedrock
-#m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
-#                             %in% c("s.rocks", "s.bedrock"))]
-#m_hab_part$h.algae <- m_hab_part$h.filalgae + m_hab_part$h.attalgae
-#m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
-#                             %in% c("h.filalgae", "h.attalgae"))]
-#m_hab_part$h.debris <- m_hab_part$h.smldeb + m_hab_part$h.lrgdeb
-#m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
-#                             %in% c("h.smldeb", "h.lrgdeb"))]
+m_hab_part$h.algae <- m_hab_part$h.Algae_f + m_hab_part$h.Algae_a
+m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
+                           %in% c("h.Algae_f", "h.Algae_a"))]
+m_hab_part$h.debris <- m_hab_part$h.Debris_l + m_hab_part$h.Debris_s
+m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
+                         %in% c("h.Debris_l", "h.Debris_s"))]
 
-#colnames(m_hab_part)
-#m_hab_part
-#sink()
+colnames(m_hab_part)
+m_hab_part
+
 
 write.table(m_hab, "m_hab_part.csv",
             sep = ";", dec = ".", #"\t",

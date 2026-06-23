@@ -315,7 +315,6 @@ m_hab_part <- read.csv("m_hab_part.csv",
 colnames(m_hab_part)
 
 ###RELATIVIZAÇÕES E TRANSFORMAÇÕES----
-###################### TRANSFORMAÇOES E RELATIVIZAÇÕES
 library(vegan)
 library(tidyverse)
 
@@ -2466,7 +2465,6 @@ readRDS("gt-hab_gttable_xlsx.rds")
 table(1:10)
 ```
 
-
 ```{r gttable_habitat}
 #| eval: false
 #| warning: false
@@ -2526,5 +2524,4 @@ gtsave(tabela_gt, "gt-hab_gttable.html")
 gtsave(tabela_gt, "fig-hab_gttable.png")
 saveRDS(tabela_gt, "gt-hab_gttable.rds")
 ```
-
 :::

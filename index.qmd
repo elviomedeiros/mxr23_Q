@@ -1877,7 +1877,9 @@ During the preparation of this manuscript, the authors used ChatGPT (OpenAI) to 
 
 @fig-rodam: Average fluorescence of rhodamin B expressed by relative fluorescence units/milligrams of gill tissue of fish by sampling site.
 
-@tbl-hab_gttable: Environmental variables averaged for the sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
+@tbl-hab_gttable: Environmental variables averaged for sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
+
+@tbl-hab_gttable: Nutrient concentration (μg L⁻¹) averaged for sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
 
 ## Figures {.unnumbered}
 

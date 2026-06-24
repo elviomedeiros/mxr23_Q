@@ -145,11 +145,11 @@ library(openxlsx)
 
 ##CARREGANDO MATRIZES BRUTAS----
 
-habitat <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+habitat <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
                      rowNames = T,
                      colNames = T,
                      sheet = "ambiente",
-                     rows = 2:20)
+                     startRow = 2) #rows = 2:98
 
 habitat[is.na(habitat)] <- 0
 habitat
@@ -165,11 +165,11 @@ zero_sum2 #nomes das colunas zeradas
 sum<-colSums(m_part_cols)
 sum
 
-t_grps <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+t_grps <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
                     rowNames = T,
                     colNames = T,
                     sheet = "grupos",
-                    rows = 2:20)
+                    startRow = 2) #rows = 2:98
 t_grps
 
 
@@ -249,11 +249,15 @@ png("fig-hab_corrplot.png")
 corrplot(cor, method = "circle")
 dev.off()
 
-##DELETANDO COLINEARES----
+##DELETANDO COLINEARES OU INDESEJADAS----
 
 sink(file = "colineares.txt", append = F, split = T)
 colnames(m_hab)
 del_cols <- c("m.Depth_max_cm", "m.Depth_mar_cm")
+del_cols <- c(del_cols, "n.Ammonia_NH3_ug.L", "n.Nitrite_NO2__ug.L",
+              "n.Nitrate_NO3__ug.L", "n.Orthophosphate_SRP__ug.L",
+              "n.Phosphorus_TP__ug.L")
+#del_cols <- grep("^n\\.", colnames(m_hab), value = TRUE)
 m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
 
 ##SOMANDO REDUNDANTES----
@@ -267,7 +271,7 @@ m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
 
 colnames(m_hab_part)
 m_hab_part
-
+sink()
 
 write.table(m_hab_part, "m_hab_part.csv",
             sep = ";", dec = ".", #"\t",
@@ -279,6 +283,45 @@ m_hab_part <- read.csv("m_hab_part.csv",
                        row.names = 1,
                        header = TRUE,
                        na.strings = NA)
+```
+
+```{r env-mxr23_corr_test}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: Correlations tests of environment data" 
+
+colnames(m_hab)
+library(PerformanceAnalytics)
+chart.Correlation(m_hab[, c(15:24, 27:31)], histogram=TRUE)
+# ***p<0.001, **p<0.01, *p<0.05, .p<0.10
+
+library(Hmisc)
+mat <- as.matrix(m_hab[, 15:24])
+res <- rcorr(mat, type = "pearson")
+cor_mat <- res$r
+p_mat   <- res$P
+
+stars <- ifelse(p_mat < 0.001, "***",
+         ifelse(p_mat < 0.01,  "**",
+         ifelse(p_mat < 0.05,  "*", "")))
+
+cor_star <- ifelse(p_mat < 0.05,
+                   paste0(round(cor_mat, 2), stars),
+                   NA)
+
+cor_star <- matrix(
+  cor_star,
+  nrow = nrow(cor_mat),
+  dimnames = dimnames(cor_mat)
+)
+
+cor_star[upper.tri(cor_star, diag = TRUE)] <- NA
+cor_star <- noquote(cor_star)
+print(cor_star, na.print = "")
 ```
 
 These variables were subsequently subjected to Principal Component Analysis (PCA) to evaluate multivariate correlations among sites. Prior to analysis, site morphology and water quality variables were square root transformed, whereas sediment composition and the marginal habitat structure (which were measured as percentages) were arcsine square-root transformed after relativization by column total [@mccune2002]. PCA was performed using the `FactoMineR` package in R [@lê2008]. All variables were centered and scaled to unit of variance.

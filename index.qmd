@@ -532,7 +532,7 @@ Principal Component Analysis described the overall structure of the study sites 
 #| results: hide
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Environment data PCA - fviz"
+#| code-summary: "PCA - fin_version"
 
 #PCA fviz package----
 #browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
@@ -548,16 +548,11 @@ t_grps <- read.csv("t_grps.csv",
                    row.names = 1,
                    header = TRUE,
                    na.strings = NA)
-m_hab_part <- read.csv("m_hab_part.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
-m_hab_trns <- read.table("m_hab_trns.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
+m_hab_trns <- read.csv("m_hab_trns.csv",
+                       sep = ";", dec = ".",
+                       row.names = 1,
+                       header = TRUE,
+                       na.strings = NA)
 
 #PCA----
 
@@ -570,11 +565,11 @@ print(pca)
 eig.val <- get_eigenvalue(pca)
 eig.val
 
-sink(file = "pca_cor_matrix.txt", append = FALSE)
+sink(file = "cor_matrix.txt", append = FALSE)
 pca$var$cor
 sink()
 
-fviz_eig(pca, addlabels = TRUE) #, ylim = c(0,35)
+fviz_eig(pca, addlabels = TRUE, ylim = c(0,30))
 
 var <- get_pca_var(pca)
 var
@@ -643,15 +638,17 @@ fviz_contrib(pca, choice = "ind", axes = 1:2)
 
 # Create a random continuous variable of length 23,
 # Same length as the number of active individuals in the PCA
-nrow(m_hab_part)
+t_grps <- t_grps[rownames(pca$ind$coord), ]
 set.seed(123)
 my.cont.var <- t_grps$Ref_site
 my.cont.var
 # Color individuals by the continuous variable
-fviz_pca_ind(pca, col.ind = my.cont.var,
-             gradient.cols = c("blue", "yellow", "red"),
-             legend.title = "Cont.Var",
-             repel = FALSE)
+fviz_pca_ind(
+  pca,
+  habillage = my.cont.var,
+  palette = c("blue", "yellow", "red", "pink"),
+  repel = FALSE
+)
 
 fviz_pca_ind(pca,
              geom.ind = "point", #show points only (nbut not "text")
@@ -664,7 +661,7 @@ fviz_pca_ind(pca,
 length(unique(my.cont.var))
 fviz_pca_ind(pca,
              geom.ind = "point",
-             col.ind = as.factor(t_grps$Ref_site),
+             col.ind = t_grps$Ref_site,
              palette = "grey",
              addEllipses = TRUE, ellipse.type = "confidence",
              mean.point = TRUE,
@@ -676,162 +673,107 @@ fviz_pca_biplot(pca, repel = TRUE,
 )
 
 fviz_pca_biplot(pca,
-                col.ind = as.factor(t_grps$Ref_site), palette = "jco",
+                col.ind = t_grps$Ref_site, palette = "jco",
                 addEllipses = TRUE, elipse.type = "euclid",
                 label = "var",
                 col.var = "black", repel = TRUE,
                 legend.title = "Species")
 
-#GRAFICO FINAL----
+### FILTRANDO AS VARIÁVEIS
+var_coord <- pca$var$coord[,1:2]
+keep_vars <- apply(abs(var_coord) > 0.5,1,any)
+vars_to_keep <- rownames(var_coord)[keep_vars]
+pca_filt <- pca
+pca_filt$var$coord    <- pca$var$coord[vars_to_keep,,drop=FALSE]
+pca_filt$var$cos2     <- pca$var$cos2[vars_to_keep,,drop=FALSE]
+pca_filt$var$contrib  <- pca$var$contrib[vars_to_keep,,drop=FALSE]
 
-fviz_pca_biplot(pca, repel = TRUE,
-                col.var = "red", #variables color
-                col.ind = "black"  #individuals color
-)
+### AJUSTE MANUAL DAS COORDENADAS DOS VETORES
+var_coords <- as.data.frame(pca_filt$var$coord)
+var_coords$Dim.1 <- var_coords$Dim.1*4.2
+var_coords$Dim.2 <- var_coords$Dim.2*4.2
+
+## Caso queira editar manualmente
+#fix(var_coords)
+#write.table(var_coords,"coords_var.txt")
+
+var_coords <- read.table("coords_var.txt",
+                         header=TRUE,
+                         row.names=1)
+
+### AJUSTE MANUAL DOS INDIVÍDUOS
+ind_coords <- as.data.frame(pca_filt$ind$coord)
+
+## Caso queira editar manualmente
+#fix(ind_coords)
+#write.table(ind_coords,"coords_ind.txt")
+
+ind_coords <- read.table("coords_ind.txt",
+                         header=TRUE,
+                         row.names=1)
+
+############################################################
+### GRÁFICO FINAL
+############################################################
 
 library(factoextra)
 library(ggplot2)
 
-# Convert t_grps$UA to a factor to ensure distinct shapes
 t_grps$Ref_site <- as.factor(t_grps$Ref_site)
 
-# Generate the PCA biplot with individuals in black
-fviz_pca_biplot(pca, repel = TRUE,
-                            col.var = "red",  #cariables color
-                            col.ind = "black", #all individuals in black
-                            geom = c("point", "text"))
+#png("fig-hab_PCA_fviz.png", width=11, height=9, units="in", res=400)
 
-# Generate the PCA biplot with individuals in black
-library(ggrepel) #geom_text_repel
-png("fig-hab_PCA_fviz.png", width = 11, height = 9, units = "in", res = 400)
-fviz_pca_biplot(pca_filt, repel = TRUE, repel.var = TRUE,
-                            col.var = "red",  #variables color
-                            col.ind = "black", #all individuals in black
-                            geom = c("text")) +  #c("point", "text", "")remove default individuals
-  geom_point(aes(shape = t_grps$Ref_site), size = 3) + #map shapes to t_grps$UA
-#  geom_text_repel(aes(label = t_grps$Ref_site), direction = "both") + # direction = "x" or "y", label UAs from t_grps$UA, library(ggrepel)
-  scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +  #adjust shape values
-  theme_minimal()  #clean theme
-dev.off()
+library(ggplot2)
 
-###FILTRANDO VETORES PRINCIPAIS
-var_coord <- pca$var$coord[, 1:2]
-keep_vars <- apply(abs(var_coord) > 0.5, 1, any)
-keep_vars
-vars_to_keep <- rownames(var_coord)[keep_vars]
-vars_to_keep
-# Create a filtered PCA object
-pca_filt <- pca
-pca_filt$var$coord <- pca$var$coord[vars_to_keep, , drop = FALSE]
-pca_filt$var$contrib <- pca$var$contrib[vars_to_keep, , drop = FALSE]
-pca_filt$var$cos2 <- pca$var$cos2[vars_to_keep, , drop = FALSE]
+ggplot() +
+  
+  geom_hline(yintercept = 0, linetype = 2) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  
+  geom_point(
+    data = ind_coords,
+    aes(Dim.1, Dim.2, shape = t_grps$Ref_site),
+    size = 3,
+    colour = "black"
+  ) +
+  
+  geom_segment(
+    data = var_coords,
+    aes(x = 0, y = 0,
+        xend = Dim.1,
+        yend = Dim.2),
+    colour = "red",
+    arrow = arrow(length = unit(0.25,"cm"))
+  ) +
+  
+  geom_text(
+    data = transform(
+      var_coords,
+      nudge_y = ifelse(Dim.2 >= 0, 0.25, -0.25)
+    ),
+    aes(
+      x = Dim.1,
+      y = Dim.2 + nudge_y,
+      label = rownames(var_coords)
+    ),
+    colour = "red",
+    size = 4,
+    nudge_x = 0.19
+  ) +
+  
+  scale_shape_manual(values = c(15,16,0,1,2,17)) +
+  
+  labs(
+    x = paste0("Dim1 (", round(pca$eig[1,2],1), "%)"),
+    y = paste0("Dim2 (", round(pca$eig[2,2],1), "%)"),
+    shape = "Sites"
+  ) +
+  
+  coord_equal() +
+  theme_minimal()
 
-###FIX VARIABLES COORDINATES----
-var_coords <- as.data.frame(pca$var$coord)
-# Manually adjust positions (modify values as needed)
-#var_coords$Dim.1 <- var_coords$Dim.1 * 4.7  #shift right
-#var_coords$Dim.2 <- var_coords$Dim.2 * 4.7  #shift up
-#Fine tunning
-#fix(var_coords)
-#write.table(var_coords, "coords_var.txt")
-var_coords <- read.table("coords_var.txt")
-#rownames(var_coords) <-
-#  substr(rownames(var_coords), 3, nchar(rownames(var_coords))) #remove os 2 primeiros caracteres
+#dev.off()
 
-###FIX INDIVIDUALS COORDINATES----
-ind_coords <- as.data.frame(pca$ind$coord)
-# Manually adjust positions (modify values as needed)
-#ind_coords$Dim.1 <- ind_coords$Dim.1 + 0  #shift right
-#ind_coords$Dim.2 <- ind_coords$Dim.2 + 0.2  #shift up
-#Fine tunning
-#fix(ind_coords)
-#write.table(ind_coords, "coords_ind.txt")
-ind_coords <- read.table("coords_ind.txt")
-#rownames(ind_coords) <-
-#  substr(rownames(ind_coords), 5, nchar(rownames(ind_coords))) #remove os 4 primeiros caracteres
-
-#PLOT----
-
-png("fig-hab_PCA_fviz.png", width = 11, height = 9, units = "in", res = 400)
-fviz_pca_biplot(pca, repel = FALSE,
-                col.var = "red", col.ind = "black",
-                geom = "none", #remove default labels
-                label = "none") +  #remove both variable & individual labels
-# Add manually adjusted variable labels
-  geom_text(data = var_coords, aes(x = Dim.1, y = Dim.2, label = rownames(var_coords)),
-            color = "red", size = 4) +
-# Add manually adjusted individual labels
-  geom_text(data = ind_coords, aes(x = Dim.1, y = Dim.2, label = rownames(ind_coords)),
-            color = "black", size = 4, nudge_x = 0, nudge_y = 0) +  #corrected column names
-  geom_point(aes(shape = t_grps$UA), size = 3) + #map shapes to t_grps$UA
-  scale_shape_manual(values = c(15, 16, 0, 1, 2, 17)) +
-  theme_minimal() + ggtitle(NULL) + labs(shape = "Sites") +
-  theme(legend.text = element_text(size = 14),  #increase legend text size
-        legend.title = element_text(size = 16)) +  #increase legend title size
-  guides(shape = guide_legend(override.aes = list(size = 4))) #increase legend symbols
-dev.off()
-```
-
-```{r hab_PCA_results_table}
-#| eval: false
-#| warning: false
-#| message: false
-#| results: hide
-#| purl: false
-#| code-fold: true
-#| code-overflow: wrap
-#| code-summary: "Results table for PCA environment data PCA"
-
-#PCA R base----
-
-dev.off() #apaga os graficos, se houver algum
-rm(list=ls(all=TRUE)) #limpa a memória
-cat("\014") #limpa o console
-
-# Eigenvalues & variance explained
-eig.val <- get_eigenvalue(pca)
-eig_table <- data.frame(
-  PC = rownames(eig.val),
-  Eigenvalue = eig.val[, "eigenvalue"],
-  Variance_percent = round(eig.val[, "variance.percent"], 2),
-  Cumulative_variance_percent = round(eig.val[, "cumulative.variance.percent"], 2),
-  row.names = NULL)
-eig_table
-
-# Variable loadings (correlations) for retained PCs
-n_pc <- 2 #number of PCs
-loadings <- pca$var$coord[, 1:n_pc]
-
-loadings_table <- data.frame(
-  Variable = rownames(loadings),
-  round(loadings, 3),
-  row.names = NULL)
-colnames(loadings_table)[-1] <- paste0("PC", 1:n_pc)
-loadings_table
-
-# Variable contributions (%) to each PC
-contrib <- pca$var$contrib[, 1:n_pc]
-contrib_table <- data.frame(
-  Variable = rownames(contrib),
-  round(contrib, 2),
-  row.names = NULL)
-colnames(contrib_table)[-1] <- paste0("PC", 1:n_pc, "_contrib")
-contrib_table
-
-# Combined report-ready table
-pca_report_table <- merge(
-  loadings_table,
-  contrib_table,
-  by = "Variable",
-  sort = FALSE)
-rownames(pca_report_table) <- pca_report_table[, 1]
-pca_report_table <- pca_report_table[, -1]
-pca_report_table
-
-# Save tables
-sink(file = "pca_table.txt", split = T)
-pca_report_table
-sink()
 ```
 
 Averaged nutrient concentration values varied among sampling sites (@tbl-hab_gttable). Ammonia ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, representing the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas lower concentrations were detected at Sites 2 (58.9 µg L⁻¹) and 3 (72.0 µg L⁻¹). Nitrite concentrations were below detection limits at all sampling sites, whereas nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), while total phosphorus varied from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3.

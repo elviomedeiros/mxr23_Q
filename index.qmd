@@ -778,6 +778,101 @@ ggplot() +
 
 Averaged nutrient concentration values varied among sampling sites (@tbl-hab_gttable). Ammonia ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, representing the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas lower concentrations were detected at Sites 2 (58.9 µg L⁻¹) and 3 (72.0 µg L⁻¹). Nitrite concentrations were below detection limits at all sampling sites, whereas nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), while total phosphorus varied from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3.
 
+```{r gttable_nutri_excel}
+#| eval: false
+#| warning: false
+#| message: false
+#| results: false
+#| code-fold: true
+#| code-overflow: wrap
+#| code-summary: "Code: nutrient table" 
+
+#TABELA DE NUTRI----
+#ORGANIZANDO DADOS----
+
+dev.off()
+rm(list=ls(all=TRUE))
+cat("\014")
+
+library(openxlsx)
+nutri <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+                     rowNames = T,
+                     colNames = T,
+                     sheet = "nutri",
+                     rows = 2:20) #rows = 2:98
+
+t_grps <- read.csv("t_grps.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
+
+library(dplyr)
+library(tidyr)
+t_grps <- t_grps[seq_len(nrow(nutri)), , drop = FALSE]
+m_trab <- nutri %>%
+  rename_with(~ gsub("_", ".", .))
+m <- m_trab %>%
+  group_by(PontoN = t_grps$PontoN) %>%
+  summarise(across(where(is.numeric),
+                   list(mean = mean, min = min, max = max)),
+            .groups = 'drop') %>%
+  pivot_longer(
+    cols = -c(PontoN),
+    names_to = c("Variable", ".value"),
+    names_sep = "_"
+  )
+
+m <- as.data.frame(m)
+colnames(m_trab)
+m_wide <- m %>%
+  mutate(stat_string = ifelse(Variable == c("Ammonia.NH3.ug.L"),
+                              paste0(round(mean, 3), " (", round(min, 3), "-", round(max, 3), ")"),
+                              paste0(round(mean, 1), " (", round(min, 1), "-", round(max, 1), ")"))) %>%
+  unite("Location", PontoN, sep = "_") %>%
+  select(Variable, Location, stat_string) %>%
+  pivot_wider(names_from = Location, values_from = stat_string)
+
+m_wide
+m_wide <- as.data.frame(m_wide)
+m_wide <- m_wide[, c("Variable", "Ponto5", "Ponto6", "Ponto7", "Ponto8", "Ponto9", "Ponto10")] #sequência das colunas (ou linhas)
+m_wide
+
+# Salvado m_wide
+write.table(m_wide, "m_wide_nutri.txt",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+m_wide_nutri <- read.table("m_wide_nutri.txt",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+
+# Exportando dados para Excel
+library(openxlsx)
+#write.xlsx(m_wide, file = "tabela de nutrientes.xlsx", rowNames = FALSE)
+wb <- loadWorkbook("tabela de nutrientes.xlsx")
+writeData(wb, sheet = "Sheet 1", x = m_wide)
+saveWorkbook(wb, "tabela de nutrientes.xlsx", overwrite = TRUE)
+
+# Tabela final ajustada no Excel
+library(readxl)
+nutri_gttable <- read_excel(
+  path  = "tabela de nutrientes.xlsx",
+  sheet = "tabela_final",
+  range = "A1:G6") #ajustar para o tamanho da tabela final 
+nutri_gttable
+library(gt)
+nutri_gttable <- gt(nutri_gttable)
+nutri_gttable <- sub_missing(nutri_gttable,
+                      columns = everything(), missing_text = "")
+nutri_gttable
+gtsave(nutri_gttable, "gt-nutri_gttable_xlsx.html")
+saveRDS(nutri_gttable, "gt-nutri_gttable_xlsx.rds")
+```
+
 **Fish community.** A total of six fish species were collected under a standardized sampling effort, so species representation reflected their natural abundances in the study area. Among the families recorded, Characidae was the richest, comprising five species (*Astyanax bimaculatus*, *Astyanax fasciatus*, *Hemigrammus marginatus*, *Hemigrammus rodwayi*, and *Hemigrammus unilineatus*), whereas Crenuchidae was represented by a single species, *Characidium bimaculatum*, from which only one specimen was collected. *Hemigrammus unilineatus* was the most abundant species, representing 66.3% of all individuals analyzed, followed by *Astyanax fasciatus* (14.8%) and *Hemigrammus rodwayi* (11.2%). *Astyanax bimaculatus* accounted for 4.6% of the specimens, whereas *Hemigrammus marginatus* and *Characidium bimaculatum* represented only 2.5% and 0.5%, respectively. Since species representation in the physiological analyses reflected their natural abundances, the number of individuals available was divided for each subsequent biomarker analysis, in order to reflect the natural composition of the fish assemblage. Of the total fish collected, 118 specimens were submitted to the rhodamine B accumulation assay and 78 were used for total plasma protein and moisture content analyses (@fig-counts). Given its low count, *Characidium bimaculatum* was removed from all biomarker analyses.
 
 ```{r fish_counts}

@@ -776,7 +776,7 @@ ggplot() +
 
 ```
 
-Averaged nutrient concentration values varied among sampling sites (@tbl-nutri_gttable). Ammonia ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, representing the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas lower concentrations were detected at Sites 2 (58.9 µg L⁻¹) and 3 (72.0 µg L⁻¹). Nitrite concentrations were below detection limits at all sampling sites, whereas nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), while total phosphorus varied from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3.
+Averaged nutrient concentrations varied among sampling sites (@tbl-nutri_gttable). Ammonia concentrations ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas Sites 1–3 exhibited comparatively lower concentrations (54.8–72.0 µg L⁻¹). Nitrite concentrations were zero at all sampling sites. Nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), whereas total phosphorus ranged from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3, with relatively high concentrations also recorded at Site 6 (38.7 µg L⁻¹).
 
 ```{r gttable_nutri_excel}
 #| eval: false

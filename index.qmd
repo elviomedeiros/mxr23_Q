@@ -1990,6 +1990,18 @@ readRDS("gt-hab_gttable_xlsx.rds")
 
 </details>
 
+<details>
+
+<summary>Tab.: Nutrient data table</summary>
+
+```{r tbl-nutri_gttable}
+#| echo: false
+#| tbl-cap: "Nutrient concentrations at the sampling sites."
+readRDS("gt-nutri_gttable_xlsx.rds")
+```
+
+</details>
+
 \pagebreak
 \newpage
 

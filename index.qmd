@@ -776,7 +776,7 @@ ggplot() +
 
 ```
 
-Averaged nutrient concentration values varied among sampling sites (@tbl-hab_gttable). Ammonia ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, representing the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas lower concentrations were detected at Sites 2 (58.9 µg L⁻¹) and 3 (72.0 µg L⁻¹). Nitrite concentrations were below detection limits at all sampling sites, whereas nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), while total phosphorus varied from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3.
+Averaged nutrient concentration values varied among sampling sites (@tbl-nutri_gttable). Ammonia ranged from 54.8 µg L⁻¹ at the reference site (Site 1) to 243.7 µg L⁻¹ at Site 6, representing the highest value recorded during the study. Elevated ammonia concentrations were also observed at Sites 4 (81.6 µg L⁻¹) and 5 (80.8 µg L⁻¹), whereas lower concentrations were detected at Sites 2 (58.9 µg L⁻¹) and 3 (72.0 µg L⁻¹). Nitrite concentrations were below detection limits at all sampling sites, whereas nitrate concentrations ranged from 5.5 to 18.8 µg L⁻¹, with the highest values recorded at Sites 4 and 5. Orthophosphate was detected only at Site 3 (1.0 µg L⁻¹), while total phosphorus varied from undetectable levels at Site 1 to 50.1 µg L⁻¹ at Site 3.
 
 ```{r gttable_nutri_excel}
 #| eval: false
@@ -1916,7 +1916,7 @@ During the preparation of this manuscript, the authors used ChatGPT (OpenAI) to 
 
 @tbl-hab_gttable: Environmental variables averaged for sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
 
-@tbl-hab_gttable: Nutrient concentration (μg L⁻¹) averaged for sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
+@tbl-nutri_gttable: Nutrient concentration (μg L⁻¹) averaged for sampling sites (minimum-maximum) for the Barro Branco stream (Mamanguape, PB). Site 1 is the reference site for this study.
 
 ## Figures {.unnumbered}
 

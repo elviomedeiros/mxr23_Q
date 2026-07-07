@@ -145,7 +145,7 @@ library(openxlsx)
 
 ##CARREGANDO MATRIZES BRUTAS----
 
-habitat <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
+habitat <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
                      rowNames = T,
                      colNames = T,
                      sheet = "ambiente",
@@ -165,7 +165,27 @@ zero_sum2 #nomes das colunas zeradas
 sum<-colSums(m_part_cols)
 sum
 
-t_grps <- read.xlsx("D:/Elvio/OneDrive/MSS/_rebio23-mxr/mxr23_Q/data/rebio23-habitat.xlsx",
+### selecionando colunas para agrupamento
+# habitat
+colnames(m_part_cols)
+habitat_part <- m_part_cols[, c(
+  "w.Temp_C", "w.DO_mg.L", "w.Cond_uS.cm", "w.Turb_ntu", "w.pH",
+  "m.Elev_m", "m.Vel_m.s", "m.Slope", "m.Depth_max_cm", "m.Depth_avg_cm",
+  "m.Depth_mar_cm", "m.Width_m", "s.Mud", "s.Sand", "s.Gravel_f",
+  "s.Rocks", "h.Macrophytes", "h.Grass", "h.Subm_veg", "h.Overh_veg",
+  "h.Leaf_l", "h.Algae_f", "h.Algae_a", "h.Root_masses", "h.Debris_l",
+  "h.Debris_s"
+)]
+
+# nutrientes
+colnames(m_part_cols)
+nutriente <- m_part_cols[, c(
+  "n.Ammonia_NH3_ug.L", "n.Nitrite_NO2__ug.L",
+"n.Nitrate_NO3__ug.L", "n.Orthophosphate_SRP__ug.L",
+"n.Phosphorus_TP__ug.L"
+)]
+
+t_grps <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
                     rowNames = T,
                     colNames = T,
                     sheet = "grupos",
@@ -175,7 +195,17 @@ t_grps
 
 ##SALVANDO MATRIZES FINAIS----
 
-write.table(m_part_cols, "m_hab.csv",
+write.table(m_part_cols, "m_amb.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+write.table(habitat_part, "m_hab.csv",
+            sep = ";", dec = ".", #"\t",
+            row.names = TRUE,
+            quote = TRUE,
+            append = FALSE)
+write.table(nutriente, "m_nutri.csv",
             sep = ";", dec = ".", #"\t",
             row.names = TRUE,
             quote = TRUE,
@@ -191,6 +221,16 @@ t_grps <- read.csv("t_grps.csv",
                    header = TRUE,
                    na.strings = NA)
 m_hab <- read.csv("m_hab.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+m_nutri <- read.csv("m_nutri.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
+m_amb <- read.csv("m_amb.csv",
                   sep = ";", dec = ".",
                   row.names = 1,
                   header = TRUE,
@@ -262,10 +302,10 @@ m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
 
 ##SOMANDO REDUNDANTES----
 
-m_hab_part$h.algae <- m_hab_part$h.Algae_f + m_hab_part$h.Algae_a
+m_hab_part$h.Algae <- m_hab_part$h.Algae_f + m_hab_part$h.Algae_a
 m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
                            %in% c("h.Algae_f", "h.Algae_a"))]
-m_hab_part$h.debris <- m_hab_part$h.Debris_l + m_hab_part$h.Debris_s
+m_hab_part$h.Debris <- m_hab_part$h.Debris_l + m_hab_part$h.Debris_s
 m_hab_part <- m_hab_part[, !(colnames(m_hab_part)
                          %in% c("h.Debris_l", "h.Debris_s"))]
 
@@ -794,18 +834,19 @@ dev.off()
 rm(list=ls(all=TRUE))
 cat("\014")
 
-library(openxlsx)
-nutri <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
-                     rowNames = T,
-                     colNames = T,
-                     sheet = "nutri",
-                     rows = 2:20) #rows = 2:98
+m_nutri <- read.csv("m_nutri.csv",
+                   sep = ";", dec = ".",
+                   row.names = 1,
+                   header = TRUE,
+                   na.strings = NA)
 
 t_grps <- read.csv("t_grps.csv",
                    sep = ";", dec = ".",
                    row.names = 1,
                    header = TRUE,
                    na.strings = NA)
+
+nutri <- m_nutri[1:18, ]
 
 library(dplyr)
 library(tidyr)

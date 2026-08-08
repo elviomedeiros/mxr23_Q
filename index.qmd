@@ -135,7 +135,6 @@ Fish were transferred to plastic bags containing water from the collection site 
 #| results: false
 
 #MXR23 - ORGANIZANDO DADOS----
-#####....----
 
 dev.off() #apaga os graficos, se houver algum
 rm(list=ls(all=TRUE)) #limpa a memória
@@ -145,16 +144,17 @@ library(openxlsx)
 
 ##CARREGANDO MATRIZES BRUTAS----
 
-habitat <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+habitat <- read.xlsx("data/rebio23-habitat.xlsx",
                      rowNames = T,
                      colNames = T,
                      sheet = "ambiente",
-                     startRow = 2) #rows = 2:98
+                     rows = 2:20) #startRow = 2
 
 habitat[is.na(habitat)] <- 0
 habitat
 
-### REMOVENDO COLUNAS ZERADAS DE HABITAT----
+###REMOVENDO COLUNAS ZERADAS DE HABITAT----
+
 sum <- colSums(habitat)
 sum
 zero_sum <- names(which(colSums(habitat) == 0))
@@ -165,47 +165,31 @@ zero_sum2 #nomes das colunas zeradas
 sum<-colSums(m_part_cols)
 sum
 
-### selecionando colunas para agrupamento
-# habitat
-colnames(m_part_cols)
-habitat_part <- m_part_cols[, c(
-  "w.Temp_C", "w.DO_mg.L", "w.Cond_uS.cm", "w.Turb_ntu", "w.pH",
-  "m.Elev_m", "m.Vel_m.s", "m.Slope", "m.Depth_max_cm", "m.Depth_avg_cm",
-  "m.Depth_mar_cm", "m.Width_m", "s.Mud", "s.Sand", "s.Gravel_f",
-  "s.Rocks", "h.Macrophytes", "h.Grass", "h.Subm_veg", "h.Overh_veg",
-  "h.Leaf_l", "h.Algae_f", "h.Algae_a", "h.Root_masses", "h.Debris_l",
-  "h.Debris_s"
-)]
-
-# nutrientes
-colnames(m_part_cols)
-nutriente <- m_part_cols[, c(
-  "n.Ammonia_NH3_ug.L", "n.Nitrite_NO2__ug.L",
-"n.Nitrate_NO3__ug.L", "n.Orthophosphate_SRP__ug.L",
-"n.Phosphorus_TP__ug.L"
-)]
-
-t_grps <- read.xlsx("D:/mxr23_Q/data/rebio23-habitat.xlsx",
+t_grps <- read.xlsx("data/rebio23-habitat.xlsx",
                     rowNames = T,
                     colNames = T,
                     sheet = "grupos",
-                    startRow = 2) #rows = 2:98
+                    rows = 2:20) #startRow = 2
 t_grps
 
 
+###SEPARANDO NUTRIENTES----
+
+nutri <- grep("^n\\.", colnames(m_part_cols), value = TRUE)
+nutri
+nutrientes <- m_part_cols[, nutri, drop = FALSE]
+
+m_hab <- m_part_cols[, !colnames(m_part_cols) %in% nutri, drop = FALSE]
+colnames(m_hab)
+
 ##SALVANDO MATRIZES FINAIS----
 
-write.table(m_part_cols, "m_amb.csv",
+write.table(m_hab, "m_hab.csv",
             sep = ";", dec = ".", #"\t",
             row.names = TRUE,
             quote = TRUE,
             append = FALSE)
-write.table(habitat_part, "m_hab.csv",
-            sep = ";", dec = ".", #"\t",
-            row.names = TRUE,
-            quote = TRUE,
-            append = FALSE)
-write.table(nutriente, "m_nutri.csv",
+write.table(nutrientes, "t_nutri.csv",
             sep = ";", dec = ".", #"\t",
             row.names = TRUE,
             quote = TRUE,
@@ -220,17 +204,12 @@ t_grps <- read.csv("t_grps.csv",
                    row.names = 1,
                    header = TRUE,
                    na.strings = NA)
+t_nutri <- read.csv("t_nutri.csv",
+                  sep = ";", dec = ".",
+                  row.names = 1,
+                  header = TRUE,
+                  na.strings = NA)
 m_hab <- read.csv("m_hab.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
-m_nutri <- read.csv("m_nutri.csv",
-                  sep = ";", dec = ".",
-                  row.names = 1,
-                  header = TRUE,
-                  na.strings = NA)
-m_amb <- read.csv("m_amb.csv",
                   sep = ";", dec = ".",
                   row.names = 1,
                   header = TRUE,
@@ -247,7 +226,6 @@ m_amb <- read.csv("m_amb.csv",
 #| code-summary: "Code: Correlations of environment data" 
 
 #MXR23----
-####----
 
 ##ORGANIZANDO DADOS----
 
@@ -294,9 +272,6 @@ dev.off()
 sink(file = "colineares.txt", append = F, split = T)
 colnames(m_hab)
 del_cols <- c("m.Depth_max_cm", "m.Depth_mar_cm")
-del_cols <- c(del_cols, "n.Ammonia_NH3_ug.L", "n.Nitrite_NO2__ug.L",
-              "n.Nitrate_NO3__ug.L", "n.Orthophosphate_SRP__ug.L",
-              "n.Phosphorus_TP__ug.L")
 #del_cols <- grep("^n\\.", colnames(m_hab), value = TRUE)
 m_hab_part <- m_hab[, !(colnames(m_hab) %in% del_cols)]
 
@@ -336,7 +311,7 @@ m_hab_part <- read.csv("m_hab_part.csv",
 
 colnames(m_hab)
 library(PerformanceAnalytics)
-chart.Correlation(m_hab[, c(15:24, 27:31)], histogram=TRUE)
+chart.Correlation(m_hab[, c(15:24)], histogram=TRUE)
 # ***p<0.001, **p<0.01, *p<0.05, .p<0.10
 
 library(Hmisc)
@@ -402,21 +377,21 @@ library(vegan)
 library(tidyverse)
 
 # Selecionando variáveis que começam com "w" ou "m"
-m_q <- m_hab_part[, grep("^(w|m)", colnames(m_hab_part))]
+m_wm <- m_hab_part[, grep("^(w|m)", colnames(m_hab_part))]
 
 # Selecionando variáveis que começam com "s" ou "h"
-m_h <- m_hab_part[, grep("^(s|h)", colnames(m_hab_part))]
+m_sh <- m_hab_part[, grep("^(s|h)", colnames(m_hab_part))]
 
 # Removendo os dois primeiros caracteres dos nomes das colunas
-colnames(m_q) <- sub("^..", "", colnames(m_q))
-colnames(m_h) <- sub("^..", "", colnames(m_h))
+colnames(m_wm) <- sub("^..", "", colnames(m_wm))
+colnames(m_sh) <- sub("^..", "", colnames(m_sh))
 
 # Transformações
-m_q <- sqrt(m_q)
-m_h <- asin(sqrt(decostand(m_h, method = "total", MARGIN = 2)))
+m_wm <- sqrt(m_wm)
+m_sh <- asin(sqrt(decostand(m_sh, method = "total", MARGIN = 2)))
 
 # Juntando tudo em uma única tabela
-hab_trns <- cbind(m_h, m_q)
+hab_trns <- cbind(m_sh, m_wm)
 
 # Salvado m_hab_trns
 write.table(hab_trns, "m_hab_trns.csv",
@@ -828,13 +803,14 @@ Averaged nutrient concentrations varied among sampling sites (@tbl-nutri_gttable
 #| code-summary: "Code: nutrient table" 
 
 #TABELA DE NUTRI----
-#ORGANIZANDO DADOS----
+
+##ORGANIZANDO DADOS----
 
 dev.off()
 rm(list=ls(all=TRUE))
 cat("\014")
 
-m_nutri <- read.csv("m_nutri.csv",
+t_nutri <- read.csv("t_nutri.csv",
                    sep = ";", dec = ".",
                    row.names = 1,
                    header = TRUE,
@@ -846,7 +822,7 @@ t_grps <- read.csv("t_grps.csv",
                    header = TRUE,
                    na.strings = NA)
 
-nutri <- m_nutri[1:18, ]
+nutri <- t_nutri
 
 library(dplyr)
 library(tidyr)
@@ -895,7 +871,7 @@ m_wide_nutri <- read.table("m_wide_nutri.txt",
 library(openxlsx)
 #write.xlsx(m_wide, file = "tabela de nutrientes.xlsx", rowNames = FALSE)
 wb <- loadWorkbook("tabela de nutrientes.xlsx")
-writeData(wb, sheet = "Sheet 1", x = m_wide)
+writeData(wb, sheet = "Sheet 1", x = m_wide_nutri)
 saveWorkbook(wb, "tabela de nutrientes.xlsx", overwrite = TRUE)
 
 # Tabela final ajustada no Excel

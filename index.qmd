@@ -1949,7 +1949,7 @@ During the preparation of this manuscript, the authors used ChatGPT (OpenAI) to 
 
 <summary>Fig.: Images of the main four types of sites</summary>
 
-![Images of the main four types of sites.](imagens/refsites-new.png){#fig-refsites}
+![Images of the main four types of sites.](imagens/refsites.png){#fig-refsites}
 
 </details>
 

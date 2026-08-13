@@ -50,6 +50,7 @@ author:
 keywords:
   - Ecological Health
   - Physiological Stress
+  - REBIO Guaribas
 date: "`r Sys.Date()`"
 abstract: "The Atlantic Forest is one of the world's most important biodiversity hotspots. Despite occupying only a small fraction of its original distribution, it continues to support extraordinary levels of species richness and endemism. At the same time, it is one of the most threatened tropical ecosystems on Earth due to habitat loss, fragmentation, urban expansion, and agricultural development. The present study evaluated whether biomarkers of physiological stress in fish could detect environmental disturbances occurring within and around the Guaribas Biological Reserve (REBIO Guaribas), a strictly protected area of Atlantic Forest in northeastern Brazil. Despite sites within the administrative boundaries of the REBIO showing no signs alteration, from both environmental variables and biomarkers, significant differences in biomarker responses were observed among sampling sites, indicating that environmental conditions are not homogeneous throughout the stream studied. Elevated levels of all biomarkers at sites located outside or near the boundaries of the protected area suggest exposure to environmental stressors potentially associated with anthropogenic activities. These findings support the use of biochemical and physiological biomarkers as sensitive tools for detecting sublethal effects of environmental degradation, even in landscapes that contain legally protected areas."
 lang: "en-US"
@@ -93,7 +94,7 @@ Fish are among the most widely used organisms to evaluate the health of aquatic 
 
 Another relevant biomarker is the abnormal activity of the multixenobiotic resistance (MXR) phenotype [@bard2000; @zaja2006], an innate gene of many aquatic species that is expressed in organs such as gills, kidneys, blood-brain barrier, liver and pancreas. It is activated by exposure to pollutants and results in the expression of P-glycoproteins (Pgp) in the membrane, which act to remove endogenous or exogenous toxic compounds out of the cell, protecting DNA and inducing toxic compounds excretion [@smital1998]. Although the MXR activity explains how some species are more resistant to the presence of pollutants, some substances can reverse its effectiveness, being called chemosensitizers (or simply MXR-inhibitors) [@smital2004]. Those compounds can interact with the Pgp activity, altering the mechanism regulation, and saturate or even reverse MXR activity. By saturating the Pgp pump, these chemosentizers allow other xenobiotics to enter the cell and increase its toxicity, even if the chemosensitizers themselves are not toxic. Precisely because they are mostly organic, natural, primarily harmless and very present in the materials emitted anthropogenic in nature, its detection should also be a priority in environmental risk studies [@kurelec2000].
 
-In the present study, the hypothesis of markers linked to physiological stress of fish providing evidence of the environmental stress was tested along a headwater stream that originates withing a protected area - Biological Reserve, or REBIO, according to @brasil2000 - and its course extends beyond its administrative boundaries [@mma2003]. Given the importance of the Atlantic Forest to the biodiversity [@pereira2026], we aim with this study, (1) to identify physiological stress biomarkers in fish from a headwater stream, (2) to associate these biomarkers to the ecological health of sites inside and surrounding a protected area of Atlantic Forest. This will enable decision makers to take action on the influence of anthropogenic threats and the ecological consequence of pollution exposure of the buffer zone.
+In the present study, the hypothesis of markers linked to physiological stress of fish providing evidence of the environmental degradation was tested along a headwater stream that originates withing a protected area - Biological Reserve, or REBIO, according to @brasil2000 - and its course extends beyond its administrative boundaries [@mma2003]. Given the importance of the Atlantic Forest to the biodiversity [@pereira2026], we aim with this study, (1) to identify physiological stress biomarkers in fish from a headwater stream, and (2) to associate these biomarkers to the ecological health of sites inside and surrounding a protected area of Atlantic Forest. This will enable decision makers to take action on the influence of anthropogenic threats and the ecological consequence of pollution exposure of the buffer zone.
 
 # Material and Methods
 
@@ -103,7 +104,7 @@ The climate in the region is classified as As', characterized by a rainy season 
 
 Sampling was conducted along the Barro Branco stream between November 2023 and February 2024, comprising six sampling sites. The sampling sites were distributed longitudinally to capture environmental variability and gradients of human influence. Sites P1 to P3 were located within the reserve, where more preserved conditions were expected, while sites P4 to P6 were situated in the buffer zone adjacent to areas with greater human influence (@fig-mapa).
 
-For the sake of comparison, we classified all sites into four categories defined *a priori* (@fig-refsites). Reference site or Type I site, which are the sites that occur within the protected area and are well preserved, with intact riparian forest and no crop fields nearby (at least 1 km distant), free flowing water (≥ 0.25 m/s), high dissolved oxygen concentration (≥ 6 mg/L) and temperature below 28 °C. Type II sites, are those that occur within the protected area, but fail in one or more of the water quality criteria and/or being close to crop fields. Type III sites are those outside the protected area but meet the water quality criteria for a type I site, and type IV sites are those that fall outside the protected area and are also disturbed, not meeting the water quality criteria for a type I site. Sites type III and IV were intentionally chosen not to meet the riparian forest and crop proximity criteria. Since they fall outside of the REBIO they are not expected to have intact riparian forest or to be at least 1 km distant from a crop field. These categories were latter confirmed using environmental data.
+For the sake of comparison, we classified all sites into four categories defined *a priori* (@fig-refsites). Reference site or Type I site, which are the sites that occur within the protected area and are well preserved, with intact riparian forest and no crop fields nearby (at least 1 km distant), free-flowing water (≥ 0.25 m/s), high dissolved oxygen concentration (≥ 6 mg/L) and temperature below 28 °C. Type II sites, are those that occur within the protected area, but fail in one or more of the water quality criteria and/or being close to crop fields. Type III sites are those outside the protected area but meet the water quality criteria for a type I site, and type IV sites are those that fall outside the protected area and are also disturbed, not meeting the water quality criteria for a type I site. Sites type III and IV were intentionally chosen not to meet the riparian forest and crop proximity criteria. Since they fall outside of the REBIO they are not expected to have intact riparian forest or to be at least 1 km distant from a crop field. These categories were latter confirmed using environmental data.
 
 The ecophysiological evaluation of human impact on the forest, was mainly guided by the fish species inventory for the REBIO made by @gouveia2017. This study lists 18 species from five different orders: Characiformes (12 species), Perciformes (3 species), Synbranchiformes (1 species), Siluriformes (1 species) e Cyprinodontiformes (1 species). From those, two are exotic - *Oreochromis niloticus*, second most farmed fish species in the world and tolerant to osmotic variation, and *Poecilia reticulata*, largely used in mosquito control and resistant to stressful environments [@miranda2012]. The predominance of small fish inhabiting small basins is thought to lead to low dispersion and consequent isolation of populations [@gouveia2017], associated with the fact that most species in the study area are phylogenetic close (with the predominance of Characidae) and are widely distributed, offers an appropriate design to access the entire local ichthyofauna using a few species, namely the genuses *Hemigrammus* and *Astyanax*.
 
@@ -111,7 +112,7 @@ The ecophysiological evaluation of human impact on the forest, was mainly guided
 
 Three 250 mL replicate samples of water from each site were taken and refrigerated for concentration analysis (μg L⁻¹) of ammonia, nitrite, nitrate, orthophosphate (soluble reactive phosphorus) and total phosphorus. Nutrient concentrations were obtained based on Standard Methods for the Examination of Water [-@apha1998] and @mackereth1978.
 
-**Fish collection and maintenance.** Fish were collected between October and November 2023 along the Barro Branco Stream at six previously established sampling points, three located inside and three outside the Guaribas Biological Reserve, following a methodology adapted from @gouveia2017. Sampling was carried out during the day using a beach seine net (4 m long, 1.5 m high, and 5 mm mesh) and a hand net (50 cm wide and 5 mm mesh) operated with sweeping movements in shallow waters, according to @medeiros2010. Sampling effort was standardized across all collection events and sampling points. Fish sampling was performed randomly, therefore the occurrence of the species at each sampling site and the sample size varied according to natural dynamic of fish populations.
+**Fish collection and maintenance.** Fish were collected between October and November 2023 along the Barro Branco Stream at six previously established sampling points, located along the gradient of the stream, following a methodology adapted from @gouveia2017. Sampling was carried out during the day using a beach seine net (4 m long, 1.5 m high, and 5 mm mesh) and a hand net (50 cm wide and 5 mm mesh) operated with sweeping movements across a streach of 50 m [@medeiros2010]. Fish sampling was performed randomly, therefore the occurrence of the species at each sampling site and the sample size varied according to natural densities of fish populations.
 
 Fish were transferred to plastic bags containing water from the collection site and atmospheric oxygen, and transported to the Laboratory of Animal Ecophysiology (LEFA) at the State University of Paraíba. Fish were allowed to acclimated for a few hours to minimise stress from handling and transportation, and the ecophysiological experiments occurred on the same day of catch [@macêdo2019].
 
@@ -348,7 +349,7 @@ These variables were subsequently subjected to Principal Component Analysis (PCA
 #| results: hide
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Organizing Environment data PCA"
+#| code-summary: "Code: Organizing Environment data PCA"
 
 #PCA fviz package----
 #browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
@@ -406,7 +407,7 @@ m_hab_trns <- read.table("m_hab_trns.csv",
                          na.strings = NA)
 ```
 
-All biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to evaluate the hypothesis that biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010]. Different fish species were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
+To test the hypothesis that physiological biomarkers of fish provide evidence of environmental degradation, all biomarker results were compared with those from Site 1, which served as the reference site for this study. Site 1 was located deep within the protected area, distant from anthropogenic influences, and met the criteria for a Type I site. After ascertaining the non-normality of the study biomarkers, comparisons were performed using one-sided Wilcoxon rank-sum tests to test whether biomarker values at each site were significantly greater than the mean observed at the reference site [@zar2010; @ross2017]. Since no relevant different was observed across fish species, they were pooled withing sites. All statistical analyses were conducted in the R statistical environment using RStudio [@rstudioteam2022; @rcoreteam2017].
 
 # Results
 
@@ -547,7 +548,7 @@ Principal Component Analysis (PCA) described the overall environmental structure
 #| results: hide
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Environment data PCA - fviz"
+#| code-summary: "Code: Environment data PCA - fviz"
 
 #PCA fviz package----
 #browseURL("https://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/112-pca-principal-component-analysis-essentials/")
@@ -898,7 +899,7 @@ saveRDS(nutri_gttable, "gt-nutri_gttable_xlsx.rds")
 #| results: false
 #| code-fold: true
 #| code-overflow: wrap
-#| code-summary: "Counts of fish" 
+#| code-summary: "Code: Counts of fish" 
 
 dev.off() #apaga os graficos, se houver algum
 rm(list=ls(all=TRUE)) #limpa a memória

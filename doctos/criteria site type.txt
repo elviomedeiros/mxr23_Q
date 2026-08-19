@@ -1,0 +1,10 @@
+Site:	Temp<28	DO>=6	Vel>=25	Turb<15	Type
+Site1:	25.8	8.1	0.025	07.4	REF
+Site2:	26.5	7.5	0.035	06.1	TI
+Site3:	25.2	7.9	0.073	04.4	TII
+Site4:	27.8**	7.5	0.038	06.4	TIII
+Site5:	26.9	7.9	0.293	17.5*	TIV
+Site6:	26.3	5.4*	0.022*	29.6*	TIV
+
+*Criteria not met
+**Almost

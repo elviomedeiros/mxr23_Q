@@ -2077,7 +2077,7 @@ During the preparation of this manuscript, the authors used ChatGPT (OpenAI) to 
 
 <summary>Fig.: Counts of number of individuals per species and biomarker</summary>
 
-![Counts of number of individuals per species and biomarker.](fig-counts.png){#fig-counts}
+![Counts of number of individuals per species and biomarker.](fig-sizes.png){#fig-counts}
 
 </details>
 

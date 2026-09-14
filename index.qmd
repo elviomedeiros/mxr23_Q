@@ -1199,6 +1199,10 @@ table(data$Especie, is.na(data$Proteinas_Totais_mg))
 #TH_branquias_p
 #Proteinas_Totais_mg
 
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
 # Convert the column to numeric, replace commas with dots for proper conversion
 data$Proteinas_Totais_mg <- as.numeric(gsub(",", ".", data$Proteinas_Totais_mg))
 VAR <- deparse(substitute(data$Proteinas_Totais_mg))
@@ -1256,9 +1260,9 @@ prot_tots <-
       "B-P05" = "Site 1",
       "B-P06" = "Site 2",
       "B-P07" = "Site 3",
-      "B-P08" = "Site 4",
-      "B-P09" = "Site 5",
-      "B-P10" = "Site 6"
+      "B-P08" = "Site 4*",
+      "B-P09" = "Site 5*",
+      "B-P10" = "Site 6*"
     )
   )
 ) +
@@ -1268,10 +1272,10 @@ prot_tots <-
        y = "Plasmatic protein dosage (mg)",
        fill = "Species") +
   theme_grey() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, face = "italic"),
         legend.position = "none")
 prot_tots
-ggsave(prot_tots, dpi = 300, filename = "fig-prot_tots2.png", bg = "white")
+ggsave(prot_tots, dpi = 300, height = 5, width = 7, filename = "fig-prot_tots - final2.png", bg = "white")
 ```
 
 ```{r, proteinas_totais_spp}
@@ -1579,9 +1583,9 @@ prot_th <-
         "B-P05" = "Site 1",
         "B-P06" = "Site 2",
         "B-P07" = "Site 3",
-        "B-P08" = "Site 4",
-        "B-P09" = "Site 5",
-        "B-P10" = "Site 6"
+        "B-P08" = "Site 4**",
+        "B-P09" = "Site 5* **",
+        "B-P10" = "Site 6* **"
       )
     )
   ) +
@@ -1600,17 +1604,15 @@ prot_th <-
   ) +
   theme_grey() +
   theme(
-    axis.text.x = element_text(
-      angle = 45,
-      hjust = 1
-    ),
+    axis.text.x = element_text(angle = 45, hjust = 1, face = "italic"),
     strip.background = element_rect(
       fill = "grey85",
       colour = "grey85"
-    )
+    ),
+    plot.margin = margin(10, 10, 10, 11)
   )
 prot_th
-ggsave(prot_th, dpi = 300, filename = "fig-prot_th.png", bg = "white")
+ggsave(prot_th, dpi = 300, height = 5, width = 8, filename = "fig-prot_th-final.png", bg = "white")
 ```
 
 ```{r, moisture_content_t-tests}
@@ -1768,6 +1770,10 @@ table(data$Especie, is.na(data$Rodamina_rfu_mg))
 #TH_branquias_p
 #Proteinas_Totais_mg
 
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
 # Convert the column to numeric, replace commas with dots for proper conversion
 data$Rodamina_rfu_mg <- as.numeric(gsub(",", ".", data$Rodamina_rfu_mg))
 VAR <- deparse(substitute(data$Rodamina_rfu_mg))
@@ -1823,11 +1829,11 @@ rodam <-
   labeller = labeller(
     Site = c(
       "B-P05" = "Site 1",
-      "B-P06" = "Site 2",
-      "B-P07" = "Site 3",
-      "B-P08" = "Site 4",
-      "B-P09" = "Site 5",
-      "B-P10" = "Site 6"
+      "B-P06" = "Site 2*",
+      "B-P07" = "Site 3*",
+      "B-P08" = "Site 4*",
+      "B-P09" = "Site 5*",
+      "B-P10" = "Site 6*"
     )
   )
 ) +
@@ -1840,7 +1846,7 @@ rodam <-
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "none")
 rodam
-ggsave(rodam, dpi = 300, filename = "fig-rodam.png", bg = "white")
+ggsave(rodam, dpi = 300, height = 6, width = 8, filename = "fig-rodam-final.png", bg = "white")
 ```
 
 ```{r, MXR_t-tests}
